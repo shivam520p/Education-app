@@ -85,7 +85,7 @@ const ContectForm = () => {
               <div className="p-4 md:p-6 bg-blue-50 rounded-lg">
                 <motion.h2
                   whileHover={{ scale: 1.02 }}
-                  className="text-xl md:text-2xl font-bold mb-6"
+                  className="text-xl md:text-2xl font-bold mb-6 border-dashed border-b-2 border-gray-200 pb-2"
                 >
                   Get In Touch
                 </motion.h2>
@@ -161,9 +161,10 @@ const ContectForm = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-gray-700 text-white py-2 md:py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors text-sm md:text-base"
+                    className="w-1/2 bg-blue-600 text-white py-2 md:py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm md:text-base"
+                    type="submit"
                   >
-                    Send Message
+                    Send Message<i className="fa-solid fa-arrow-right ml-2"></i>
                   </motion.button>
                 </form>
               </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaTwitter, FaInstagram, FaPinterest, FaGlobe } from 'react-icons/fa';
-import Tutors from './Tutors';
 
 const TutorDetails = () => {
  const tutorDetails = JSON.parse(localStorage.getItem("tutorDetails"));
@@ -145,8 +144,7 @@ const TutorDetails = () => {
         </div>
       }
     </div>
-    <Tutors/>
-      </>
+    </>
   );
 };
 

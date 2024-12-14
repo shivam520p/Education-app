@@ -3,11 +3,14 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SignInImg from "../../assets/images/account-img.png";
 import { CommonComponent } from "../../hooks/CommonState";
+import { DataProvider } from "../../auth/user/UserVerification";
 const GetStarted = () => {
   const { setCommonState } = useContext(CommonComponent);
+  const { loginData, loginHandleChange, submitLogin } =
+    useContext(DataProvider);
   return (
     <>
-    <section className="mt-24 px-4 bg-blue-50">
+      <section className="mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
           <h1 className="text-5xl font-bold text-gray-700">Sign In</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
@@ -41,51 +44,63 @@ const GetStarted = () => {
               </p>
 
               {/* Form */}
-              <div className="mt-6">
-                <label className="block text-lg font-medium text-gray-700">
-                  Enter Email ID
-                </label>
-                <input
-                  type="email"
-                  placeholder="Enter Your Email..."
-                  className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
+              <form action="" onSubmit={submitLogin}>
+                <div className="mt-6">
+                  <label className="block text-lg font-medium text-gray-700">
+                    Enter Email ID
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={loginData.email}
+                    onChange={loginHandleChange}
+                    placeholder="Enter Your Email..."
+                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
 
-                <label className="block text-lg font-medium text-gray-700 mt-4">
-                  Enter Password
-                </label>
-                <input
-                  type="password"
-                  placeholder="Enter Your Password..."
-                  className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
+                  <label className="block text-lg font-medium text-gray-700 mt-4">
+                    Enter Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={loginData.password}
+                    onChange={loginHandleChange}
+                    placeholder="Enter Your Password..."
+                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
 
-                <div className="flex justify-between items-center mt-4">
-                  <a
-                    href="/forgetpassword"
-                    className="text-lg text-orange-500 hover:underline"
+                  <div className="flex justify-between items-center mt-4">
+                    <a
+                      href="/forgetpassword"
+                      className="text-lg text-orange-500 hover:underline"
+                    >
+                      Forgot password?
+                    </a>
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full mt-6 bg-gray-700 text-white py-3 rounded-lg hover:bg-gary-800"
                   >
-                    Forgot password?
-                  </a>
+                    Sign In
+                  </motion.button>
+
+                  <p className="text-lg text-gray-500 text-center mt-4">
+                    Don't have an account?{" "}
+                    <Link to="/register">
+                      <button
+                        className="text-blue-500 hover:underline"
+                        onClick={() => setCommonState("Sign Up")}
+                      >
+                        Sign Up
+                      </button>
+                    </Link>
+                  </p>
                 </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full mt-6 bg-gray-700 text-white py-3 rounded-lg hover:bg-gary-800"
-                >
-                  Sign In
-                </motion.button>
-
-                <p className="text-lg text-gray-500 text-center mt-4">
-                  Don't have an account?{" "}
-                  <Link to="/register">
-                  <button className="text-blue-500 hover:underline" onClick={() => setCommonState("Sign Up")}>
-                    Sign Up
-                  </button>
-                  </Link>
-                </p>
-              </div>
+              </form>
             </div>
           </motion.div>
 
