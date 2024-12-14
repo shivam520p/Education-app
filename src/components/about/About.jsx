@@ -9,26 +9,23 @@ import { motion } from "framer-motion";
 export const AboutPage = () => {
   return (
     <>
-    <section className="mt-24 px-4 bg-blue-50">
-        <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-         className="container mx-auto flex flex-col justify-center items-center gap-5 py-16"
-          >
+     <section className="mt-24 px-4 bg-blue-50">
+        <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
           <h1 className="text-5xl font-bold text-gray-700">About</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
-              <a href="/">
-                <i class="fa-solid fa-house mr-2"></i>Home
-              </a>
+            <a href="/">
+              <i className="fa-solid fa-house mr-2"></i>Home
+            </a>
             <em>
-              <i class="fa-solid fa-chevron-right"></i>
+              <i className="fa-solid fa-chevron-right"></i>
             </em>
-              <a href="/about" className="text-amber-500">About</a>
+            <a href="/about" className="text-amber-500">
+              About
+            </a>
           </div>
-        </motion.div>
+        </div>
       </section>
-    <section className="">
+    <section className="py-5">
       <div className="container mx-auto flex flex-col gap-10">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}

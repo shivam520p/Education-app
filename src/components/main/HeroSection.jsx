@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import home from '../assets/images/home.png';
-import Features from './layouts/Features';
-import Features2 from './layouts/Features2';
-import Features3 from './layouts/Features3';
-import Features4 from './layouts/Features4';
-import Features5 from './layouts/Features5';
-import Features6 from './layouts/Features6';
+import home from '../../assets/images/home.png';
+import Features from './Features';
+import Features2 from './Features2';
+import Features3 from './Features3';
+import Features4 from './Features4';
+import Features5 from './Features5';
+import Features6 from './Features6';
 
 const HeroSection = () => {
   return (
@@ -55,7 +55,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <motion.button 
+            <motion.a 
+              href="/courses"
               className="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -64,8 +65,9 @@ const HeroSection = () => {
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </motion.button>
-            <motion.button 
+            </motion.a>
+            <motion.a 
+              href="/about"
               className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -74,7 +76,7 @@ const HeroSection = () => {
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
 

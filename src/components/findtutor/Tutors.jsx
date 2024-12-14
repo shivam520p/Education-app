@@ -1,67 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
-import instructor1 from '../../assets/images/instructor-img1.png';
-import instructor2 from '../../assets/images/instructor-img2.png';
-import instructor3 from '../../assets/images/instructor-img3.png';
 
+import { CommonComponent } from '../../hooks/CommonState';
+import { Link } from 'react-router-dom';
 const Tutors = () => {
-  const instructors = [
-    {
-      name: "Devon Lane",
-      role: "Web Developer",
-      courses: 7,
-      students: "15k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor1
-    },
-    {
-      name: "John Doe",
-      role: "WordPress Expert",
-      courses: 6,
-      students: "55k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor2
-    },
-    {
-      name: "Alexandar",
-      role: "UI/UX Designer",
-      courses: 12,
-      students: "36k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor3
-    },
-    {
-      name: "Alexandar",
-      role: "UI/UX Designer",
-      courses: 12,
-      students: "36k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor3
-    },
-    {
-      name: "Alexandar",
-      role: "UI/UX Designer",
-      courses: 12,
-      students: "36k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor3
-    },
-    {
-      name: "Alexandar",
-      role: "UI/UX Designer",
-      courses: 12,
-      students: "36k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor3
-    },
-  ];
-
+  const {setCommonState,instructors} = useContext(CommonComponent);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -111,7 +54,7 @@ const Tutors = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 text-gray-700">Course Instructors</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 text-gray-700">Our Course Instructors</h2>
         <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
           Join us on this journey of discovery, growth, and transformation. Together, let's shape a brighter future
         </p>
@@ -181,17 +124,19 @@ const Tutors = () => {
                 </div>
               </div>
 
-              <motion.a 
-                href="#" 
+              <motion.button
+                onClick={() => {
+                  localStorage.setItem("tutorDetails", JSON.stringify(instructor));
+                  setCommonState("Instructor Details")}}
                 className="text-blue-600 hover:text-blue-700 flex items-center gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                View Profile
+                <Link to="/instructordetails">View Profile</Link>
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
           

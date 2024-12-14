@@ -4,18 +4,18 @@ import Tutors from "./Tutors";
 export const FindTutor = () => {
   return (
     <>
-      <section className="mt-24 px-4 bg-blue-50">
+    <section className="mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
-          <h1 className="text-5xl font-bold text-gray-700">Instructors</h1>
+          <h1 className="text-5xl font-bold text-gray-700">Instructor</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
             <a href="/">
-              <i class="fa-solid fa-house mr-2"></i>Home
+              <i className="fa-solid fa-house mr-2"></i>Home
             </a>
             <em>
-              <i class="fa-solid fa-chevron-right"></i>
+              <i className="fa-solid fa-chevron-right"></i>
             </em>
             <a href="/findtutor" className="text-amber-500">
-            Instructors
+              Instructor
             </a>
           </div>
         </div>

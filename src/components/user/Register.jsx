@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SignInImg from "../../assets/images/account-img.png";
+import { CommonComponent } from "../../hooks/CommonState";
 
 const Register = () => {
+  const { setCommonState } = useContext(CommonComponent);
   return (
     <>
-      <motion.section 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mt-24 px-4 bg-blue-50"
-      >
+    <section className="mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
           <h1 className="text-5xl font-bold text-gray-700">Sign Up</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
@@ -26,8 +23,7 @@ const Register = () => {
             </a>
           </div>
         </div>
-      </motion.section>
-
+      </section>
       <section className="bg-white px-4 py-16">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center">
           {/* Left Section */}
@@ -87,10 +83,10 @@ const Register = () => {
                   Sign Up
                 </motion.button>
 
-                <p className="text-sm text-gray-500 text-center mt-4">
+                <p className="text-lg text-gray-500 text-center mt-4">
                   Already have an account?{" "}
                   <Link to="/login">
-                    <button className="text-blue-500 hover:underline">
+                    <button className="text-blue-500 hover:underline" onClick={() => setCommonState("Sign In")}>
                       Sign In
                     </button>
                   </Link>

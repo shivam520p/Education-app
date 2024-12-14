@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import HeroSection from "../components/HeroSection";
-import Footer from "../components/Footer";
+import Navbar from "../components/main/Navbar";
+import HeroSection from "../components/main/HeroSection";
+import Footer from "../components/main/Footer";
 import About from "../components/about/About";
 import TutorSection from "../components/TutorSection/TutorSection";
 import Contact from "../components/contact/Contact";
@@ -13,6 +13,7 @@ import AllCourse from "../components/courses/AllCourse";
 import AllLanguage from "../components/courses/AllLanguage";
 import AllSubjects from "../components/courses/AllSubjects";
 import Programming from "../components/courses/Programming";
+import TutorDetails from "../components/findtutor/TutorDetails";
 
 export const BrowserRoute = () => {
   return (
@@ -21,6 +22,7 @@ export const BrowserRoute = () => {
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/findtutor" element={<FindTutor />} />
+        <Route path="/instructordetails" element={<TutorDetails />} />
         <Route path="/courses" element={<AllCourse />} />
         <Route path="/courses/languages" element={<AllLanguage />} />
         <Route path="/courses/subjects" element={<AllSubjects />} />
