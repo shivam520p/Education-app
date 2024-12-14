@@ -19,13 +19,13 @@ const Navbar = () => {
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('.mobile-menu-container')) {
+      if (isMobileMenuOpen && !event.target.closest(".mobile-menu-container")) {
         setIsMobileMenuOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobileMenuOpen]);
 
   const navLinks = [
@@ -46,28 +46,28 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-white shadow-lg" 
-          : "bg-transparent"
+        scrolled ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-4 py-5">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500">
+          <Link
+            to="/"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 transition-all duration-300"
+          >
             Education
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
             {/* Navigation Links */}
-            <ul className="flex space-x-8">
+            <ul className="flex items-center space-x-4 xl:space-x-8">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="font-semibold text-base lg:text-lg hover:text-blue-600 transition-colors"
-                    onClick={() => localStorage.setItem("heading", link.title)}
+                    className="font-semibold text-sm xl:text-lg hover:text-blue-600 transition-colors"
                   >
                     {link.title}
                   </Link>
@@ -80,7 +80,7 @@ const Navbar = () => {
                 onMouseEnter={() => setIsCoursesDropdownOpen(true)}
                 onMouseLeave={() => setIsCoursesDropdownOpen(false)}
               >
-                <button className="flex items-center font-semibold text-base lg:text-lg hover:text-blue-600 transition-colors">
+                <button className="flex items-center font-semibold text-sm xl:text-lg hover:text-blue-600 transition-colors">
                   Courses
                   <svg
                     className={`w-4 h-4 ml-1 transition-transform ${
@@ -90,7 +90,12 @@ const Navbar = () => {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
 
@@ -102,8 +107,7 @@ const Navbar = () => {
                         <Link
                           key={course.path}
                           to={course.path}
-                          className="block px-4 py-2 text-sm lg:text-base text-gray-700 hover:bg-gray-100 transition-colors"
-                          onClick={() => localStorage.setItem("heading", course.title)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                         >
                           {course.title}
                         </Link>
@@ -117,8 +121,7 @@ const Navbar = () => {
             {/* Sign In Button */}
             <Link
               to="/login"
-              className="px-6 py-2 bg-blue-600 text-white text-base lg:text-lg rounded-full hover:bg-blue-700 transition-colors"
-              onClick={() => localStorage.setItem("heading", "Sign In")}
+              className="px-4 sm:px-6 py-2 bg-blue-600 text-white text-sm xl:text-base rounded-full hover:bg-blue-700 transition-colors whitespace-nowrap"
             >
               Get Started
             </Link>
@@ -126,7 +129,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-md hover:bg-gray-100"
+            className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
@@ -136,9 +139,19 @@ const Navbar = () => {
               viewBox="0 0 24 24"
             >
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -146,10 +159,14 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 z-50 bg-white">
+          <div className="lg:hidden fixed inset-0 z-50 bg-white mobile-menu-container">
             <div className="flex flex-col h-full">
               <div className="flex justify-between items-center p-4 border-b">
-                <Link to="/" className="text-2xl font-bold text-blue-600">
+                <Link
+                  to="/"
+                  className="text-xl sm:text-2xl font-bold text-blue-600"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   Education
                 </Link>
                 <button
@@ -162,7 +179,12 @@ const Navbar = () => {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
@@ -173,11 +195,8 @@ const Navbar = () => {
                     <li key={link.path} className="border-b">
                       <Link
                         to={link.path}
-                        className="block py-4 hover:text-blue-600 transition-colors"
-                        onClick={() => {
-                          localStorage.setItem("heading", link.title);
-                          setIsMobileMenuOpen(false);
-                        }}
+                        className="block py-3 sm:py-4 text-sm sm:text-base hover:text-blue-600 transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.title}
                       </Link>
@@ -187,11 +206,8 @@ const Navbar = () => {
                     <li key={course.path} className="border-b">
                       <Link
                         to={course.path}
-                        className="block py-4 hover:text-blue-600 transition-colors"
-                        onClick={() => {
-                          localStorage.setItem("heading", course.title);
-                          setIsMobileMenuOpen(false);
-                        }}
+                        className="block py-3 sm:py-4 text-sm sm:text-base hover:text-blue-600 transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {course.title}
                       </Link>
@@ -203,11 +219,8 @@ const Navbar = () => {
               <div className="p-4 border-t">
                 <Link
                   to="/login"
-                  className="block w-full py-3 text-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
-                  onClick={() => {
-                    localStorage.setItem("heading", "Sign In");
-                    setIsMobileMenuOpen(false);
-                  }}
+                  className="block w-full py-2 sm:py-3 text-center bg-blue-600 text-white text-sm sm:text-base rounded-full hover:bg-blue-700 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started
                 </Link>
