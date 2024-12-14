@@ -19,7 +19,6 @@ export const BrowserRoute = () => {
   return (
     <>
       <Navbar />
-      <main className="px-4 lg:px-0">
         <Routes>
           <Route path="/" element={<HeroSection />} />
           <Route path="/findtutor" element={<FindTutor />} />
@@ -34,7 +33,6 @@ export const BrowserRoute = () => {
           <Route path="/login" element={<GetStarted />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </main>
       <Footer />
     </>
   );
