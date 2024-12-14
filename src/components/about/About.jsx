@@ -9,27 +9,26 @@ import { motion } from "framer-motion";
 export const AboutPage = () => {
   return (
     <>
-    <section className="py-24">
-      <motion.div 
+    <section className="mt-24 px-4 bg-blue-50">
+        <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center justify-center lg:p-10 p-5 gap-4 bg-red-300"
-      >
-        <span className="text-primary text-2xl font-normal">
-          -- About Us --
-        </span>
-        <h1 className="lg:text-4xl text-2xl font-semibold tracking-widest">
-          Empowering learners worldwide
-        </h1>
-        <p className="lg:text-m text-lg text-white tracking-wide">
-          We are dedicated to providing personalized online tutoring
-        </p>
-        <p className="lg:text-m text-lg text-white tracking-wide -mt-4">
-          experiences that unlock every learner's potential.
-        </p>
-      </motion.div>
-
+         className="container mx-auto flex flex-col justify-center items-center gap-5 py-16"
+          >
+          <h1 className="text-5xl font-bold text-gray-700">About</h1>
+          <div className="flex justify-center items-center gap-2 text-lg">
+              <a href="/">
+                <i class="fa-solid fa-house mr-2"></i>Home
+              </a>
+            <em>
+              <i class="fa-solid fa-chevron-right"></i>
+            </em>
+              <a href="/about" className="text-amber-500">About</a>
+          </div>
+        </motion.div>
+      </section>
+    <section className="">
       <div className="container mx-auto flex flex-col gap-10">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
