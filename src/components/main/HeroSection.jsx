@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import home from '../../assets/images/home.png';
 import Features from './Features';
@@ -7,8 +7,16 @@ import Features3 from './Features3';
 import Features4 from './Features4';
 import Features5 from './Features5';
 import Features6 from './Features6';
+import { DataProvider } from '../../auth/user/UserVerification';
 
 const HeroSection = () => {
+  const {getUserData}=useContext(DataProvider);
+  const token=localStorage.getItem("token");
+  useEffect(()=>{
+    if(token){
+      getUserData();
+    }
+  },[])
   return (
     <>
     <div className="container mx-auto my-24 px-4 flex items-center" id="home">

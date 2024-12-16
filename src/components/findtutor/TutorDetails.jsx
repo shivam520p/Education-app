@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaInstagram, FaPinterest, FaGlobe } from "react-icons/fa";
+import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
+import BookSession from "../models/BookSession";
 
 const TutorDetails = () => {
+  const {popUp, setPopUp}= useContext(TutorContext);
   const tutorDetails = JSON.parse(localStorage.getItem("tutorDetails"));
 
   return (
@@ -139,7 +142,7 @@ const TutorDetails = () => {
                 </p>
               </div>
               <div className="flex justify-center lg:justify-end lg:items-end mt-4 lg:mt-0">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                <button onClick={()=>{setPopUp(true)}} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
                   Book a Session
                 </button>
               </div>
@@ -157,6 +160,7 @@ const TutorDetails = () => {
           </div>
         </div>
       </div>
+      {popUp && <BookSession/>}
     </>
   );
 };

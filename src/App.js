@@ -5,6 +5,7 @@ import CommonState from "./hooks/CommonState";
 import { UserVerification } from "./auth/user/UserVerification";
 import { Toaster } from "react-hot-toast";
 import { TutorProvider } from "./auth/TutorHandling/TutorProvider";
+import { AdminProvider } from "./auth/adminhandling/AdminProvider";
 
 function App() {
   return (
@@ -13,8 +14,10 @@ function App() {
         <UserVerification>
           <CommonState>
             <TutorProvider>
-              <Toaster />
+              <AdminProvider>
+                <Toaster />
               <BrowserRoute />
+              </AdminProvider>
             </TutorProvider>
           </CommonState>
         </UserVerification>

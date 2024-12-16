@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "../components/main/Navbar";
 import HeroSection from "../components/main/HeroSection";
 import Footer from "../components/main/Footer";
@@ -14,26 +14,29 @@ import AllLanguage from "../components/courses/AllLanguage";
 import AllSubjects from "../components/courses/AllSubjects";
 import Programming from "../components/courses/Programming";
 import TutorDetails from "../components/findtutor/TutorDetails";
+import Dashboard from "../Dashboard/Admin/Dashboard";
 
 export const BrowserRoute = () => {
+  const location = useLocation();
   return (
     <>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<HeroSection />} />
-          <Route path="/findtutor" element={<FindTutor />} />
-          <Route path="/instructordetails" element={<TutorDetails />} />
-          <Route path="/courses" element={<AllCourse />} />
-          <Route path="/courses/languages" element={<AllLanguage />} />
-          <Route path="/courses/subjects" element={<AllSubjects />} />
-          <Route path="/courses/programming" element={<Programming />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/tutorsection" element={<TutorSection />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<GetStarted />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      <Footer />
+      {location.pathname!=='/Dashboard' && <Navbar />}
+      <Routes>
+        <Route path="/" element={<HeroSection />} />
+        <Route path="/findtutor" element={<FindTutor />} />
+        <Route path="/instructordetails" element={<TutorDetails />} />
+        <Route path="/courses" element={<AllCourse />} />
+        <Route path="/courses/languages" element={<AllLanguage />} />
+        <Route path="/courses/subjects" element={<AllSubjects />} />
+        <Route path="/courses/programming" element={<Programming />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/tutorsection" element={<TutorSection />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<GetStarted />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+      {location.pathname!=='/Dashboard' && <Footer />}
     </>
   );
 };

@@ -46,14 +46,13 @@ export const UserVerification = ({ children }) => {
     email: "",
     password: "",
   });
-
+    
 
   const getUserData = async () => {
     try {
       const response = await axiosInstance.get("/users/getuser");
       console.log(response);
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token);
         localStorage.setItem("userData", JSON.stringify(response.data.user));
       }
     } catch (error) {
@@ -98,10 +97,7 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/register", otp);
       console.log(response);
       if (response.status === 201) {
-        toast.success("You have been Registered Successfully...!!");
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userData", JSON.stringify(response.data.user));
-        getUserData();
         navigate("/");
       }
     } catch (error) {
@@ -119,10 +115,7 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/login", loginData);
       if (response.status === 201) {
         console.log(response.data.token);
-        toast.success("You Have Been Logged In Successfully...!!");
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userData", JSON.stringify(response.data.user));
-        getUserData();
         navigate("/");
       }
     } catch (error) {
@@ -213,6 +206,7 @@ export const UserVerification = ({ children }) => {
   return (
     <DataProvider.Provider
       value={{
+        getUserData,
         registerData,
         setRegisterData,
         otp,
