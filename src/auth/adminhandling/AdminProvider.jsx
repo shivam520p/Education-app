@@ -12,6 +12,17 @@ export const AdminProvider = ({ children }) => {
     title: "",
     image: "",
   });
+  const [allSubjects, setAllSubjects] = useState([]);
+  const [newSubjects, setNewSubjects] = useState({
+    subjectName: "",
+    image: "",
+  });
+
+  const [allClasses, setAllClasses] = useState([]);
+  const [newClasses, setNewClasses] = useState({
+    className: "",
+    image: "",
+  });
 
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
@@ -71,6 +82,176 @@ export const AdminProvider = ({ children }) => {
     }
   };
   
+  const subjectHandleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      const file = files[0];
+      if (file) {
+        if (file.type.startsWith('image/')) {
+          setNewSubjects({ ...newSubjects, image: file });
+        } else {
+          toast.error("Please select an image file");
+        }
+      }
+    } else {
+      setNewSubjects({ ...newSubjects, [name]: value });
+    }
+  };
+  
+  const addSubject = async (e) => {
+    e.preventDefault();
+    
+    // Validate form data
+    if (!newSubjects.subjectName || !newSubjects.image) {
+      toast.error("Please fill all required fields");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("subjectName", newSubjects.subjectName); 
+    formData.append("image", newSubjects.image);
+
+    try {
+      const response = await axiosInstance.post(
+        "/admin/createsubject",
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      if (response.status === 200) {
+        setPopUp(false);
+        toast.success("Subject added successfully!");
+        // Clear the form
+        setNewSubjects({
+          subjectName: "",
+          image: "",
+        });
+        // Refresh the subjects list
+        getAllSubjects();
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to add subject");
+      console.error(err);
+    }
+  };
+
+  const getAllSubjects = async () => {
+    try {
+      const response = await axiosInstance.get("/admin/getsubject");
+      console.log(response)
+      if (response.status === 200) {
+        setAllSubjects(response.data.subjects);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to fetch subjects");
+    }
+  };
+
+  const deleteSubject = async (id) => {
+    try {
+      const response = await axiosInstance.delete(
+        `/admin/removesubject/${id}`
+      );
+      if (response.status === 200) {
+        toast.success("Course deleted successfully!");
+       getAllSubjects();
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to delete course");
+      console.error(err);
+    }
+  };
+
+  const classHandleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      const file = files[0];
+      if (file) {
+        if (file.type.startsWith('image/')) {
+          setNewClasses({ ...newClasses, image: file });
+        } else {
+          toast.error("Please select an image file");
+        }
+      }
+    } else {
+      setNewClasses({ ...newClasses, [name]: value });
+    }
+  };
+  
+  const addClass = async (e) => {
+    e.preventDefault();
+    
+    // Validate form data
+    if (!newClasses.className || !newClasses.image) {
+      toast.error("Please fill all required fields");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("className", newClasses.className); 
+    formData.append("image", newClasses.image);
+
+    try {
+      const response = await axiosInstance.post(
+        "/admin/createclass",
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        setPopUp(false);
+        toast.success("Subject added successfully!");
+        // Clear the form
+        setNewClasses({
+          className: "",
+          image: "",
+        });
+        // Refresh the subjects list
+        getAllClasses();
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to add subject");
+      console.error(err);
+    }
+  };
+
+  const getAllClasses = async () => {
+    try {
+      const response = await axiosInstance.get("/admin/getclass");
+      console.log(response)
+      if (response.status === 200) {
+        setAllClasses(response.data.classes);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to fetch subjects");
+    }
+  };
+
+  const deleteClass = async (id) => {
+    try {
+      const response = await axiosInstance.delete(
+        `/admin/removeclass/${id}`
+      );
+      if (response.status === 200) {
+        toast.success("Course deleted successfully!");
+       getAllClasses();
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to delete course");
+      console.error(err);
+    }
+  };
+
+
   const deleteCourse = async (id) => {
     try {
       const response = await axiosInstance.delete(
@@ -78,8 +259,7 @@ export const AdminProvider = ({ children }) => {
       );
       if (response.status === 200) {
         toast.success("Course deleted successfully!");
-        // Update the courses list by removing the deleted course
-        setAllCourses(prevCourses => prevCourses.filter(course => course._id !== id));
+        getAllCourses();
       }
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to delete course");
@@ -155,7 +335,19 @@ export const AdminProvider = ({ children }) => {
           newCourse,
           courseHandleChange,
           addCourse,
-          deleteCourse
+          deleteCourse,
+          subjectHandleChange,
+          addSubject,
+          allSubjects,
+          getAllSubjects,
+          newSubjects,
+          deleteSubject,
+          addClass,
+          allClasses,
+          getAllClasses,
+          newClasses,
+          classHandleChange,
+          deleteClass
         }
       }
     >

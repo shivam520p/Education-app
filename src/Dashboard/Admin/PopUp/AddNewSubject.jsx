@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { DataProvider } from "../../auth/ContextAPI";
+import { AdminContext } from "../../../auth/adminhandling/AdminProvider";
 
 const AddNewSubject = () => {
-    const {setPop,subjectHandleChange,addSubject}=useContext(DataProvider)
+    const {setPopUp,newSubjects,subjectHandleChange,addSubject}=useContext(AdminContext)
   return (
     <>
       <div
@@ -14,8 +14,8 @@ const AddNewSubject = () => {
         <div className="relative p-4 w-full max-w-md max-h-full bg-slate-300 rounded-md">
           
           <div className="p-4 md:p-5">
-          <div className=" flex justify-end items-end"><i onClick={()=>{setPop(false)}} className="hover:cursor-pointer text-xl fa-solid fa-xmark"></i></div>
-            <form className="space-y-2" action="#">
+          <div className=" flex justify-end items-end"><i onClick={()=>{setPopUp(false)}} className="hover:cursor-pointer text-xl fa-solid fa-xmark"></i></div>
+            <form className="space-y-2" action="#" onSubmit={addSubject}>
               <div>
                 <label
                   htmlFor="country"
@@ -24,7 +24,9 @@ const AddNewSubject = () => {
                   Add new Subject
                   <sup className="text-red-500">*</sup>
                 </label>
-                <input name='subjectName' type="text" placeholder="Enter new subject to add.." onChange={subjectHandleChange}
+                <input name='subjectName' type="text" placeholder="Enter new subject to add.."
+                value={newSubjects.subjectName} 
+                onChange={subjectHandleChange}
                 className="w-full px-3 py-3 rounded-lg bg-white border border-gray-600" />
               </div>
               <div>
@@ -35,11 +37,12 @@ const AddNewSubject = () => {
                   Choose a pic
                   <sup className="text-red-500">*</sup>
                 </label>
-                <input name='image' type="file" placeholder="Choose a pic to add.." onChange={subjectHandleChange}
+                <input name='image' type="file" placeholder="Choose a pic to add.."
+                onChange={subjectHandleChange}
                 className="w-full px-3 py-3 rounded-lg bg-white border border-gray-600" />
               </div>
               <div className="flex items-center justify-end gap-x-6 pt-5">
-                <button  onClick={addSubject}
+                <button
                   type="submit"
                   className="rounded-md bg-primary px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
                 >

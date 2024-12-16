@@ -21,12 +21,14 @@ import AllUser from './Users/AllUser';
 import AllStudent from "./Users/AllStudent";
 import AllTutor from "./Users/AllTutor";
 import AllCourses from "./Courses/AllCourses"
+import AllSubjects from './Courses/AllSubjects';
+import AllClasses from "./Courses/AllClasses"
 
 const Dashboard = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [usersOpen, setUsersOpen] = useState(false);
-  const [courseOpen, setCourseOpen] =useState(false);
-  const [handleLink, setHandleLink]=useState('');
+  const [courseOpen, setCourseOpen] = useState(false);
+  const [handleLink, setHandleLink] = useState('');
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -43,22 +45,22 @@ const Dashboard = () => {
           <li className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer" onClick={() => setUsersOpen(!usersOpen)}>
             <FontAwesomeIcon icon={faUsers} className="mr-3" />
             <span>Users</span>
-            <FontAwesomeIcon 
-              icon={usersOpen ? faCaretDown : faCaretRight} 
+            <FontAwesomeIcon
+              icon={usersOpen ? faCaretDown : faCaretRight}
               className="ml-auto"
             />
           </li>
           {usersOpen && (
             <ul className="pl-8 space-y-2">
-               <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => setHandleLink('allusers')}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => setHandleLink('allusers')}>
                 <FontAwesomeIcon icon={faUser} className="mr-3" />
                 <span>All Users</span>
               </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => {setHandleLink('allstudents')}}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allstudents') }}>
                 <FontAwesomeIcon icon={faUserGraduate} className="mr-3" />
                 <span>Students</span>
               </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=> {setHandleLink('alltutors')}}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('alltutors') }}>
                 <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-3" />
                 <span>Tutors</span>
               </li>
@@ -67,28 +69,28 @@ const Dashboard = () => {
           <li className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer" onClick={() => setCourseOpen(!courseOpen)}>
             <FontAwesomeIcon icon={faUsers} className="mr-3" />
             <span>All Subject</span>
-            <FontAwesomeIcon 
-              icon={courseOpen ? faCaretDown : faCaretRight} 
+            <FontAwesomeIcon
+              icon={courseOpen ? faCaretDown : faCaretRight}
               className="ml-auto"
             />
           </li>
           {courseOpen && (
             <ul className="pl-8 space-y-2">
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink('allcourses')}}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allcourses') }}>
                 <FontAwesomeIcon icon={faBook} className="mr-3" />
-               <span> Courses</span>
+                <span> Courses</span>
               </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" >
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allsubjects') }} >
                 <FontAwesomeIcon icon={faBookOpen} className="mr-3" />
-                Subjects
+                <span>Subjects</span>
               </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
-                <FontAwesomeIcon icon={faLanguage} className="mr-3" />
-                <Link to="/students">Languages</Link>
-              </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allclasses') }}>
                 <FontAwesomeIcon icon={faChalkboard} className="mr-3" />
-                <Link to="/students">Classes</Link>
+                <span> Classes</span>
+              </li>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('alllangugaes') }}>
+                <FontAwesomeIcon icon={faLanguage} className="mr-3" />
+                <span>Languages</span>
               </li>
             </ul>
           )}
@@ -112,24 +114,21 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen w-full">
       {/* Mobile Drawer - Updated with transition */}
-      <div 
-        className={`fixed inset-0 z-10 md:hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? 'visible' : 'invisible'
-        }`}
+      <div
+        className={`fixed inset-0 z-10 md:hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'visible' : 'invisible'
+          }`}
       >
         {/* Overlay */}
-        <div 
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-            mobileOpen ? 'opacity-50' : 'opacity-0'
-          }`} 
+        <div
+          className={`absolute inset-0 bg-black transition-opacity duration-300 ${mobileOpen ? 'opacity-50' : 'opacity-0'
+            }`}
           onClick={handleDrawerToggle}
         ></div>
-        
+
         {/* Drawer Panel */}
-        <div 
-          className={`fixed top-0 left-0 h-full w-64 bg-white transform transition-transform duration-300 ease-in-out ${
-            mobileOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
+        <div
+          className={`fixed top-0 left-0 h-full w-64 bg-white transform transition-transform duration-300 ease-in-out ${mobileOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}
         >
           {drawer}
         </div>
@@ -154,10 +153,13 @@ const Dashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 p-6 overflow-y-auto">
-          {handleLink==='allusers' && <AllUser/>} 
-          {handleLink==='allstudents' && <AllStudent/>} 
-          {handleLink==='alltutors' && <AllTutor/>}
-          {handleLink==='allcourses' && <AllCourses/>}
+          {handleLink === 'allusers' && <AllUser />}
+          {handleLink === 'allstudents' && <AllStudent />}
+          {handleLink === 'alltutors' && <AllTutor />}
+          {handleLink === 'allcourses' && <AllCourses />}
+          {handleLink === 'allsubjects' && <AllSubjects />}
+          {handleLink === 'allclasses' && <AllClasses />}
+          {/* {handleLink === 'alllanguages' && <AllLanguages />} */}
         </main>
       </div>
     </div>
