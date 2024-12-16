@@ -125,7 +125,7 @@ const Register = () => {
                     type="submit"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full mt-6 bg-gray-700 text-white py-2 rounded-lg hover:bg-gray-800 transition-colors"
+                    className="w-full mt-6 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
                   >
                     Sign Up
                   </motion.button>

@@ -98,11 +98,11 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/register", otp);
       console.log(response);
       if (response.status === 201) {
-        toast.success("You Have Been Registered Successfully...!!");
+        toast.success("You have been Registered Successfully...!!");
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userData", JSON.stringify(response.data.user));
-        navigate("/");
         getUserData();
+        navigate("/");
       }
     } catch (error) {
       toast.error("Something went wrong...!!");
@@ -117,13 +117,13 @@ export const UserVerification = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/users/login", loginData);
-      console.log(response);
       if (response.status === 201) {
+        console.log(response.data.token);
         toast.success("You Have Been Logged In Successfully...!!");
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userData", JSON.stringify(response.data.user));
-        navigate("/");
         getUserData();
+        navigate("/");
       }
     } catch (error) {
       toast.error("Something went wrong...!!");

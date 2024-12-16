@@ -102,7 +102,7 @@ export const AboutPage = () => {
                 transformative for all.
               </p>
               <FeatureList2 />
-              <button className="px-8 py-2 text-l bg-gray-800 m-5 rounded-lg text-white hover:shadow-md">
+              <button className="px-8 py-2 text-l bg-blue-500 m-5 rounded-lg text-white hover:shadow-md">
                 Discover More
               </button>
             </div>

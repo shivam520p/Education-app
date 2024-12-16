@@ -82,7 +82,7 @@ const RecentClass = () => {
                 <td className="px-4 py-2 border">{item.postedOn}</td>
                 <td className="px-4 py-2 border">{item.contact}</td>
                 <td className="px-4 py-2 border">
-                  <button className="bg-gray-800 text-white px-3 py-1 rounded hover:shadow-md">
+                  <button className="bg-blue-500 text-white px-3 py-1 rounded hover:shadow-md">
                     View Contact
                   </button>
                 </td>
@@ -97,7 +97,7 @@ const RecentClass = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <button className="bg-gray-800 text-white px-6 py-2 rounded hover:shadow-md">
+        <button className="bg-blue-500 text-white px-6 py-2 rounded hover:shadow-md">
           View More Classes
         </button>
       </motion.div>

@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import { CommonComponent } from '../../hooks/CommonState';
 import { Link } from 'react-router-dom';
+import { TutorContext } from '../../auth/TutorHandling/TutorProvider';
 const Tutors = () => {
+
+  const {getTutorDetails} = useContext(TutorContext);
   const {setCommonState,instructors} = useContext(CommonComponent);
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -45,7 +48,9 @@ const Tutors = () => {
       }
     }
   };
-
+ useEffect(() => {
+  getTutorDetails();
+ }, []);
   return (
     <div className="px-4 py-16">
       <motion.div 

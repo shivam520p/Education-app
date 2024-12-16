@@ -14,13 +14,13 @@ const PerfectSection = () => {
         >
           <div className="text-center lg:border-r-2 border-gray-800">
             <h2 className="text-2xl font-semibold mb-4">Looking for Tutor?</h2>
-            <button className="bg-gray-800 text-white px-8 py-3 rounded-full hover:bg-gray-900 transition-colors">
+            <button className="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition-colors">
               Find Now
             </button>
           </div>
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-4">Looking for Students?</h2>
-            <button className="bg-gray-800 text-white px-8 py-3 rounded-full hover:bg-gray-900 transition-colors">
+            <button className="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition-colors">
               Create free profile
             </button>
           </div>
@@ -54,7 +54,7 @@ const PerfectSection = () => {
               Remember, you may find a tuition teacher offline, but surely not the 'Right to
               Choose' which you can only find at GharPeShiksha.
             </p>
-            <button className="bg-gray-800 text-white px-8 py-3 rounded-full hover:bg-gray-900 transition-colors">
+            <button className="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition-colors">
               Find Students Now
             </button>
           </motion.div>

@@ -68,7 +68,7 @@ const TutorSection = () => {
                   className="flex items-center space-x-4 relative"
                   key={index}
                 >
-                  <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-white text-3xl z-10">
+                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white text-3xl z-10">
                     {["👨‍🏫", "📖", "🕒", "💸"][index]}
                   </div>
                   <p className="text-lg lg:text-xl font-semibold">{text}</p>
@@ -85,23 +85,23 @@ const TutorSection = () => {
             id="tutor-form"
           >
             {/* Toggle Buttons */}
-            <div className="text-center mb-6 flex flex-wrap justify-center gap-2">
+            <div className="text-center mb-6 flex flex-col sm:flex-row justify-center gap-4 sm:gap-2">
               <button
                 onClick={() => setIsRegistering(false)}
-                className={`px-4 py-2 rounded-l-lg ${
+                className={`px-6 py-3 sm:px-4 sm:py-2 rounded-l-lg ${
                   !isRegistering
-                    ? "bg-gray-800 text-white"
-                    : "bg-gray-200 text-gray-700"
+                    ? "bg-blue-500 text-white"
+                    : "bg-blue-200 text-gray-700"
                 }`}
               >
                 Login to Your Profile
               </button>
               <button
                 onClick={() => setIsRegistering(true)}
-                className={`px-4 py-2 rounded-r-lg ${
+                className={`px-6 py-3 sm:px-4 sm:py-2 rounded-r-lg ${
                   isRegistering
-                    ? "bg-gray-800 text-white"
-                    : "bg-gray-200 text-gray-700"
+                    ? "bg-blue-500 text-white"
+                    : "bg-blue-200 text-gray-700"
                 }`}
               >
                 Register as a Tutor
@@ -111,7 +111,10 @@ const TutorSection = () => {
             {/* Form */}
             {isRegistering ? (
               // Registration Form
-              <form className="space-y-4" onSubmit={otpVisible ? tutorSubmitOtp : tutorSubmitRegister}>
+              <form
+                className="space-y-4"
+                onSubmit={otpVisible ? tutorSubmitOtp : tutorSubmitRegister}
+              >
                 <div>
                   <label
                     className="block text-sm font-medium mb-2"
@@ -182,22 +185,22 @@ const TutorSection = () => {
                     <label
                       className="block text-sm font-medium mb-2"
                       htmlFor="Password"
-                  >
-                    Enter OTP
-                  </label>
-                  <input
-                    type="text"
-                    name="otp"
-                    value={tutorOtp.otp}
-                    onChange={tutorHandleOtp}
-                    className="w-full border rounded-lg p-2 focus:outline-primary"
-                    placeholder="Enter OTP"
-                  />
-                </div>
+                    >
+                      Enter OTP
+                    </label>
+                    <input
+                      type="text"
+                      name="otp"
+                      value={tutorOtp.otp}
+                      onChange={tutorHandleOtp}
+                      className="w-full border rounded-lg p-2 focus:outline-primary"
+                      placeholder="Enter OTP"
+                    />
+                  </div>
                 )}
                 <button
                   type="submit"
-                  className="w-full bg-gray-800 text-white py-2 rounded-lg hover:shadow-md transition"
+                  className="w-full bg-blue-500 text-white py-2 rounded-lg hover:shadow-md transition duration-300 hover:bg-blue-600"
                 >
                   Register Now
                 </button>
@@ -239,7 +242,7 @@ const TutorSection = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+                  className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300 hover:shadow-md"
                 >
                   Login Now
                 </button>
@@ -304,7 +307,7 @@ const TutorSection = () => {
         <div className="flex justify-center pt-6 pr-12">
           <a
             href="#tutor-form"
-            className="bg-gray-800 text-white px-6 py-3 rounded-lg hover:shadow-md transition duration-300 hover:bg-gray-900"
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:shadow-md transition duration-300 hover:bg-blue-600"
           >
             Register Now
           </a>
