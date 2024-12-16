@@ -160,7 +160,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-0 z-50 bg-white mobile-menu-container">
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col">
               <div className="flex justify-between items-center p-4 border-b">
                 <Link
                   to="/"
@@ -216,7 +216,7 @@ const Navbar = () => {
                 </ul>
               </div>
 
-              <div className="p-4 border-t">
+              <div className="p-4">
                 <Link
                   to="/login"
                   className="block w-full py-2 sm:py-3 text-center bg-blue-600 text-white text-sm sm:text-base rounded-full hover:bg-blue-700 transition-colors"

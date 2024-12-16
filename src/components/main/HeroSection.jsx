@@ -98,7 +98,7 @@ const HeroSection = () => {
             />
 
             {/* Enrolled Students Card */}
-            <motion.div 
+            {/* <motion.div 
               className="absolute top-4 right-4 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2"
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -116,7 +116,7 @@ const HeroSection = () => {
                 ))}
               </div>
               <span className="text-sm font-medium">36k+ Enrolled Students</span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Discount Badge */}
             <motion.div 
