@@ -5,16 +5,17 @@ import Choose2 from '../../assets/images/choose-us-img2.png';
 
 const Features5 = () => {
   return (
-    <section className="py-8 md:py-10 px-4">
-      <div className="container mx-auto">
+    <section className="py-8 md:py-10 px-4 w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-[1200px]">
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
           {/* Left Content */}
           <motion.div
+            className="w-full"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -61,7 +62,7 @@ const Features5 = () => {
 
           {/* Right Content */}
           <motion.div
-            className="relative h-[400px] md:h-[500px] lg:h-[600px] mt-8 lg:mt-0"
+            className="relative h-[400px] md:h-[500px] lg:h-[600px] mt-8 lg:mt-0 w-full"
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}

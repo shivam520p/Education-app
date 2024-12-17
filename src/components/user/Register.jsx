@@ -118,7 +118,7 @@ const Register = () => {
                       <input
                         type="radio"
                         name="role"
-                        value={registerData?.role}
+                        value="1"
                         onChange={handleChangeRegister}
                       />
                       <label className="text-base md:text-lg font-medium text-gray-700 ml-2">
@@ -129,14 +129,14 @@ const Register = () => {
                       <input
                         type="radio"
                         name="role"
-                        value={registerData?.role}
+                        value="2"
                         onChange={handleChangeRegister}
                       />
                       <label className="text-base md:text-lg font-medium text-gray-700 ml-2">
                         Tutor
                       </label>
                     </div>
-                    <div>
+                    {/* <div>
                       <input
                         type="radio"
                         name="role"
@@ -146,7 +146,7 @@ const Register = () => {
                       <label className="text-base md:text-lg font-medium text-gray-700 ml-2">
                         Admin
                       </label>
-                    </div>
+                    </div> */}
                   </div>
                   {otpVisible && (
                     <div>

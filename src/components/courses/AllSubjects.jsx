@@ -84,7 +84,7 @@ const AllSubjects = () => {
 
               <div className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
-                  Subject:
+                  Subject Name:
                   <span className="text-gray-500 ml-3">
                     {subject.subjectName}
                   </span>
@@ -121,7 +121,7 @@ const AllSubjects = () => {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
+              <path      
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}

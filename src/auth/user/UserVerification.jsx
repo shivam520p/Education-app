@@ -12,7 +12,7 @@ export const UserVerification = ({ children }) => {
     email: "",
     mobile: "",
     password: "",
-    role: "1",
+    role: "",
   });
   const [otpVisible, setOtpVisible] = useState(false);
   const [otp, setOtp] = useState({

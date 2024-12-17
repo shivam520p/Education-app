@@ -8,9 +8,10 @@ import Features5 from './Features5';
 import Features6 from './Features6';
 
 const HeroSection = () => {
+ 
   return (
     <>
-    <div className="container mx-auto my-24 px-4 flex items-center" id="home">
+    <div className="container mx-auto my-24 px-4 flex items-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left Column */}
         <motion.div

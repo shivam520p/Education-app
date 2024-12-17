@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const userData=JSON.parse(localStorage.getItem("userData"));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const token=localStorage.getItem("token");
   const [scrolled, setScrolled] = useState(false);
@@ -121,7 +122,7 @@ const Navbar = () => {
 
             {/* Sign In Button */}
             <Link
-              to={`${token ? "/studentdashboard" : "/login"}`}
+              to={`${token ? (userData?.role=== "1" ? "/studentdashboard" : "/tutordashboard") : "/login"}`}
               className="px-4 sm:px-6 py-2 bg-blue-600 text-white text-sm xl:text-base rounded-full hover:bg-blue-700 transition-colors whitespace-nowrap"
             >
               Get Started

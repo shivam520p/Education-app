@@ -10,7 +10,6 @@ const CertificationDetails = () => {
     certificateHandleChange,
   } = useContext(TutorContext);
   const certificate = JSON.parse(localStorage.getItem("certificate"));
-  console.log(certificate[0].certificationPic);
   return (
     <>
       <div className="flex items-center justify-center p-4">
@@ -85,7 +84,7 @@ const CertificationDetails = () => {
             </div>
             <div className="w-full md:w-1/2 mt-4 md:mt-0">
               <img
-                src={certificate[0].certificationPic}
+                src={certificate[0]?.certificationPic}
                 alt="Certification File"
                 className="w-full h-auto max-h-[400px] object-contain rounded-lg"
               />

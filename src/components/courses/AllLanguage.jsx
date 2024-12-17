@@ -40,25 +40,27 @@ const AllLanguage = () => {
 
   return (
     <>
-      <section className="mt-24 px-4 bg-blue-50">
-        <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
-          <h1 className="text-5xl font-bold text-gray-700">All Language</h1>
-          <div className="flex justify-center items-center gap-2 text-lg">
-            <a href="/">
+      <section className="mt-16 md:mt-24 px-4 bg-blue-50">
+        <div className="container mx-auto flex flex-col justify-center items-center gap-3 md:gap-5 py-8 md:py-16">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center">
+            Available Languages
+          </h1>
+          <div className="flex justify-center items-center gap-2 text-base md:text-lg">
+            <a href="/" className="hover:text-blue-600 transition-colors">
               <i className="fa-solid fa-house mr-2"></i>Home
             </a>
             <em>
               <i className="fa-solid fa-chevron-right"></i>
             </em>
-            <a href="/courses" className="text-amber-500">
+            <a href="/courses" className="text-amber-500 hover:text-amber-600 transition-colors">
               Courses
             </a>
           </div>
         </div>
       </section>
-      <div className="my-8 md:my-16 py-6 md:py-10 px-4">
+      <div className="py-8 md:py-16 px-4">
         <motion.div
-          className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 px-4"
+          className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -66,27 +68,26 @@ const AllLanguage = () => {
           {allLanguage.map((language, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               variants={cardVariants}
               whileHover="hover"
             >
-              <div className="relative">
+              <div className="relative aspect-video">
                 <motion.img
                   src={language.image}
-                  alt={language.title}
-                  className="w-full h-48 sm:h-56 md:h-64 object-cover object-center bg-yellow-300"
+                  alt={language.languageName}
+                  className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
               </div>
-
-              <div className="p-4 md:p-6">
-                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
-                  Language:
-                  <span className="text-gray-500 ml-3">
-                    {language.languageName}
-                  </span>
+              <div className="p-3 md:p-4">
+                <h3 className="text-sm md:text-base lg:text-lg font-semibold text-center">
+                  {language.languageName}
                 </h3>
+                <p className="text-xs md:text-sm text-gray-500 mt-1 text-center">
+                  {language.courseCount || 0} Courses
+                </p>
               </div>
             </motion.div>
           ))}
@@ -95,11 +96,11 @@ const AllLanguage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="flex justify-center py-6 md:py-10 space-x-4"
+          className="flex justify-center items-center gap-4 mt-8 md:mt-12"
         >
-          <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300 active:scale-95">
             <svg
-              className="w-6 h-6 text-gray-600"
+              className="w-5 h-5 md:w-6 md:h-6 text-gray-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -112,9 +113,9 @@ const AllLanguage = () => {
               />
             </svg>
           </button>
-          <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300 active:scale-95">
             <svg
-              className="w-6 h-6 text-gray-600"
+              className="w-5 h-5 md:w-6 md:h-6 text-gray-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

@@ -85,7 +85,7 @@ const AllClasses = () => {
 
               <div className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
-                  Class:
+                  Class Name:
                   <span className="text-gray-500 ml-3">
                     {classItem?.className}
                   </span>
