@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBars,
@@ -26,10 +26,10 @@ import AllClasses from "./Courses/AllClasses"
 import AllLanguage from './Courses/AllLanguage';
 
 const Dashboard = () => {
+  const navigate=useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [usersOpen, setUsersOpen] = useState(false);
   const [courseOpen, setCourseOpen] = useState(false);
-  const [pagesOpen, setPagesOpen] = useState(false);
   const [handleLink, setHandleLink] = useState('');
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -106,7 +106,9 @@ const Dashboard = () => {
         <ul>
           <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
             <FontAwesomeIcon icon={faSignOutAlt} className="mr-3" />
-            <Link to="/logout">Logout</Link>
+            <button onClick={()=>{localStorage.clear();
+              navigate("/")
+            }}>Logout</button>
           </li>
         </ul>
       </div>

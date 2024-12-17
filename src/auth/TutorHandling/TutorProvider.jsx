@@ -10,6 +10,18 @@ export const TutorProvider = ({ children }) => {
     setProfileEdit(true);
   }, []);
   const [allTutorDetails, setAllTutorDetails] = useState([]);
+  const [tutor, setTutor] = useState(null);
+  const [studentProfile, setStudentProfile] = useState({
+    gender: "",
+    dateOfBirth: "",
+    state: "",
+    city: "",
+    pinCode: "",
+    country: "",
+    studentSubject: "",
+    about: "",
+  });
+  
   const [tutorProfile, setTutorProfile] = useState({
     type: "address",
     gender: "",
@@ -85,6 +97,50 @@ export const TutorProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const studentProfileHandleChange = (e) => {
+    const { name, value } = e.target;
+    setStudentProfile({ ...studentProfile, [name]: value });
+  };
+  const studentProfileUpdate = async (e) => {
+    e.preventDefault();
+    const profileEdit = localStorage.getItem("profileEdit");
+    if (profileEdit) {
+      try {
+        const response = await axiosInstance.put(
+          "/student/updatestudentdetails",
+          studentProfile
+        );
+        if (response.status === 200) {
+          toast.success("Your profile is updated successfully...!!");
+          setProfileEdit(true);
+          localStorage.setItem("profileEdit", JSON.stringify(studentProfile));
+        }
+        console.log(response);
+      } catch (err) {
+        toast.error(err);
+        console.log(err);
+      }
+    } else {
+      try {
+        const response = await axiosInstance.post(
+          "/student/addstudentdetails",
+          studentProfile
+        );
+        console.log(response);
+        if (response.status === 201) {
+          toast.success("Your profile is added successfully...");
+          setProfileEdit(true);
+          localStorage.setItem("edit", profileEdit);
+          localStorage.setItem("profileEdit", JSON.stringify(studentProfile));
+        }
+      } catch (err) {
+        toast.error(err);
+        console.log(err);
+      }
+    }
+  };
+
 
   const tutorProfileHandleChange = (e) => {
     const { name, value } = e.target;
@@ -421,6 +477,12 @@ export const TutorProvider = ({ children }) => {
         loading,
         error,
         allTutorDetails,
+        tutor,
+        setTutor,
+        studentProfile,
+        setStudentProfile,
+        studentProfileHandleChange,
+        studentProfileUpdate,
       }}
     >
       {children}

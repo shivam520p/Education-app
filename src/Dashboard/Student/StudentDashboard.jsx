@@ -6,19 +6,13 @@ import {
   faTachometerAlt,
   faCog,
   faSignOutAlt,
-  faUserGraduate,
-  faChalkboardTeacher,
-  faBook,
   faUser,
   faCaretDown
 } from '@fortawesome/free-solid-svg-icons';
-import ProfileSettings from '../../Dashboard/Tutor/ProfileSettings';
-import EducationSettings from '../../Dashboard/Tutor/EducationSettings';
-import ExperienceDetails from '../../Dashboard/Tutor/ExperienceDetails';
-import CertificationDetails from '../../Dashboard/Tutor/CertificationDetails';
-import ChangePassword from '../../Dashboard/Tutor/ChangePassword';
+import PersonalDetails from './PersonalDetails';
+import ChangePassword from '../Tutor/ChangePassword';
 
-const TutorDashboard = () => {
+const StudentDashboard = () => {
   const navigate=useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [handleLink, setHandleLink] = useState('');
@@ -30,27 +24,15 @@ const TutorDashboard = () => {
   const drawer = (
     <div className="flex flex-col h-full">
       <div>
-        <div className="py-5 text-xl font-bold border-b">Tutor Panel</div>
+        <div className="py-5 text-xl font-bold border-b">Student Panel</div>
         <ul className="space-y-2 py-5 cursor-pointer">
           <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
             <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
             <Link to="/">Dashboard</Link>
           </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("profilesettings")}}>
+          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("personaldetails")}}>
             <FontAwesomeIcon icon={faUser} className="mr-3" />
-           <span>Profile Settings</span>
-          </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("educationsettings")}}>
-            <FontAwesomeIcon icon={faUserGraduate} className="mr-3" />
-            <span>Education Details</span>
-          </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("experiencesettings")}}>
-            <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-3" />
-            <span>Experience Details</span>
-          </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("certificationsettings")}}>
-            <FontAwesomeIcon icon={faBook} className="mr-3" />
-            <span>Certification Details</span>
+           <span>Personal Details</span>
           </li>
           <li className="relative">
             <div 
@@ -130,15 +112,12 @@ const TutorDashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 p-6 overflow-y-auto">
-          {handleLink === 'profilesettings' && <ProfileSettings/>}
-          {handleLink === 'educationsettings' && <EducationSettings/>}
-          {handleLink === 'experiencesettings' && <ExperienceDetails/>}
-          {handleLink === 'certificationsettings' && <CertificationDetails/>}
-          {handleLink === 'changepassword' && <ChangePassword/>}
+            {handleLink === 'personaldetails' && <PersonalDetails/>}
+            {handleLink === 'changepassword' && <ChangePassword/>}
         </main>
       </div>
     </div>
   );
 };
 
-export default TutorDashboard;
+export default StudentDashboard;

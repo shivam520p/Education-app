@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import { faUserGraduate, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Tutors = () => {
-  const { allTutorDetails, getTutorDetails,setTutor } = useContext(TutorContext);
+  const { allTutorDetails, getTutorDetails, setTutor } = useContext(TutorContext);
   useEffect(() => {
     getTutorDetails();
   }, []);
@@ -41,16 +41,7 @@ const Tutors = () => {
       },
     },
   };
-
-  const buttonVariants = {
-    hover: {
-      scale: 1.1,
-      rotate: 90,
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
+ 
   useEffect(() => {
     getTutorDetails();
   }, []);
