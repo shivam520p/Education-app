@@ -15,12 +15,14 @@ import AllSubjects from "../components/courses/AllSubjects";
 import Programming from "../components/courses/Programming";
 import TutorDetails from "../components/findtutor/TutorDetails";
 import Dashboard from "../Dashboard/Admin/Dashboard";
+import TutorDashboard from "../Dashboard/Tutor/TutorDashboard";
 
 export const BrowserRoute = () => {
   const location = useLocation();
+  const isLocation= location.pathname ==='/Dashboard' || location.pathname ==='/tutordashboard';
   return (
     <>
-      {location.pathname!=='/Dashboard' && <Navbar />}
+      {!isLocation && <Navbar />}
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/findtutor" element={<FindTutor />} />
@@ -35,8 +37,9 @@ export const BrowserRoute = () => {
         <Route path="/login" element={<GetStarted />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/tutordashboard" element={<TutorDashboard />} />
       </Routes>
-      {location.pathname!=='/Dashboard' && <Footer />}
+      {!isLocation && <Footer />}
     </>
   );
 };

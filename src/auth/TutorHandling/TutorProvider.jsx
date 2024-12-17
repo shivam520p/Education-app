@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import axiosInstance from "../api/AxiosInstance";
+import { toast } from "react-hot-toast";
 
 export const TutorContext = createContext();
 export const TutorProvider = ({ children }) => {

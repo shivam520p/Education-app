@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import waveBg from "../../assets/images/wave-bg.png";
 import { motion } from "framer-motion";
+import { PageContext } from "../../auth/PagesHandle/PageProvider";
+
 
 const ContectForm = () => {
+  const {contactForm,contactHandleChange,contactHandleSubmit}=useContext(PageContext);
   return (
     <>
       <section className="py-8 md:py-16 relative">
@@ -90,7 +93,7 @@ const ContectForm = () => {
                   Get In Touch
                 </motion.h2>
 
-                <form>
+                <form onSubmit={contactHandleSubmit}>
                   <div className="mb-4">
                     <motion.label
                       whileHover={{ scale: 1.02 }}
@@ -103,6 +106,9 @@ const ContectForm = () => {
                       whileHover={{ scale: 1.01 }}
                       transition={{ type: "spring", stiffness: 300 }}
                       type="text"
+                      name="fullName"
+                      value={contactForm.fullName}
+                      onChange={contactHandleChange}
                       className="w-full px-3 md:px-4 py-2 md:py-3 border rounded-lg focus:outline-none focus:border-blue-500 text-sm md:text-base"
                       placeholder="Enter Name..."
                     />
@@ -120,6 +126,9 @@ const ContectForm = () => {
                       whileHover={{ scale: 1.01 }}
                       transition={{ type: "spring", stiffness: 300 }}
                       type="email"
+                      name="email"
+                      value={contactForm.email}
+                      onChange={contactHandleChange}
                       className="w-full px-3 md:px-4 py-2 md:py-3 border rounded-lg focus:outline-none focus:border-blue-500 text-sm md:text-base"
                       placeholder="Enter Email..."
                     />
@@ -130,15 +139,18 @@ const ContectForm = () => {
                       whileHover={{ scale: 1.02 }}
                       className="block text-gray-700 mb-2 text-sm md:text-base"
                     >
-                      Phone
+                      Subject
                     </motion.label>
                     <motion.input
                       whileFocus={{ scale: 1.02 }}
                       whileHover={{ scale: 1.01 }}
                       transition={{ type: "spring", stiffness: 300 }}
-                      type="tel"
+                      type="text"
+                      name="subject"
+                      value={contactForm.subject}
+                      onChange={contactHandleChange}
                       className="w-full px-3 md:px-4 py-2 md:py-3 border rounded-lg focus:outline-none focus:border-blue-500 text-sm md:text-base"
-                      placeholder="Enter Your Number..."
+                      placeholder="Enter Your Subject..."
                     />
                   </div>
 
@@ -153,6 +165,9 @@ const ContectForm = () => {
                       whileFocus={{ scale: 1.02 }}
                       whileHover={{ scale: 1.01 }}
                       transition={{ type: "spring", stiffness: 300 }}
+                      name="message"
+                      value={contactForm.message}
+                      onChange={contactHandleChange}
                       className="w-full px-3 md:px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 h-24 md:h-32 text-sm md:text-base"
                       placeholder="Enter Your Message..."
                     />

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
+import { PageContext } from "../../auth/PagesHandle/PageProvider";
 
 const BookSession = () => {
+  const {setPopUp}= useContext(TutorContext);
+  const {bookSessionHandleSubmit,bookSessionHandleChange,bookSession}= useContext(PageContext);
   return (
     <>
       <div
@@ -20,6 +24,7 @@ const BookSession = () => {
                 </h3>
                 <button
                   type="button"
+                  onClick={()=>setPopUp(false)}
                   className="end-2.5 text-blue-500 bg-transparent hover:bg-gray-200 hover:text-blue-600 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                   data-modal-hide="authentication-modal"
                 >
@@ -43,71 +48,7 @@ const BookSession = () => {
               </div>
               {/* <!-- Modal body --> */}
               <div className="p-4 md:p-5">
-                <form className="space-y-2" action="#">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block mb-2 text-l font-medium text-gray-500"
-                    >
-                      Enter Your Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="classname"
-                      className="block mb-2 text-l font-medium text-gray-500"
-                    >
-                      Enter Class Name
-                    </label>
-                    <input
-                      type="text"
-                      name="classname"
-                      id="classname"
-                      className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
-                      placeholder="Enter your class name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="subjectname"
-                      className="block mb-2 text-l font-medium text-gray-500"
-                    >
-                      Enter Subject Name
-                    </label>
-                    <input
-                      type="text"
-                      name="subjectname"
-                      id="subjectname"
-                      className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
-                      placeholder="Enter your subject name"
-                      required
-                    />
-                  </div>
-                  {/* <div>
-                    <label
-                      htmlFor="locationname"
-                      className="block mb-2 text-l font-medium text-gray-500"
-                    >
-                      Enter Location Name
-                    </label>
-                    <input
-                      type="text"
-                      name="locationname"
-                      id="locationname"
-                      className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
-                      placeholder="Enter your loaction"
-                      required
-                    />
-                  </div> */}
+                <form className="space-y-2" onSubmit={bookSessionHandleSubmit}>
                   <div>
                     <label
                       htmlFor="date"
@@ -118,7 +59,8 @@ const BookSession = () => {
                     <input
                       type="date"
                       name="date"
-                      id="date"
+                      value={bookSession.date}
+                      onChange={bookSessionHandleChange}
                       className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
                       required
                     />
@@ -133,7 +75,8 @@ const BookSession = () => {
                     <input
                       type="time"
                       name="startTime"
-                      id="startTime"
+                      value={bookSession.startTime}
+                      onChange={bookSessionHandleChange}
                       className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
                       required
                     />
@@ -148,7 +91,8 @@ const BookSession = () => {
                     <input
                       type="time"
                       name="endTime"
-                      id="endTime"
+                      value={bookSession.endTime}
+                      onChange={bookSessionHandleChange}
                       className="block w-full p-2.5 border-2 border-blue-200 rounded-lg"
                       required
                     />

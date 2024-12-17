@@ -3,9 +3,10 @@ import "./App.css";
 import { BrowserRoute } from "./routes/BrowserRoute";
 import CommonState from "./hooks/CommonState";
 import { UserVerification } from "./auth/user/UserVerification";
-import { Toaster } from "react-hot-toast";
 import { TutorProvider } from "./auth/TutorHandling/TutorProvider";
 import { AdminProvider } from "./auth/adminhandling/AdminProvider";
+import { Toaster } from "react-hot-toast";
+import { PageProvider } from "./auth/PagesHandle/PageProvider";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
           <CommonState>
             <TutorProvider>
               <AdminProvider>
-                <Toaster />
-              <BrowserRoute />
+                <PageProvider>
+                  <Toaster />
+                  <BrowserRoute />
+                </PageProvider>
               </AdminProvider>
             </TutorProvider>
           </CommonState>

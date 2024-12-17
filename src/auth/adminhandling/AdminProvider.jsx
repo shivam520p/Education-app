@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import axiosInstance from "../api/AxiosInstance";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 export const AdminContext = createContext();
 export const AdminProvider = ({ children }) => {
@@ -23,7 +23,10 @@ export const AdminProvider = ({ children }) => {
     className: "",
     image: "",
   });
-
+  const [allLanguage, setAllLanguage] = useState([]);
+  const [newLanguage, setNewLanguage] = useState({
+    languageName: "",
+  });
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -67,7 +70,7 @@ export const AdminProvider = ({ children }) => {
 
       if (response.status === 200) {
         setPopUp(false);
-        toast.success("Course added successfully!");
+        toast.success("Course added successfully..!!");
         // Clear the form
         setNewCourse({
           title: "",
@@ -77,7 +80,7 @@ export const AdminProvider = ({ children }) => {
         getAllCourses();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to add course");
+      toast.error(err.response.data.message || "Failed to add course");
       console.error(err);
     }
   };
@@ -98,6 +101,51 @@ export const AdminProvider = ({ children }) => {
     }
   };
   
+  const languageHandleChange = (e) => {
+    const { name, value } = e.target;
+    setNewLanguage({ ...newLanguage, [name]: value });
+  };
+
+  const addLanguage = async (e) => {
+    e.preventDefault();
+    try { 
+      const response = await axiosInstance.post("/admin/createlanguage", newLanguage);
+      
+      if(response.status === 200){
+        toast.success("Language added successfully..!!");
+        setPopUp(false);
+        getAllLanguage();
+      }
+    } catch (err) {
+      toast.error(err.response.data.message || "Failed to add language");
+      console.error(err);
+    }
+  };
+  const getAllLanguage= async()=>{
+    try {
+      const response = await axiosInstance.get("/admin/getlanguage");
+      if(response.status === 200){
+        setAllLanguage(response.data.languages);
+      }
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  const deleteLanguage = async (id) => {
+    try {
+      const response = await axiosInstance.delete(`/admin/removeLanguage/${id}`);
+      console.log(response);
+      if(response.status === 200){
+        toast.success("Language deleted successfully!");
+        getAllLanguage();
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to delete language");
+      console.error(err);
+    }
+  }
+
   const addSubject = async (e) => {
     e.preventDefault();
     
@@ -281,9 +329,7 @@ export const AdminProvider = ({ children }) => {
   const getAllUsers = async () => {
     try {
       const response = await axiosInstance.get("/admin/getallDetails");
-      console.log(response)
       if(response.status===200){
-        toast.success(response.data.message);
         setAllStudent(response.data.student_Data);
         setAllTutor(response.data.Tutor_Data);
       }
@@ -347,7 +393,13 @@ export const AdminProvider = ({ children }) => {
           getAllClasses,
           newClasses,
           classHandleChange,
-          deleteClass
+          deleteClass,
+          allLanguage,
+          getAllLanguage,
+          newLanguage,
+          languageHandleChange,
+          addLanguage,
+          deleteLanguage
         }
       }
     >

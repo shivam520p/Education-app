@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
+import { AdminContext } from "../../../auth/adminhandling/AdminProvider";
 
 const AddLanguage = () => {
+  const { newLanguage, languageHandleChange, addLanguage } = useContext(AdminContext);
   return (
     <>
       <div
@@ -12,7 +14,7 @@ const AddLanguage = () => {
         <div className="relative p-4 w-full max-w-md max-h-full bg-slate-300 rounded-md">
           <div className="p-4 md:p-5">
           <div className=" flex justify-end items-end"><i className="hover:cursor-pointer text-xl fa-solid fa-xmark"></i></div>
-            <form className="space-y-2" action="#">
+            <form className="space-y-2" onSubmit={addLanguage}>
               <div>
                 <label
                   htmlFor="country"
@@ -22,7 +24,11 @@ const AddLanguage = () => {
                   <sup className="text-red-500">*</sup>
                 </label>
                 <input type="text" placeholder="Enter new language to add.."
-                className="w-full px-3 py-3 rounded-lg bg-white border border-gray-600" />
+                className="w-full px-3 py-3 rounded-lg bg-white border border-gray-600" 
+                name="languageName"
+                value={newLanguage.languageName}
+                onChange={languageHandleChange}
+                />
               </div>
               <div className="flex items-center justify-end gap-x-6 pt-5">
                 <button

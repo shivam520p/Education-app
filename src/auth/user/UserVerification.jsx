@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import axiosInstance from "../api/AxiosInstance";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export const DataProvider = createContext();
@@ -72,11 +72,11 @@ export const UserVerification = ({ children }) => {
       );
       console.log(response);
       if (response.status === 200) {
-        toast.success("OTP Sent Successfully...!!");
+        toast.success(response.data.message);
         setOtpVisible(true);
       }
     } catch (error) {
-      toast.error("Something went wrong...!!");
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -97,11 +97,12 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/register", otp);
       console.log(response);
       if (response.status === 201) {
+        toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
         navigate("/");
       }
     } catch (error) {
-      toast.error("Something went wrong...!!");
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -114,12 +115,13 @@ export const UserVerification = ({ children }) => {
     try {
       const response = await axiosInstance.post("/users/login", loginData);
       if (response.status === 201) {
+        toast.success(response.data.message);
         console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
         navigate("/");
       }
     } catch (error) {
-      toast.error("Something went wrong...!!");
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -140,11 +142,11 @@ export const UserVerification = ({ children }) => {
       );
       console.log(response);
       if(response.status === 200){
-        toast.success("OTP Sent Successfully...!!");
+        toast.success(response.data.message);
         setOtpVisible(true);
       }
     } catch (error) {
-      toast.error("Something went wrong...!!");
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -165,14 +167,14 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/register", tutorOtp);
       console.log(response);
       if(response.status === 201){
-        toast.success("You Have Been Registered Successfully...!!");
+        toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userData", JSON.stringify(response.data.user));
         navigate("/");
         getUserData();
       }
     } catch (error) {
-      toast.error("Something went wrong...!!");
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -186,22 +188,17 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/login", tutorLoginData);
       console.log(response);
       if(response.status===201){
-        toast.success("You Have Been Logged In Successfully...!!");
+        toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userData", JSON.stringify(response.data.user));
         navigate("/");
         getUserData();
       }
     } catch (error) {
-      toast.error("Something went wrong...!!");
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
-  // Tutor Register API fetching end
-
-  // Tutor Login API fetching start
-
-  // Tutor Login API fetching end
 
   return (
     <DataProvider.Provider

@@ -17,17 +17,11 @@ import {
   faChalkboard,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
-import AllUser from './Users/AllUser';
-import AllStudent from "./Users/AllStudent";
-import AllTutor from "./Users/AllTutor";
-import AllCourses from "./Courses/AllCourses"
-import AllSubjects from './Courses/AllSubjects';
-import AllClasses from "./Courses/AllClasses"
-import AllLanguage from './Courses/AllLanguage';
 
-const Dashboard = () => {
+
+const TutorDashboard = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [usersOpen, setUsersOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
   const [courseOpen, setCourseOpen] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
   const [handleLink, setHandleLink] = useState('');
@@ -38,33 +32,33 @@ const Dashboard = () => {
   const drawer = (
     <div className="flex flex-col h-full">
       <div>
-        <div className="py-5 text-xl font-bold border-b">Admin Panel</div>
+        <div className="py-5 text-xl font-bold border-b">Tutor Panel</div>
         <ul className="space-y-2 py-5 cursor-pointer">
           <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
             <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
             <Link to="/">Dashboard</Link>
           </li>
-          <li className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer" onClick={() => setUsersOpen(!usersOpen)}>
+          <li className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer" onClick={() => setProfileOpen(!profileOpen)}>
             <FontAwesomeIcon icon={faUsers} className="mr-3" />
-            <span>Users</span>
+            <span>Profile Settings</span>
             <FontAwesomeIcon
-              icon={usersOpen ? faCaretDown : faCaretRight}
+              icon={profileOpen ? faCaretDown : faCaretRight}
               className="ml-auto"
             />
           </li>
-          {usersOpen && (
+          {profileOpen && (
             <ul className="pl-8 space-y-2">
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => setHandleLink('allusers')}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => setHandleLink('personaldetails')}>
                 <FontAwesomeIcon icon={faUser} className="mr-3" />
-                <span>All Users</span>
+                <span>Personal Details</span>
               </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allstudents') }}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('addressdetails') }}>
                 <FontAwesomeIcon icon={faUserGraduate} className="mr-3" />
-                <span>Students</span>
+                <span>Address Details</span>
               </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('alltutors') }}>
+              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('educationdetails') }}>
                 <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-3" />
-                <span>Tutors</span>
+                <span>Education Details</span>
               </li>
             </ul>
           )}
@@ -155,17 +149,17 @@ const Dashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 p-6 overflow-y-auto">
-          {handleLink === 'allusers' && <AllUser />}
+          {/* {handleLink === 'allusers' && <AllUser />}
           {handleLink === 'allstudents' && <AllStudent />}
           {handleLink === 'alltutors' && <AllTutor />}
           {handleLink === 'allcourses' && <AllCourses />}
           {handleLink === 'allsubjects' && <AllSubjects />}
           {handleLink === 'allclasses' && <AllClasses />}
-          {handleLink === 'alllanguages' && <AllLanguage />}
+          {handleLink === 'alllanguages' && <AllLanguage />} */}
         </main>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default TutorDashboard;

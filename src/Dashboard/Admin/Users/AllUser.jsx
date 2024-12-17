@@ -16,7 +16,7 @@ const AllUser = () => {
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead>
             <tr className="bg-gray-200 text-gray-700">
-              <th className="py-3 px-4 text-left">Sr No</th>
+              <th className="py-3 px-4 text-left">Sr No.</th>
               <th className="py-3 px-4 text-left">User Name</th>
               <th className="py-3 px-4 text-left">Email</th>
               <th className="py-3 px-4 text-left">Number</th>
@@ -26,8 +26,8 @@ const AllUser = () => {
           <tbody>
             {/* Students mapping */}
             {allStudent && allStudent.map((student, index) => (
-              <tr key={student.userId._id} className="border-b hover:bg-gray-50">
-                <td className="py-3 px-4">{index + 1}</td>
+              <tr key={student.userId._id} className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="py-3 px-4">{index + 1}.</td>
                 <td className="py-3 px-4">{student.userId.fullName}</td>
                 <td className="py-3 px-4">{student.userId.email}</td>
                 <td className="py-3 px-4">{student.userId.mobile}</td>
@@ -41,7 +41,7 @@ const AllUser = () => {
             
             {/* Tutors mapping */}
             {allTutor && allTutor.map((tutor, index) => (
-              <tr key={tutor._id} className="border-b hover:bg-gray-50">
+              <tr key={tutor._id} className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4">{allStudent.length + index + 1}</td>
                 <td className="py-3 px-4">{tutor.userId.fullName}</td>
                 <td className="py-3 px-4">{tutor.userId.email}</td>

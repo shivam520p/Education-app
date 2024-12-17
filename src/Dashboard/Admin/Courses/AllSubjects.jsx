@@ -32,11 +32,13 @@ console.log(allSubjects);
             {/* Students mapping */}
             {allSubjects &&
               allSubjects.map((subject, index) => (
-                <tr key={index} className="border-b hover:bg-gray-50">
-                  <td className="py-3 px-4">{index + 1}</td>
+                <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
+                  <td className="py-3 px-4">{index + 1}.</td>
                   <td className="py-3 px-4">{subject.subjectName}</td>
                   <td className="py-3 px-4">
-                    <img src={subject.image} alt={subject.subjectName} />
+                    <img src={subject.image} alt={subject.subjectName}
+                    className="w-24 h-24 rounded-lg"
+                    />
                   </td>
                   <td className="py-3 px-4 text-center">
                     <button onClick={()=>{deleteSubject(subject._id)}} className="text-red-500 hover:text-red-700">
