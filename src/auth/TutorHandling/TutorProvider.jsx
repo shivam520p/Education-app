@@ -162,8 +162,10 @@ export const TutorProvider = ({ children }) => {
           localStorage.setItem(
             "tutorDetails",
             JSON.stringify(response.data.createTutor.address)
+            
           );
           setProfileEdit(true);
+          setTutorDetails(JSON.parse(localStorage.getItem("tutorDetails")));
           toast.success(response.data.message);
         }
       } catch (err) {
@@ -184,6 +186,7 @@ export const TutorProvider = ({ children }) => {
             JSON.stringify(response.data.updatedTutor.address)
           );
           setProfileEdit(true);
+          setTutorDetails(JSON.parse(localStorage.getItem("tutorDetails")));
           toast.success(response.data.message);
         }
       } catch (err) {

@@ -100,7 +100,6 @@ export const UserVerification = ({ children }) => {
         toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
         navigate("/");
-        getUserData();
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -120,7 +119,6 @@ export const UserVerification = ({ children }) => {
         console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
         navigate("/");
-        getUserData();
         
       }
     } catch (error) {
