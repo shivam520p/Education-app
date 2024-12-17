@@ -4,7 +4,7 @@ import tutorEm from "../../assets/images/tutorEm.png"
 
 const PerfectSection = () => {
     return (
-      <section className="max-w-7xl mx-auto px-4 lg:py-16 py-8">
+      <section className="max-w-7xl mx-auto px-4 lg:py-16 py-8 overflow-hidden">
         {/* Top buttons section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ const PerfectSection = () => {
         </motion.div>
   
         {/* Main content section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-12 gap-4 px-3 lg:px-0 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-12 gap-4 items-center px-2">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -63,14 +63,12 @@ const PerfectSection = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center"
+            className="flex justify-center w-full"
           >
             <img 
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
               src={tutorEm} 
               alt="Tutor illustration" 
-              className="max-w-full h-auto"
+              className="max-w-full w-auto h-auto object-contain"
             />
           </motion.div>
         </div>

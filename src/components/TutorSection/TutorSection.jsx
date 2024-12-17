@@ -12,11 +12,9 @@ const TutorSection = () => {
   const [isRegistering, setIsRegistering] = useState(true);
   const {
     tutorRegisterData,
-    setTutorRegisterData,
     tutorOtp,
     otpVisible,
     tutorLoginData,
-    setTutorLoginData,
     tutorHandleChange,
     tutorSubmitRegister,
     tutorHandleOtp,
@@ -26,9 +24,9 @@ const TutorSection = () => {
   } = useContext(DataProvider);
   return (
     <>
-      <section className="mt-24 px-4 bg-blue-50">
-        <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
-          <h1 className="text-5xl font-bold text-gray-700">Become a Tutor</h1>
+      <section className="mt-16 lg:mt-24 px-4 bg-blue-50">
+        <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-8 sm:py-12 lg:py-16 px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-700 text-center">Become a Tutor</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
             <a href="/">
               <i className="fa-solid fa-house mr-2"></i>Home
@@ -42,18 +40,18 @@ const TutorSection = () => {
           </div>
         </div>
       </section>
-      <div className="container mx-auto lg:py-16 py-8 px-4 lg:px-0">
+      <div className="container mx-auto lg:py-16 py-8 px-4 sm:px-6 lg:px-8">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:text-5xl text-2xl font-normal text-center"
+          className="text-2xl sm:text-3xl lg:text-5xl font-normal text-center mb-8 sm:mb-12"
         >
           Providing Home Tuition Opportunities
         </motion.h1>
-        <div className="flex flex-col lg:h-[600px] lg:flex-row items-center lg:items-start lg:p-10 gap-8">
-          <div className="flex flex-col lg:flex-row items-center justify-center lg:items-start w-full lg:w-1/2">
-            <div className="space-y-8 lg:space-y-16 shiv relative">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+          <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2 px-4 sm:px-6">
+            <div className="space-y-6 sm:space-y-8 lg:space-y-16 shiv relative">
               {/* Steps */}
               {[
                 "Become a Teacher",
@@ -81,14 +79,14 @@ const TutorSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-full lg:w-1/3 border-2 border-gray-800 lg:p-8 p-4 rounded-lg shadow-md mx-auto"
+            className="w-full lg:w-1/3 border-2 border-gray-800 p-4 sm:p-6 rounded-lg shadow-md mx-auto max-w-md"
             id="tutor-form"
           >
             {/* Toggle Buttons */}
-            <div className="text-center mb-6 flex flex-col sm:flex-row justify-center gap-4 sm:gap-2">
+            <div className="text-center mb-6 flex flex-col sm:flex-row justify-center gap-2">
               <button
                 onClick={() => setIsRegistering(false)}
-                className={`px-6 py-3 sm:px-4 sm:py-2 rounded-l-lg ${
+                className={`px-4 py-2 text-sm sm:text-base rounded-lg sm:rounded-l-lg sm:rounded-r-none ${
                   !isRegistering
                     ? "bg-blue-500 text-white"
                     : "bg-blue-200 text-gray-700"
@@ -98,7 +96,7 @@ const TutorSection = () => {
               </button>
               <button
                 onClick={() => setIsRegistering(true)}
-                className={`px-6 py-3 sm:px-4 sm:py-2 rounded-r-lg ${
+                className={`px-4 py-2 text-sm sm:text-base rounded-lg sm:rounded-r-lg sm:rounded-l-none ${
                   isRegistering
                     ? "bg-blue-500 text-white"
                     : "bg-blue-200 text-gray-700"
@@ -282,10 +280,10 @@ const TutorSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-red-100 py-8 lg:py-10"
+        className="bg-red-100 py-8 px-4 sm:px-6 lg:py-10"
       >
-        <h1 className="text-3xl text-center mb-8 lg:pb-6">Earning Potential</h1>
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+        <h1 className="text-2xl sm:text-3xl text-center mb-8 lg:pb-6">Earning Potential</h1>
+        <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-16 max-w-4xl mx-auto">
           {/* Minimum Section */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end justify-center lg:pr-16 border-b-2 lg:border-b-0 lg:border-r-4 border-black gap-4 text-center lg:text-right">
             <h2 className="text-xl lg:text-2xl font-normal">Minimum</h2>
@@ -304,10 +302,10 @@ const TutorSection = () => {
             <p className="text-sm lg:text-base">per month @3-5hr/day</p>
           </div>
         </div>
-        <div className="flex justify-center pt-6 pr-12">
+        <div className="flex justify-center pt-6">
           <a
             href="#tutor-form"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:shadow-md transition duration-300 hover:bg-blue-600"
+            className="bg-blue-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:shadow-md transition duration-300 hover:bg-blue-600 text-sm sm:text-base"
           >
             Register Now
           </a>
