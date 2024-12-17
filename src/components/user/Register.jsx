@@ -16,7 +16,7 @@ const Register = () => {
     submitOtp,
     otpVisible,
   } = useContext(DataProvider);
- 
+
   return (
     <>
       <section className="mt-24 px-4 bg-blue-50">
@@ -53,7 +53,10 @@ const Register = () => {
               </p>
 
               {/* Form */}
-              <form action="" onSubmit={otpVisible ? submitOtp : submitRegister}>
+              <form
+                action=""
+                onSubmit={otpVisible ? submitOtp : submitRegister}
+              >
                 <div className="mt-6">
                   <div>
                     <label className="block text-base md:text-lg font-medium text-gray-700">
@@ -107,20 +110,59 @@ const Register = () => {
                       className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                   </div>
-                  { otpVisible && <div>
-                    <label className="block text-base md:text-lg font-medium text-gray-700 mt-4">
-                      Enter OTP
+                  <div className="flex items-center justify-start gap-5 mt-3">
+                    <label className="block text-base md:text-lg font-medium text-gray-700">
+                      Role-
                     </label>
-                  <input
-                    type="text"
-                    name="otp"
-                    value={otpData?.otp}
-                    onChange={handleChangeOtp}
-                    placeholder="Enter Your OTP..."
-                    className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    />
+                    <div>
+                      <input
+                        type="radio"
+                        name="role"
+                        value={registerData?.role}
+                        onChange={handleChangeRegister}
+                      />
+                      <label className="text-base md:text-lg font-medium text-gray-700 ml-2">
+                        Student
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="role"
+                        value={registerData?.role}
+                        onChange={handleChangeRegister}
+                      />
+                      <label className="text-base md:text-lg font-medium text-gray-700 ml-2">
+                        Tutor
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="role"
+                        value={registerData?.role}
+                        onChange={handleChangeRegister}
+                      />
+                      <label className="text-base md:text-lg font-medium text-gray-700 ml-2">
+                        Admin
+                      </label>
+                    </div>
                   </div>
-                  } 
+                  {otpVisible && (
+                    <div>
+                      <label className="block text-base md:text-lg font-medium text-gray-700 mt-4">
+                        Enter OTP
+                      </label>
+                      <input
+                        type="text"
+                        name="otp"
+                        value={otpData?.otp}
+                        onChange={handleChangeOtp}
+                        placeholder="Enter Your OTP..."
+                        className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
+                  )}
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.05 }}

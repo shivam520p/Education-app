@@ -2,12 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
-const AllCourse = () => {
-  const { allCourses, getAllCourses } = useContext(AdminContext);
-  console.log(allCourses);
-  console.log(getAllCourses);
+const AllClasses = () => {
+  const { allClasses, getAllClasses } = useContext(AdminContext);
+  console.log(allClasses);
+  console.log(getAllClasses);
   useEffect(() => {
-    getAllCourses();
+    getAllClasses();
   }, []);
 
   const containerVariants = {
@@ -41,21 +41,11 @@ const AllCourse = () => {
     },
   };
 
-  const buttonVariants = {
-    hover: {
-      scale: 1.1,
-      rotate: 90,
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
-
   return (
     <>
       <section className="mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
-          <h1 className="text-5xl font-bold text-gray-700">All Courses</h1>
+          <h1 className="text-5xl font-bold text-gray-700">All Classes</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
             <a href="/">
               <i className="fa-solid fa-house mr-2"></i>Home
@@ -76,7 +66,7 @@ const AllCourse = () => {
           initial="hidden"
           animate="visible"
         >
-          {allCourses.map((course, index) => (
+          {allClasses.map((classItem, index) => (
             <motion.div
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
@@ -85,8 +75,8 @@ const AllCourse = () => {
             >
               <div className="relative">
                 <motion.img
-                  src={course.image}
-                  alt={course.title}
+                  src={classItem.image}
+                  alt={classItem.title}
                   className="w-full h-48 sm:h-56 md:h-64 object-cover object-center bg-yellow-300"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
@@ -95,8 +85,10 @@ const AllCourse = () => {
 
               <div className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
-                  Course:
-                  <span className="text-gray-500 ml-3">{course.title}</span>
+                  Class:
+                  <span className="text-gray-500 ml-3">
+                    {classItem?.className}
+                  </span>
                 </h3>
               </div>
             </motion.div>
@@ -144,4 +136,4 @@ const AllCourse = () => {
   );
 };
 
-export default AllCourse;
+export default AllClasses;

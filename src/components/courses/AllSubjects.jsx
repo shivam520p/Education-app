@@ -60,14 +60,6 @@ const AllSubjects = () => {
       </section>
       <div className="my-8 md:my-16 py-6 md:py-10 px-4">
         <motion.div
-          className="text-center mb-8 md:mb-12 px-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-        </motion.div>
-
-        <motion.div
           className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 px-4"
           variants={containerVariants}
           initial="hidden"

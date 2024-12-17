@@ -12,7 +12,7 @@ import Register from "../components/user/Register";
 import AllCourse from "../components/courses/AllCourse";
 import AllLanguage from "../components/courses/AllLanguage";
 import AllSubjects from "../components/courses/AllSubjects";
-import Programming from "../components/courses/Programming";
+import AllClasses from "../components/courses/AllClasses";
 import TutorDetails from "../components/findtutor/TutorDetails";
 import Dashboard from "../Dashboard/Admin/Dashboard";
 import TutorDashboard from "../Dashboard/Tutor/TutorDashboard";
@@ -31,7 +31,7 @@ export const BrowserRoute = () => {
         <Route path="/courses" element={<AllCourse />} />
         <Route path="/courses/languages" element={<AllLanguage />} />
         <Route path="/courses/subjects" element={<AllSubjects />} />
-        <Route path="/courses/programming" element={<Programming />} />
+        <Route path="/courses/classes" element={<AllClasses />} />
         <Route path="/about" element={<About />} />
         <Route path="/tutorsection" element={<TutorSection />} />
         <Route path="/contact" element={<Contact />} />

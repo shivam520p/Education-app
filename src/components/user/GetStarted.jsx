@@ -7,13 +7,16 @@ import { DataProvider } from "../../auth/user/UserVerification";
 
 const GetStarted = () => {
   const { setCommonState } = useContext(CommonComponent);
-  const { loginData, loginHandleChange, submitLogin } = useContext(DataProvider);
-  
+  const { loginData, loginHandleChange, submitLogin } =
+    useContext(DataProvider);
+
   return (
     <>
       <section className="mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-8 md:py-16">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center">Sign In</h1>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center">
+            Sign In
+          </h1>
           <div className="flex justify-center items-center gap-2 text-base md:text-lg">
             <a href="/">
               <i className="fa-solid fa-house mr-2"></i>Home

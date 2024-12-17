@@ -41,7 +41,7 @@ const Navbar = () => {
     { title: "Courses", path: "/courses" },
     { title: "Subjects", path: "/courses/subjects" },
     { title: "Languages", path: "/courses/languages" },
-    // { title: "Programming", path: "/courses/programming" },
+    { title: "Classes", path: "/courses/classes" },
   ];
 
   return (
