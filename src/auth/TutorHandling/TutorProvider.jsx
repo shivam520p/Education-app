@@ -64,6 +64,9 @@ export const TutorProvider = ({ children }) => {
       [name]: value,
     });
   };
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const changePassword = async (e) => {
     e.preventDefault();
@@ -331,6 +334,39 @@ export const TutorProvider = ({ children }) => {
     }
   };
 
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!file) {
+      setError("Please select a file to upload.");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("avatar", file);
+    console.log(file)
+    setLoading(true);
+    try {
+      console.log(formData)
+      const response = await axiosInstance.put("/users/addavatar", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response);
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        localStorage.setItem("userImg", JSON.stringify(response.data.updateUserImage.avatar));
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
   const editAgainProfile = () => {
     setProfileEdit(false);
   };
@@ -376,6 +412,10 @@ export const TutorProvider = ({ children }) => {
         passwordHandleChange,
         newPassword,
         setNewPassword,
+        handleFileChange,
+        handleSubmit,
+        loading,
+        error,
       }}
     >
       {children}
