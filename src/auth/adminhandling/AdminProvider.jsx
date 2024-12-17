@@ -318,6 +318,7 @@ export const AdminProvider = ({ children }) => {
   const getAllCourses = async () => {
     try {
       const response = await axiosInstance.get("/admin/getcourse");
+      console.log(response);
       if (response.status === 200) {
         setAllCourses(response.data.courses);
       }

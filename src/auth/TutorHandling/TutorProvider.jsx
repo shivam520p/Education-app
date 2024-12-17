@@ -10,7 +10,6 @@ export const TutorProvider = ({ children }) => {
     setProfileEdit(true);
   }, []);
   const [allTutorDetails, setAllTutorDetails] = useState([]);
-  const [tutor, setTutor] = useState(null);
   const [tutorProfile, setTutorProfile] = useState({
     type: "address",
     gender: "",
@@ -377,10 +376,10 @@ export const TutorProvider = ({ children }) => {
 
   const getTutorDetails = async () => {
     try {
-      const response = await axiosInstance.get("student/alltutorDetails");
+      const response = await axiosInstance.get("admin/getTutorDetails");
       console.log(response);
       if (response.status === 200) {
-        setAllTutorDetails(response.data.Alltutor);
+        setAllTutorDetails(response.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -422,8 +421,6 @@ export const TutorProvider = ({ children }) => {
         loading,
         error,
         allTutorDetails,
-        tutor,
-        setTutor,
       }}
     >
       {children}

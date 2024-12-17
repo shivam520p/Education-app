@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { faUserGraduate, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TutorContext } from '../../auth/TutorHandling/TutorProvider';
 
 const Features4 = () => {
   const {allTutorDetails, getTutorDetails,setTutor} = useContext(TutorContext);
+  
   useEffect(() => {
     getTutorDetails();
   }, []);
@@ -40,17 +41,7 @@ const Features4 = () => {
       }
     }
   };
-
-  const buttonVariants = {
-    hover: {
-      scale: 1.1,
-      rotate: 90,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
+ 
   return (
     <div className="my-8 md:my-16 py-6 md:py-10 px-4 bg-gray-100">
       <motion.div 
