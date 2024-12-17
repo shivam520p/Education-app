@@ -43,7 +43,7 @@ const AllLanguage = () => {
       <section className="mt-16 md:mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-3 md:gap-5 py-8 md:py-16">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center">
-            Available Languages
+            All Languages
           </h1>
           <div className="flex justify-center items-center gap-2 text-base md:text-lg">
             <a href="/" className="hover:text-blue-600 transition-colors">
@@ -72,15 +72,6 @@ const AllLanguage = () => {
               variants={cardVariants}
               whileHover="hover"
             >
-              <div className="relative aspect-video">
-                <motion.img
-                  src={language.image}
-                  alt={language.languageName}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
               <div className="p-3 md:p-4">
                 <h3 className="text-sm md:text-base lg:text-lg font-semibold text-center">
                   {language.languageName}

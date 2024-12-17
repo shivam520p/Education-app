@@ -45,7 +45,7 @@ const AddNewCourse = () => {
               <div className="flex items-center justify-end gap-x-6 pt-5">
                 <button
                   type="submit"
-                  className="rounded-md bg-primary px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
+                  className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
                 >
                   Add +
                 </button>

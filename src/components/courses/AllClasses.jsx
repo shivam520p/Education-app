@@ -77,7 +77,7 @@ const AllClasses = () => {
                 <motion.img
                   src={classItem.image}
                   alt={classItem.title}
-                  className="w-full h-48 sm:h-56 md:h-64 object-cover object-center bg-yellow-300"
+                  className="w-full h-48 sm:h-56 md:h-64 object-contain object-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />

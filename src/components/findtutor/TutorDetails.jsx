@@ -5,7 +5,7 @@ import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import BookSession from "../models/BookSession";
 
 const TutorDetails = () => {
-  const {popUp, setPopUp, tutor}= useContext(TutorContext);
+  const { popUp, setPopUp, tutor } = useContext(TutorContext);
 
   return (
     <>
@@ -27,7 +27,7 @@ const TutorDetails = () => {
           </div>
         </div>
       </section>
-      
+
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-6 sm:gap-10 px-4 sm:px-8 lg:px-16 py-6 sm:py-10">
           {/* Left Side - Profile Image */}
@@ -95,12 +95,20 @@ const TutorDetails = () => {
               className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4"
             >
               <div className="bg-blue-50 p-3 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-600">{tutor?.experience[0]?.role}</p>
-                <p className="font-semibold text-sm sm:text-base">{tutor?.experience[0]?.institutionName}</p>
+                <p className="text-xs sm:text-sm font-semibold">Profession:
+                 <span className="font-semibold text-gray-600 ml-3">{tutor?.experience[0]?.role}</span> 
+                </p>
+                <p className="text-xs sm:text-sm font-semibold">Institution:
+                  <span className="font-semibold text-gray-600 ml-3">{tutor?.experience[0]?.institutionName}</span> 
+                </p>
               </div>
               <div className="bg-orange-50 p-3 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-600">{tutor?.qualifications[0]?.institution}</p>
-                <p className="font-semibold text-sm sm:text-base">{tutor?.qualifications[0]?.degree}</p>
+                <p className="text-xs sm:text-sm font-semibold">College:
+                  <span className="font-semibold text-gray-600 ml-3">{tutor?.qualifications[0]?.institution}</span> 
+                </p>
+                <p className="text-xs sm:text-sm font-semibold">Degree:
+                  <span className="font-semibold text-gray-600 ml-3">{tutor?.qualifications[0]?.degree}</span> 
+                </p>
               </div>
             </motion.div>
 
@@ -133,7 +141,12 @@ const TutorDetails = () => {
                 </p>
               </div>
               <div className="flex justify-center lg:justify-end lg:items-end mt-4 lg:mt-0">
-                <button onClick={()=>{setPopUp(true)}} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                <button
+                  onClick={() => {
+                    setPopUp(true);
+                  }}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+                >
                   Book a Session
                 </button>
               </div>
@@ -146,12 +159,14 @@ const TutorDetails = () => {
               className="space-y-2 border-dotted border-b-2 border-blue-400 w-full lg:w-2/3"
             >
               <h3 className="text-lg sm:text-xl font-semibold">About</h3>
-              <p className="text-gray-600 py-3 text-sm sm:text-base">{tutor?.address?.about}</p>
+              <p className="text-gray-600 py-3 text-sm sm:text-base">
+                {tutor?.address?.about}
+              </p>
             </motion.div>
           </div>
         </div>
       </div>
-      {popUp && <BookSession tutor={tutor}/>}
+      {popUp && <BookSession tutor={tutor} />}
     </>
   );
 };

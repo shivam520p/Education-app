@@ -114,6 +114,9 @@ export const AdminProvider = ({ children }) => {
       if(response.status === 200){
         toast.success("Language added successfully..!!");
         setPopUp(false);
+        setNewLanguage({
+          languageName: "",
+        });
         getAllLanguage();
       }
     } catch (err) {
@@ -205,7 +208,7 @@ export const AdminProvider = ({ children }) => {
         `/admin/removesubject/${id}`
       );
       if (response.status === 200) {
-        toast.success("Course deleted successfully!");
+        toast.success("Subject deleted successfully!");
        getAllSubjects();
       }
     } catch (err) {
@@ -256,7 +259,7 @@ export const AdminProvider = ({ children }) => {
       console.log(response);
       if (response.status === 200) {
         setPopUp(false);
-        toast.success("Subject added successfully!");
+        toast.success("Class added successfully!");
         // Clear the form
         setNewClasses({
           className: "",
@@ -266,7 +269,7 @@ export const AdminProvider = ({ children }) => {
         getAllClasses();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to add subject");
+      toast.error(err.response?.data?.message || "Failed to add class");
       console.error(err);
     }
   };
@@ -290,11 +293,11 @@ export const AdminProvider = ({ children }) => {
         `/admin/removeclass/${id}`
       );
       if (response.status === 200) {
-        toast.success("Course deleted successfully!");
+        toast.success("Class deleted successfully!");
        getAllClasses();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to delete course");
+      toast.error(err.response?.data?.message || "Failed to delete class");
       console.error(err);
     }
   };
