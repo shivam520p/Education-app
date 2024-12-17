@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const userData=JSON.parse(localStorage.getItem("userData"));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const token=localStorage.getItem("token");
+  const userData=JSON.parse(localStorage.getItem("userData"));
   const [scrolled, setScrolled] = useState(false);
   const [isCoursesDropdownOpen, setIsCoursesDropdownOpen] = useState(false);
-
+console.log(userData)
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -220,7 +220,7 @@ const Navbar = () => {
 
               <div className="p-4">
                 <Link
-                  to="/login"
+                  to={`${token ? (userData?.role=== "1" ? "/studentdashboard" : "/tutordashboard") : "/login"}`}
                   className="block w-full py-2 sm:py-3 text-center bg-blue-600 text-white text-sm sm:text-base rounded-full hover:bg-blue-700 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
