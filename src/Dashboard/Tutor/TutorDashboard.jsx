@@ -4,27 +4,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBars,
   faTachometerAlt,
-  faUsers,
   faCog,
   faSignOutAlt,
   faUserGraduate,
   faChalkboardTeacher,
-  faCaretDown,
-  faCaretRight,
   faBook,
-  faBookOpen,
-  faLanguage,
-  faChalkboard,
-  faUser
+  faUser,
+  faCaretDown
 } from '@fortawesome/free-solid-svg-icons';
-
+import ProfileSettings from '../../Dashboard/Tutor/ProfileSettings';
+import EducationSettings from '../../Dashboard/Tutor/EducationSettings';
+import ExperienceDetails from '../../Dashboard/Tutor/ExperienceDetails';
+import CertificationDetails from '../../Dashboard/Tutor/CertificationDetails';
+import ChangePassword from '../../Dashboard/Tutor/ChangePassword';
 
 const TutorDashboard = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [courseOpen, setCourseOpen] = useState(false);
-  const [pagesOpen, setPagesOpen] = useState(false);
   const [handleLink, setHandleLink] = useState('');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -38,61 +35,42 @@ const TutorDashboard = () => {
             <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
             <Link to="/">Dashboard</Link>
           </li>
-          <li className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer" onClick={() => setProfileOpen(!profileOpen)}>
-            <FontAwesomeIcon icon={faUsers} className="mr-3" />
-            <span>Profile Settings</span>
-            <FontAwesomeIcon
-              icon={profileOpen ? faCaretDown : faCaretRight}
-              className="ml-auto"
-            />
+          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("profilesettings")}}>
+            <FontAwesomeIcon icon={faUser} className="mr-3" />
+           <span>Profile Settings</span>
           </li>
-          {profileOpen && (
-            <ul className="pl-8 space-y-2">
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => setHandleLink('personaldetails')}>
-                <FontAwesomeIcon icon={faUser} className="mr-3" />
-                <span>Personal Details</span>
-              </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('addressdetails') }}>
-                <FontAwesomeIcon icon={faUserGraduate} className="mr-3" />
-                <span>Address Details</span>
-              </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('educationdetails') }}>
-                <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-3" />
-                <span>Education Details</span>
-              </li>
-            </ul>
-          )}
-          <li className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer" onClick={() => setCourseOpen(!courseOpen)}>
-            <FontAwesomeIcon icon={faUsers} className="mr-3" />
-            <span>All Subject</span>
-            <FontAwesomeIcon
-              icon={courseOpen ? faCaretDown : faCaretRight}
-              className="ml-auto"
-            />
+          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("educationsettings")}}>
+            <FontAwesomeIcon icon={faUserGraduate} className="mr-3" />
+            <span>Education Details</span>
           </li>
-          {courseOpen && (
-            <ul className="pl-8 space-y-2">
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allcourses') }}>
-                <FontAwesomeIcon icon={faBook} className="mr-3" />
-                <span> Courses</span>
-              </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allsubjects') }} >
-                <FontAwesomeIcon icon={faBookOpen} className="mr-3" />
-                <span>Subjects</span>
-              </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('allclasses') }}>
-                <FontAwesomeIcon icon={faChalkboard} className="mr-3" />
-                <span> Classes</span>
-              </li>
-              <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={() => { setHandleLink('alllanguages') }}>
-                <FontAwesomeIcon icon={faLanguage} className="mr-3" />
-                <span>Languages</span>
-              </li>
-            </ul>
-          )}
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
-            <FontAwesomeIcon icon={faCog} className="mr-3" />
-            <Link to="/settings">Settings</Link>
+          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("experiencesettings")}}>
+            <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-3" />
+            <span>Experience Details</span>
+          </li>
+          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("certificationsettings")}}>
+            <FontAwesomeIcon icon={faBook} className="mr-3" />
+            <span>Certification Details</span>
+          </li>
+          <li className="relative">
+            <div 
+              className="flex items-center p-2 hover:bg-white hover:text-black rounded-md cursor-pointer"
+              onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+            >
+              <FontAwesomeIcon icon={faCog} className="mr-3" />
+              <span>Settings</span>
+              <FontAwesomeIcon icon={faCaretDown} className="ml-24" />
+            </div>
+            {isSettingsOpen && (
+              <ul className="absolute left-0 w-full rounded-md mt-1">
+                <li 
+                  className="flex items-center p-2 hover:bg-white hover:text-black rounded-md cursor-pointer"
+                  onClick={() => setHandleLink("changepassword")}
+                >
+                  <FontAwesomeIcon icon={faCog} className="mr-3 ml-7" />
+                  <span>Change Password</span>
+                </li>
+              </ul>
+            )}
           </li>
         </ul>
       </div>
@@ -149,13 +127,11 @@ const TutorDashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 p-6 overflow-y-auto">
-          {/* {handleLink === 'allusers' && <AllUser />}
-          {handleLink === 'allstudents' && <AllStudent />}
-          {handleLink === 'alltutors' && <AllTutor />}
-          {handleLink === 'allcourses' && <AllCourses />}
-          {handleLink === 'allsubjects' && <AllSubjects />}
-          {handleLink === 'allclasses' && <AllClasses />}
-          {handleLink === 'alllanguages' && <AllLanguage />} */}
+          {handleLink === 'profilesettings' && <ProfileSettings/>}
+          {handleLink === 'educationsettings' && <EducationSettings/>}
+          {handleLink === 'experiencesettings' && <ExperienceDetails/>}
+          {handleLink === 'certificationsettings' && <CertificationDetails/>}
+          {handleLink === 'changepassword' && <ChangePassword/>}
         </main>
       </div>
     </div>
