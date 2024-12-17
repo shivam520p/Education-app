@@ -1,40 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import instructor1 from '../../assets/images/instructor-img1.png';
-import instructor2 from '../../assets/images/instructor-img2.png';
-import instructor3 from '../../assets/images/instructor-img3.png';
+import { faUserGraduate, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TutorContext } from '../../auth/TutorHandling/TutorProvider';
 
 const Features4 = () => {
-  const instructors = [
-    {
-      name: "Devon Lane",
-      role: "Web Developer",
-      courses: 7,
-      students: "15k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor1
-    },
-    {
-      name: "John Doe",
-      role: "WordPress Expert",
-      courses: 6,
-      students: "55k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor2
-    },
-    {
-      name: "Alexandar",
-      role: "UI/UX Designer",
-      courses: 12,
-      students: "36k",
-      rating: 4.6,
-      reviews: "2.4k",
-      image: instructor3
-    }
-  ];
-
+  const {allTutorDetails, getTutorDetails,setTutor} = useContext(TutorContext);
+  useEffect(() => {
+    getTutorDetails();
+  }, []);
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -96,7 +71,7 @@ const Features4 = () => {
         initial="hidden"
         animate="visible"
       >
-        {instructors.map((instructor, index) => (
+        {allTutorDetails.map((instructor, index) => (
           <motion.div 
             key={index} 
             className="bg-white rounded-lg shadow-lg overflow-hidden"
@@ -105,25 +80,16 @@ const Features4 = () => {
           >
             <div className="relative">
               <motion.img 
-                src={instructor.image} 
-                alt={instructor.name}
+                src={instructor.userId.avatar} 
+                alt={instructor.userId.fullName}
                 className="w-full h-48 sm:h-56 md:h-64 object-cover object-center bg-yellow-300"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
-              <motion.button 
-                className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-lg"
-                variants={buttonVariants}
-                whileHover="hover"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 5v14M5 12h14" />
-                </svg>
-              </motion.button>
             </div>
 
             <div className="p-4 md:p-6">
-              <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{instructor.name}</h3>
+              <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{instructor.userId.fullName}</h3>
               
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-2">
@@ -131,34 +97,19 @@ const Features4 = () => {
                     <path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                   </svg>
-                  <span>{instructor.role}</span>
+                  <span>{instructor.experience[0]?.institutionName }</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span>{instructor.courses}</span>
-                  <span>Course</span>
+                  <FontAwesomeIcon icon={faUserGraduate} />
+                  <span>{instructor.qualifications[0]?.degree}</span>
                 </div>
               </div>
-
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                  </svg>
-                  <span>{instructor.students} Students</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span>⭐</span>
-                  <span>{instructor.rating}</span>
-                  <span className="text-gray-500">({instructor.reviews})</span>
-                </div>
-              </div>
-
               <motion.a 
                 href="#" 
                 className="text-blue-600 hover:text-blue-700 flex items-center gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
+                onClick={()=>{setTutor(instructor)}}
               >
                 View Profile
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

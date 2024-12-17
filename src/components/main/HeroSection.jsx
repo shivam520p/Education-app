@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import home from '../../assets/images/home.png';
 import Features from './Features';
-import Features2 from './Features2';
 import Features3 from './Features3';
 import Features4 from './Features4';
 import Features5 from './Features5';
@@ -144,7 +143,7 @@ const HeroSection = () => {
       </div>
     </div>
     <Features/>
-    <Features2/>
+    {/* <Features2/> */}
     <Features3/>
     <Features4/>
     <Features5/>

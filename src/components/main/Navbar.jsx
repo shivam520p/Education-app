@@ -77,10 +77,10 @@ const Navbar = () => {
               {/* Courses Dropdown */}
               <li
                 className="relative"
-                onMouseEnter={() => setIsCoursesDropdownOpen(true)}
-                onMouseLeave={() => setIsCoursesDropdownOpen(false)}
+                onMouseOver={() => setIsCoursesDropdownOpen(true)}
+                // onMouseLeave={() => setIsCoursesDropdownOpen(false)}
               >
-                <button className="flex items-center font-semibold text-sm xl:text-lg hover:text-blue-600 transition-colors">
+                <button  className="flex items-center font-semibold text-sm xl:text-lg hover:text-blue-600 transition-colors">
                   Courses
                   <svg
                     className={`w-4 h-4 ml-1 transition-transform ${
@@ -101,7 +101,7 @@ const Navbar = () => {
 
                 {/* Dropdown Menu */}
                 {isCoursesDropdownOpen && (
-                  <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                  <div onMouseLeave={() => setIsCoursesDropdownOpen(false)} className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                     <div className="py-1">
                       {courseLinks.map((course) => (
                         <Link

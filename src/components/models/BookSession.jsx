@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import { PageContext } from "../../auth/PagesHandle/PageProvider";
 
-const BookSession = () => {
+const BookSession = ({tutor}) => {
   const {setPopUp}= useContext(TutorContext);
   const {bookSessionHandleSubmit,bookSessionHandleChange,bookSession}= useContext(PageContext);
   return (
@@ -48,7 +48,7 @@ const BookSession = () => {
               </div>
               {/* <!-- Modal body --> */}
               <div className="p-4 md:p-5">
-                <form className="space-y-2" onSubmit={bookSessionHandleSubmit}>
+                <form className="space-y-2" onSubmit={(e)=>{bookSessionHandleSubmit(e)(tutor._id)}}>
                   <div>
                     <label
                       htmlFor="date"

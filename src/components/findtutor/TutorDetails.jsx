@@ -5,8 +5,7 @@ import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import BookSession from "../models/BookSession";
 
 const TutorDetails = () => {
-  const {popUp, setPopUp}= useContext(TutorContext);
-  const tutorDetails = JSON.parse(localStorage.getItem("tutorDetails"));
+  const {popUp, setPopUp, tutor}= useContext(TutorContext);
 
   return (
     <>
@@ -35,7 +34,7 @@ const TutorDetails = () => {
           <div className="w-full lg:w-1/3 max-w-[400px] mx-auto lg:mx-0 flex-shrink-0 px-3 py-3 bg-blue-100">
             <div className="bg-white rounded-lg overflow-hidden">
               <img
-                src={tutorDetails.image}
+                src={tutor?.userId?.avatar}
                 alt="Instructor"
                 className="w-full h-full object-cover"
               />
@@ -84,9 +83,9 @@ const TutorDetails = () => {
             >
               <p className="text-blue-400 font-bold">Instructor</p>
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-                {tutorDetails.name}
+                {tutor?.userId?.fullName}
               </h2>
-              <p className="text-gray-600">{tutorDetails.role}</p>
+              <p className="text-gray-600">{tutor?.userId?.email}</p>
             </motion.div>
 
             <motion.div
@@ -96,20 +95,12 @@ const TutorDetails = () => {
               className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4"
             >
               <div className="bg-blue-50 p-3 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-600">UI/UX Designer</p>
-                <p className="font-semibold text-sm sm:text-base">{tutorDetails.specialty}</p>
+                <p className="text-xs sm:text-sm text-gray-600">{tutor?.experience[0]?.role}</p>
+                <p className="font-semibold text-sm sm:text-base">{tutor?.experience[0]?.institutionName}</p>
               </div>
               <div className="bg-orange-50 p-3 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-600">Courses</p>
-                <p className="font-semibold text-sm sm:text-base">{tutorDetails.courses} Course</p>
-              </div>
-              <div className="bg-green-50 p-3 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-600">Students</p>
-                <p className="font-semibold text-sm sm:text-base">{tutorDetails.students}k Students</p>
-              </div>
-              <div className="bg-yellow-50 p-3 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-600">Rating</p>
-                <p className="font-semibold text-sm sm:text-base">{tutorDetails.rating} ({tutorDetails.reviews}k)</p>
+                <p className="text-xs sm:text-sm text-gray-600">{tutor?.qualifications[0]?.institution}</p>
+                <p className="font-semibold text-sm sm:text-base">{tutor?.qualifications[0]?.degree}</p>
               </div>
             </motion.div>
 
@@ -126,19 +117,19 @@ const TutorDetails = () => {
                   <span className="text-gray-600 px-2 py-1 bg-blue-100 border border-gray-300 rounded-md">
                     <i className="fa-solid fa-phone"></i>
                   </span>
-                  +91 {tutorDetails.phone}
+                  +91 {tutor?.userId?.mobile}
                 </p>
                 <p className="flex items-center gap-2 text-sm sm:text-lg">
                   <span className="text-gray-600 px-2 py-1 bg-blue-100 border border-gray-300 rounded-md">
                     <i className="fa-solid fa-envelope"></i>
                   </span>
-                  {tutorDetails.email}
+                  {tutor?.userId?.email}
                 </p>
                 <p className="flex items-center gap-2 text-sm sm:text-lg">
                   <span className="text-gray-600 px-2.5 py-1 bg-blue-100 border border-gray-300 rounded-md">
                     <i className="fa-solid fa-location-dot"></i>
                   </span>
-                  {tutorDetails.address}
+                  {tutor?.address.city}
                 </p>
               </div>
               <div className="flex justify-center lg:justify-end lg:items-end mt-4 lg:mt-0">
@@ -155,12 +146,12 @@ const TutorDetails = () => {
               className="space-y-2 border-dotted border-b-2 border-blue-400 w-full lg:w-2/3"
             >
               <h3 className="text-lg sm:text-xl font-semibold">About</h3>
-              <p className="text-gray-600 py-3 text-sm sm:text-base">{tutorDetails.about}</p>
+              <p className="text-gray-600 py-3 text-sm sm:text-base">{tutor?.address?.about}</p>
             </motion.div>
           </div>
         </div>
       </div>
-      {popUp && <BookSession/>}
+      {popUp && <BookSession tutor={tutor}/>}
     </>
   );
 };

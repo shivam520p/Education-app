@@ -9,6 +9,8 @@ export const TutorProvider = ({ children }) => {
   useEffect(() => {
     setProfileEdit(true);
   }, []);
+  const [allTutorDetails, setAllTutorDetails] = useState([]);
+  const [tutor, setTutor] = useState(null);
   const [tutorProfile, setTutorProfile] = useState({
     type: "address",
     gender: "",
@@ -377,6 +379,9 @@ export const TutorProvider = ({ children }) => {
     try {
       const response = await axiosInstance.get("student/alltutorDetails");
       console.log(response);
+      if (response.status === 200) {
+        setAllTutorDetails(response.data.Alltutor);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -416,6 +421,9 @@ export const TutorProvider = ({ children }) => {
         handleSubmit,
         loading,
         error,
+        allTutorDetails,
+        tutor,
+        setTutor,
       }}
     >
       {children}

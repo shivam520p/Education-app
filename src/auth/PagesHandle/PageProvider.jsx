@@ -1,10 +1,12 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 import { useState } from "react";
 import axiosInstance from "../api/AxiosInstance";
 import { toast } from "react-hot-toast";
+import { TutorContext } from "../TutorHandling/TutorProvider";
 
 export const PageContext = createContext();
 export const PageProvider = ({ children }) => {
+  const {setPopUp}=useContext(TutorContext);
   const [contactForm, setContactForm] = useState({
     fullName: "",
     email: "",
@@ -40,16 +42,21 @@ export const PageProvider = ({ children }) => {
     console.log(name,value);
     setBookSession({...bookSession,[name]:value});
   };
-  const bookSessionHandleSubmit = async (e) => {
+  const bookSessionHandleSubmit = (e)=>async(tutorId)=> {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post("/student/booksession/67611af5edc3f3ecb35b40fc", bookSession);
+      const response = await axiosInstance.post(`/student/booksession/${tutorId}`, bookSession);
+     if(response.status===201){
       toast.success(response.data.message);
+      setPopUp(false);
+     }
+
     } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
     }
   };
+
   return (
     <>
       <PageContext.Provider
