@@ -2,9 +2,9 @@ import React, { useContext, useEffect }  from 'react'
 import { AdminContext } from '../../../auth/adminhandling/AdminProvider';
 
 const AllSessionBook = () => {
-  const {allContactUs,getAllContactUs}=useContext(AdminContext);
+  const {allSessionBook,getAllSessionBook}=useContext(AdminContext);
   useEffect(()=>{
-    getAllContactUs();
+    getAllSessionBook();
   },[]);
   return (
     <>
@@ -22,21 +22,21 @@ const AllSessionBook = () => {
               </tr>
             </thead>
             <tbody>
-              {allContactUs && allContactUs.map((contact, index) => (
-                <tr key={contact._id} className="border-b border-gray-200 hover:bg-gray-50">
+              {allSessionBook && allSessionBook.map((session, index) => (
+                <tr key={session._id} className="border-b border-gray-200 hover:bg-gray-50">
                   <td className="py-2 md:py-3 px-2 md:px-4 text-sm md:text-base">{index + 1}.</td>
                   <td className="py-2 md:py-3 px-2 md:px-4 text-sm md:text-base">
                     <div>
-                      <p>{contact.fullName}</p>
+                      <p>{session.fullName}</p>
                       <div className="md:hidden text-xs text-gray-500">
-                        <p>{contact.email}</p>
-                        <p>{contact.subject}</p>
+                        <p>{session.email}</p>
+                        <p>{session.subject}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base">{contact.email}</td>
-                  <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base">{contact.subject}</td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-center text-sm md:text-base">{contact.message}</td>
+                  <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base">{session.email}</td>
+                  <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base">{session.subject}</td>
+                  <td className="py-2 md:py-3 px-2 md:px-4 text-center text-sm md:text-base">{session.message}</td>
                 </tr>
               ))}
             </tbody>

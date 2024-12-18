@@ -53,7 +53,6 @@ export const UserVerification = ({ children }) => {
   const getUserData = async () => {
     try {
       const response = await axiosInstance.get("/users/getuser");
-      console.log(response);
       if (response.status === 200) {
         localStorage.setItem("userData", JSON.stringify(response.data.user));
       }
@@ -72,7 +71,6 @@ export const UserVerification = ({ children }) => {
         "/users/register",
         registerData
       );
-      console.log(response);
       if (response.status === 200) {
         toast.success(response.data.message);
         setOtpVisible(true);
@@ -97,7 +95,6 @@ export const UserVerification = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/users/register", otp);
-      console.log(response);
       if (response.status === 201) {
         toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
@@ -145,7 +142,6 @@ export const UserVerification = ({ children }) => {
         "/users/register",
         tutorRegisterData
       );
-      console.log(response);
       if(response.status === 200){
         toast.success(response.data.message);
         setOtpVisible(true);
@@ -170,7 +166,6 @@ export const UserVerification = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/users/register", tutorOtp);
-      console.log(response);
       if(response.status === 201){
         toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
@@ -191,7 +186,6 @@ export const UserVerification = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/users/login", tutorLoginData);
-      console.log(response);
       if(response.status===201){
         toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);

@@ -102,7 +102,7 @@ const Tutors = () => {
               </div>
 
               <motion.button
-                onClick={()=>{setTutor(tutor)}}
+                onClick={()=>{localStorage.setItem("tutor",JSON.stringify(tutor))}}
                 className="text-blue-600 hover:text-blue-700 flex items-center gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}

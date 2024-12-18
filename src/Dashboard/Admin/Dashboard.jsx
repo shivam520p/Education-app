@@ -5,7 +5,6 @@ import {
   faBars,
   faTachometerAlt,
   faUsers,
-  faCog,
   faSignOutAlt,
   faUserGraduate,
   faChalkboardTeacher,

@@ -5,7 +5,8 @@ import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import BookSession from "../models/BookSession";
 
 const TutorDetails = () => {
-  const { popUp, setPopUp, tutor } = useContext(TutorContext);
+  const { popUp, setPopUp } = useContext(TutorContext);
+  const tutor = JSON.parse(localStorage.getItem("tutor"));
 
   return (
     <>

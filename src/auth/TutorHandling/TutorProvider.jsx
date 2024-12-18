@@ -91,7 +91,6 @@ export const TutorProvider = ({ children }) => {
       if (response.status === 200) {
         toast.success("Your password has been changed successfully");
       }
-      console.log(response);
     } catch (err) {
       toast.error(err);
       console.log(err);
@@ -116,7 +115,6 @@ export const TutorProvider = ({ children }) => {
           setProfileEdit(true);
           localStorage.setItem("profileEdit", JSON.stringify(studentProfile));
         }
-        console.log(response);
       } catch (err) {
         toast.error(err);
         console.log(err);
@@ -127,7 +125,6 @@ export const TutorProvider = ({ children }) => {
           "/student/addstudentdetails",
           studentProfile
         );
-        console.log(response);
         if (response.status === 201) {
           toast.success("Your profile is added successfully...");
           setProfileEdit(true);
@@ -149,15 +146,12 @@ export const TutorProvider = ({ children }) => {
   const tutorProfileUpdate = async (e) => {
     e.preventDefault();
     const tutorDetails = localStorage.getItem("tutorDetails");
-    console.log(tutorDetails);
     if (!tutorDetails) {
       try {
-        console.log("hello post");
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           tutorProfile
         );
-        console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "tutorDetails",
@@ -174,12 +168,10 @@ export const TutorProvider = ({ children }) => {
       }
     } else {
       try {
-        console.log("hello put");
         const response = await axiosInstance.put(
           "/tutor/updatetutordetails",
           tutorProfile
         );
-        console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "tutorDetails",
@@ -204,15 +196,12 @@ export const TutorProvider = ({ children }) => {
   const educationDetailsUpdate = async (e) => {
     e.preventDefault();
     const education = localStorage.getItem("education");
-    console.log(education);
     if (!education) {
       try {
-        console.log("hello post");
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           educationDetails
         );
-        console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "education",
@@ -227,12 +216,10 @@ export const TutorProvider = ({ children }) => {
       }
     } else {
       try {
-        console.log("hello put");
         const response = await axiosInstance.put(
           "/tutor/updatetutordetails",
           educationDetails
         );
-        console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "education",
@@ -256,15 +243,12 @@ export const TutorProvider = ({ children }) => {
   const experienceDetailsUpdate = async (e) => {
     e.preventDefault();
     const experience = localStorage.getItem("experience");
-    console.log(experience);
     if (!experience) {
       try {
-        console.log("hello post");
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           experienceDetails
         );
-        console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "experience",
@@ -279,12 +263,10 @@ export const TutorProvider = ({ children }) => {
       }
     } else {
       try {
-        console.log("hello put");
         const response = await axiosInstance.put(
           "/tutor/updatetutordetails",
           experienceDetails
         );
-        console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "experience",
@@ -302,7 +284,6 @@ export const TutorProvider = ({ children }) => {
 
   const certificateHandleChange = (e) => {
     const { name, value } = e.target;
-    console.log("Handling change for:", name, "with value:", value); // Debug log
 
     if (name === "certificationPic") {
       const file = e.target.files[0];
@@ -336,14 +317,9 @@ export const TutorProvider = ({ children }) => {
     if (certificatesDetails.certificationPic) {
       formData.append("certificationPic", certificatesDetails.certificationPic);
     }
-    // // Debug: Check what's in the FormData
-    // for (let pair of formData.entries()) {
-    //   console.log('FormData entry:', pair[0] + ': ' + pair[1]);
-    // }
 
     if (!cer) {
       try {
-        console.log("hello post");
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           formData,
@@ -362,14 +338,12 @@ export const TutorProvider = ({ children }) => {
             JSON.stringify(response.data.createTutor.certifications)
           );
         }
-        console.log(response);
       } catch (err) {
         toast.error("An error occurred: " + err.response.data.message);
         console.log(err);
       }
     } else {
       try {
-        console.log("hello put");
         const response = await axiosInstance.put(
           "/tutor/updatetutordetails",
           formData,
@@ -379,7 +353,6 @@ export const TutorProvider = ({ children }) => {
             },
           }
         );
-        console.log(response);
         if (response.status === 200) {
           toast.success("Certificate details have been updated successfully!");
           localStorage.setItem(
@@ -406,16 +379,13 @@ export const TutorProvider = ({ children }) => {
     }
     const formData = new FormData();
     formData.append("avatar", file);
-    console.log(file)
     setLoading(true);
     try {
-      console.log(formData)
       const response = await axiosInstance.put("/users/addavatar", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response);
       if (response.status === 200) {
         toast.success(response.data.message);
         localStorage.setItem("userImg", JSON.stringify(response.data.updateUserImage.avatar));
@@ -436,7 +406,6 @@ export const TutorProvider = ({ children }) => {
   const getTutorDetails = async () => {
     try {
       const response = await axiosInstance.get("admin/getTutorDetails");
-      console.log(response);
       if (response.status === 200) {
         setAllTutorDetails(response.data.data);
       }

@@ -28,7 +28,7 @@ export const AdminProvider = ({ children }) => {
     languageName: "",
   });
   const [allContactUs, setAllContactUs] = useState([]);
-  const [allSession, setAllSession] = useState([]);
+  const [allSessionBook, setAllSessionBook] = useState([]);
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -132,7 +132,6 @@ export const AdminProvider = ({ children }) => {
       if(response.status === 200){
         setAllLanguage(response.data.languages);
       }
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -140,7 +139,6 @@ export const AdminProvider = ({ children }) => {
   const deleteLanguage = async (id) => {
     try {
       const response = await axiosInstance.delete(`/admin/removeLanguage/${id}`);
-      console.log(response);
       if(response.status === 200){
         toast.success("Language deleted successfully!");
         getAllLanguage();
@@ -194,7 +192,6 @@ export const AdminProvider = ({ children }) => {
   const getAllSubjects = async () => {
     try {
       const response = await axiosInstance.get("/admin/getsubject");
-      console.log(response)
       if (response.status === 200) {
         setAllSubjects(response.data.subjects);
       }
@@ -258,7 +255,6 @@ export const AdminProvider = ({ children }) => {
           },
         }
       );
-      console.log(response);
       if (response.status === 200) {
         setPopUp(false);
         toast.success("Class added successfully!");
@@ -279,7 +275,6 @@ export const AdminProvider = ({ children }) => {
   const getAllClasses = async () => {
     try {
       const response = await axiosInstance.get("/admin/getclass");
-      console.log(response)
       if (response.status === 200) {
         setAllClasses(response.data.classes);
       }
@@ -323,7 +318,6 @@ export const AdminProvider = ({ children }) => {
   const getAllCourses = async () => {
     try {
       const response = await axiosInstance.get("/admin/getcourse");
-      console.log(response);
       if (response.status === 200) {
         setAllCourses(response.data.courses);
       }
@@ -347,7 +341,6 @@ export const AdminProvider = ({ children }) => {
 
   const tutorDelete=async(id)=>{
     try {
-      console.log(id);
       const response = await axiosInstance.delete(
         `/admin/removeTutor/${id}`
       );
@@ -376,7 +369,6 @@ export const AdminProvider = ({ children }) => {
   const getAllContactUs= async()=>{
     try {
       const response = await axiosInstance.get("/admin/getallcontactsmessages");
-      console.log(response);
       if(response.status===200){
         setAllContactUs(response.data.data);
       }
@@ -384,10 +376,9 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   }
-  const getAllSession=async()=>{
+  const getAllSessionBook=async()=>{
     try {
-      const response=await axiosInstance.get("/admin/getallSession");
-      console.log(response);
+      const response=await axiosInstance.get("/tutor/getbooksession");
     } catch (err) {
       console.log(err);
     }
@@ -428,7 +419,8 @@ export const AdminProvider = ({ children }) => {
           deleteLanguage,
           allContactUs,
           getAllContactUs,
-          getAllSession
+          allSessionBook,
+          getAllSessionBook
         }
       }
     >

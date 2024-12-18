@@ -4,7 +4,6 @@ import { AdminContext } from '../../../auth/adminhandling/AdminProvider'
 
 const AllUser = () => {
   const {getAllUsers, allTutor, tutorDelete} = useContext(AdminContext);
-
   useEffect(()=>{
     getAllUsers();
   },[allTutor])

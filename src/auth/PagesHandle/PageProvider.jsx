@@ -39,7 +39,6 @@ export const PageProvider = ({ children }) => {
 
   const bookSessionHandleChange = (e) => {
     const {name,value}=e.target;
-    console.log(name,value);
     setBookSession({...bookSession,[name]:value});
   };
   const bookSessionHandleSubmit = (e)=>async(tutorId)=> {
