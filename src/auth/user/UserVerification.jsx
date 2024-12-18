@@ -71,6 +71,7 @@ export const UserVerification = ({ children }) => {
         "/users/register",
         registerData
       );
+      console.log(response)
       if (response.status === 200) {
         toast.success(response.data.message);
         setOtpVisible(true);
@@ -98,6 +99,8 @@ export const UserVerification = ({ children }) => {
       if (response.status === 201) {
         toast.success(response.data.message);
         localStorage.setItem("token", response.data.token);
+        const userData=jwtDecode(response.data.token);
+        localStorage.setItem("userData", JSON.stringify(userData.user));
         navigate("/");
       }
     } catch (error) {

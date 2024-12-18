@@ -7,7 +7,6 @@ const Navbar = () => {
   const userData=JSON.parse(localStorage.getItem("userData"));
   const [scrolled, setScrolled] = useState(false);
   const [isCoursesDropdownOpen, setIsCoursesDropdownOpen] = useState(false);
-console.log(userData)
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -125,7 +124,7 @@ console.log(userData)
               to={`${token ? (userData?.role=== "1" ? "/studentdashboard" : "/tutordashboard") : "/login"}`}
               className="px-4 sm:px-6 py-2 bg-blue-600 text-white text-sm xl:text-base rounded-full hover:bg-blue-700 transition-colors whitespace-nowrap"
             >
-              Get Started
+              {`${userData!==null?userData.fullName:"Get Started"}`}
             </Link>
           </div>
 

@@ -28,7 +28,6 @@ export const AdminProvider = ({ children }) => {
     languageName: "",
   });
   const [allContactUs, setAllContactUs] = useState([]);
-  const [allSessionBook, setAllSessionBook] = useState([]);
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -333,6 +332,7 @@ export const AdminProvider = ({ children }) => {
         setAllStudent(response.data.student_Data);
         setAllTutor(response.data.Tutor_Data);
       }
+
     } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
@@ -358,7 +358,7 @@ export const AdminProvider = ({ children }) => {
         `/admin/removestudent/${id}`
       );
       if(response.status === 200){
-        toast.success("Tutor deleted successfully...!!");
+        toast.success("Student deleted successfully...!!");
       }
     } catch (err) {
       toast.error(err);
@@ -376,17 +376,11 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   }
-  const getAllSessionBook=async()=>{
-    try {
-      const response=await axiosInstance.get("/tutor/getbooksession");
-    } catch (err) {
-      console.log(err);
-    }
-  }
   return (
     <AdminContext.Provider
       value={
-        {getAllUsers,
+        {
+          getAllUsers,
           allStudent,
           allTutor,
           tutorDelete,
@@ -419,8 +413,6 @@ export const AdminProvider = ({ children }) => {
           deleteLanguage,
           allContactUs,
           getAllContactUs,
-          allSessionBook,
-          getAllSessionBook
         }
       }
     >
