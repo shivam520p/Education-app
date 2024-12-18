@@ -10,8 +10,6 @@ const Tutors = () => {
   useEffect(() => {
     getTutorDetails();
   }, []);
-
-  // const {setCommonState,instructors} = useContext(CommonComponent);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -47,7 +45,7 @@ const Tutors = () => {
     getTutorDetails();
   }, []);
   return (
-    <div className="px-4 py-16">
+    <div className="px-4 py-10">
       <motion.div
         className="text-center mb-8 md:mb-12 px-4"
         initial={{ opacity: 0, y: -20 }}

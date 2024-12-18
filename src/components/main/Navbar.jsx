@@ -6,7 +6,6 @@ const Navbar = () => {
   const token=localStorage.getItem("token");
   const userData=JSON.parse(localStorage.getItem("userData"));
   const [scrolled, setScrolled] = useState(false);
-  const [isCoursesDropdownOpen, setIsCoursesDropdownOpen] = useState(false);
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -74,49 +73,6 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-
-              {/* Courses Dropdown */}
-              <li
-                className="relative"
-                onMouseOver={() => setIsCoursesDropdownOpen(true)}
-                // onMouseLeave={() => setIsCoursesDropdownOpen(false)}
-              >
-                <button  className="flex items-center font-semibold text-sm xl:text-lg hover:text-blue-600 transition-colors">
-                  Courses
-                  <svg
-                    className={`w-4 h-4 ml-1 transition-transform ${
-                      isCoursesDropdownOpen ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                {/* Dropdown Menu */}
-                {isCoursesDropdownOpen && (
-                  <div onMouseLeave={() => setIsCoursesDropdownOpen(false)} className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                    <div className="py-1">
-                      {courseLinks.map((course) => (
-                        <Link
-                          key={course.path}
-                          to={course.path}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                        >
-                          {course.title}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </li>
             </ul>
 
             {/* Sign In Button */}

@@ -42,25 +42,9 @@ const AllClasses = () => {
 
   return (
     <>
-      <section className="mt-24 px-4 bg-blue-50">
-        <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
-          <h1 className="text-5xl font-bold text-gray-700">All Classes</h1>
-          <div className="flex justify-center items-center gap-2 text-lg">
-            <a href="/">
-              <i className="fa-solid fa-house mr-2"></i>Home
-            </a>
-            <em>
-              <i className="fa-solid fa-chevron-right"></i>
-            </em>
-            <a href="/courses" className="text-amber-500">
-              Courses
-            </a>
-          </div>
-        </div>
-      </section>
-      <div className="my-8 md:my-16 py-6 md:py-10 px-4">
+      <div className="py-4 px-4">
         <motion.div
-          className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 px-4"
+          className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-3 px-4"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -76,18 +60,15 @@ const AllClasses = () => {
                 <motion.img
                   src={classItem.image}
                   alt={classItem.title}
-                  className="w-full h-48 sm:h-56 md:h-64 object-contain object-center"
+                  className="w-full h-48 sm:h-56 md:h-32 object-contain object-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
               </div>
 
               <div className="p-4 md:p-6">
-                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
-                  Class Name:
-                  <span className="text-gray-500 ml-3">
-                    {classItem?.className}
-                  </span>
+                <h3 className="text-lg md:text-xl font-semibold">
+                  {classItem?.className}
                 </h3>
               </div>
             </motion.div>
@@ -99,7 +80,12 @@ const AllClasses = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="flex justify-center py-6 md:py-10 space-x-4"
         >
-          <button onClick={()=>{toast.error("No more classes are available")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button
+            onClick={() => {
+              toast.error("No more classes are available");
+            }}
+            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300"
+          >
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"
@@ -114,7 +100,12 @@ const AllClasses = () => {
               />
             </svg>
           </button>
-          <button onClick={()=>{toast.error("No more classes are available")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button
+            onClick={() => {
+              toast.error("No more classes are available");
+            }}
+            className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300"
+          >
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"

@@ -6,7 +6,6 @@ import BookSession from "../models/BookSession";
 const TutorDetails = () => {
   const { popUp, setPopUp } = useContext(TutorContext);
   const tutor = JSON.parse(localStorage.getItem("tutor"));
-
   return (
     <>
       <section className="mt-24 px-4 bg-blue-50">

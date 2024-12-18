@@ -5,8 +5,6 @@ import AddNewSubjects from "../PopUp/AddNewSubject";
 
 const AllSubjects = () => {
   const { allSubjects, getAllSubjects, setPopUp, popUp, deleteSubject } = useContext(AdminContext);
-console.log(allSubjects);
-
   useEffect(() => {
     getAllSubjects();
   }, []);

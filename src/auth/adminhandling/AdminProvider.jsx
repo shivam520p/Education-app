@@ -388,6 +388,18 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   }
+
+  const tutorVerify=async(id)=>{
+    try {
+      const response = await axiosInstance.put(`/admin/updatestatus/${id}`);
+      if(response.status===200){
+        toast.success(response.data.message);
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
+      console.log(err);
+    }
+  }
   return (
     <AdminContext.Provider
       value={
@@ -428,6 +440,7 @@ export const AdminProvider = ({ children }) => {
           tutorCourses,
           setTutorCourses,
           getTutorCourses,
+          tutorVerify
         }
       }
     >

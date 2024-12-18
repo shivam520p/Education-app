@@ -41,27 +41,9 @@ const AllLanguage = () => {
 
   return (
     <>
-      <section className="mt-16 md:mt-24 px-4 bg-blue-50">
-        <div className="container mx-auto flex flex-col justify-center items-center gap-3 md:gap-5 py-8 md:py-16">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center">
-            All Languages
-          </h1>
-          <div className="flex justify-center items-center gap-2 text-base md:text-lg">
-            <a href="/" className="hover:text-blue-600 transition-colors">
-              <i className="fa-solid fa-house mr-2"></i>Home
-            </a>
-            <em>
-              <i className="fa-solid fa-chevron-right"></i>
-            </em>
-            <a href="/courses" className="text-amber-500 hover:text-amber-600 transition-colors">
-              Courses
-            </a>
-          </div>
-        </div>
-      </section>
-      <div className="py-8 md:py-16 px-4">
+      <div className="py-5 px-4">
         <motion.div
-          className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6"
+          className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-3"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -73,7 +55,7 @@ const AllLanguage = () => {
               variants={cardVariants}
               whileHover="hover"
             >
-              <div className="p-3 md:p-4">
+              <div className="p-5 md:p-10">
                 <h3 className="text-sm md:text-base lg:text-lg font-semibold text-center">
                   {language.languageName}
                 </h3>
