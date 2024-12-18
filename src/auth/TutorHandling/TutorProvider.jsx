@@ -82,7 +82,9 @@ export const TutorProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [tutorCourses, setTutorCourses] = useState({
     course_title: "",
-    discription: "",
+    video_title: "",
+    video:"",
+    description: "",
     duration: "",
     coursePrice: "",
     courseImage: "",
@@ -421,28 +423,43 @@ export const TutorProvider = ({ children }) => {
   };
 
   const handleCourseChange = (e) => {
-    const { name, value } = e.target;
-    setTutorCourses({ ...tutorCourses, [name]: value });
+    const { name } = e.target;
+    if (e.target.type === 'file') {
+      setTutorCourses(prev => ({
+        ...prev,
+        [name]: e.target.files[0]
+      }));
+    } else {
+      setTutorCourses(prev => ({
+        ...prev,
+        [name]: e.target.value
+      }));
+    }
   };
   const addTutorCourses = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    
+    formData.append("video_title", tutorCourses.video_title);
+    formData.append("video", tutorCourses.video);
     formData.append("course_title", tutorCourses.course_title);
-    formData.append("discription", tutorCourses.discription);
+    formData.append("description", tutorCourses.description);
     formData.append("duration", tutorCourses.duration);   
     formData.append("coursePrice", tutorCourses.coursePrice);
     formData.append("courseImage", tutorCourses.courseImage);
+
     try {
-      const response = await axiosInstance.post("/course/addcourse", formData,{
+      const response = await axiosInstance.post("/course/addcourse", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         }
       });
       if (response.status === 200) {
-        setTutorCourses(response.data.data);
+        toast.success("Course added successfully!");
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response?.data?.message || "Failed to add course");
+      console.error("Error adding course:", error);
     }
   };
   return (

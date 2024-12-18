@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SignInImg from "../../assets/images/account-img.png";
-import { CommonComponent } from "../../hooks/CommonState";
 import { DataProvider } from "../../auth/user/UserVerification";
 
 const Register = () => {
-  const { setCommonState } = useContext(CommonComponent);
   const {
     registerData,
     otpData,
@@ -175,10 +173,7 @@ const Register = () => {
                   <p className="text-lg text-gray-500 text-center mt-4">
                     Already have an account?{" "}
                     <Link to="/login">
-                      <button
-                        className="text-blue-500 hover:underline"
-                        onClick={() => setCommonState("Sign In")}
-                      >
+                      <button className="text-blue-500 hover:underline">
                         Sign In
                       </button>
                     </Link>

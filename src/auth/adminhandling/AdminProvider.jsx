@@ -8,6 +8,7 @@ export const AdminProvider = ({ children }) => {
   const [allTutor, setAllTutor]=useState([]);
   const [allStudent, setAllStudent]=useState([]);
   const [allCourses, setAllCourses] = useState([]);
+  const [tutorCourses, setTutorCourses]=useState([]);
   const [newCourse, setNewCourse] = useState({
     title: "",
     image: "",
@@ -316,9 +317,9 @@ export const AdminProvider = ({ children }) => {
 
   const getAllCourses = async () => {
     try {
-      const response = await axiosInstance.get("/admin/getcourse");
+      const response = await axiosInstance.get("/admin/getcourseDetails");
       if (response.status === 200) {
-        setAllCourses(response.data.courses);
+        setAllCourses(response.data.course_Data);
       }
     } catch (err) {
       console.log(err);
@@ -376,6 +377,16 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   }
+  const getTutorCourses=async()=>{
+    try {
+      const response = await axiosInstance.get("/tutor/getourcourses");
+      if(response.status===200){
+        setTutorCourses(response.data.coursesByCreateUser);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <AdminContext.Provider
       value={
@@ -413,6 +424,9 @@ export const AdminProvider = ({ children }) => {
           deleteLanguage,
           allContactUs,
           getAllContactUs,
+          tutorCourses,
+          setTutorCourses,
+          getTutorCourses,
         }
       }
     >

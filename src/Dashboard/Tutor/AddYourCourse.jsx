@@ -1,12 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import CourseImg from "../../assets/images/educationPNG.png";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 import AddCourse from "./PopUp/AddCourse";
 
 const AddYourCourse = () => {
-  const {popUp, setPopUp, tutorCourses, setTutorCourses, addTutorCourses, handleCourseChange } = useContext(AdminContext);
+  const { popUp, setPopUp, tutorCourses, getTutorCourses } =
+    useContext(AdminContext);
+  useEffect(() => {
+    getTutorCourses();
+  }, []);
   return (
     <>
+      
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6 ">
+        {tutorCourses?.map((course) => (
+          <div
+            key={course.id}
+            className="bg-blue-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow "
+          >
+            <img
+              src={course.courseImage || CourseImg}
+              alt={course.title}
+              className="w-full h-48 object-cover rounded-md mb-4 bg-white"
+            />
+            <h3 className="text-xl font-semibold mb-2">
+              Title: {course.course_title}
+            </h3>
+            <span className="text-blue-500 font-medium">
+              Price: {course.coursePrice}
+            </span>
+            <p>Duration: {course.duration}</p>
+            <p>Description: {course.description}</p>
+          </div>
+        ))}
+      </div>
       <section className="flex justify-center items-center h-screen bg-gray-50">
         <div className="text-center space-y-6">
           <img src={CourseImg} alt="Add Course" className="w-64 h-64 mx-auto" />
@@ -38,76 +65,6 @@ const AddYourCourse = () => {
           </button>
         </div>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-        {/* {courses?.map((course) => ( */}
-          <div 
-            // key={course.id} 
-            className="bg-blue-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow "
-          >
-            <img 
-              // src={course.image || CourseImg} 
-              // alt={course.title} 
-              className="w-full h-48 object-cover rounded-md mb-4 bg-white"
-            />
-            <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold mb-2">Course Title</h3>
-              <span className="text-blue-500 font-medium">Course Price</span>
-            </div>
-            <p className="text-gray-600 mb-4">Course Description</p>
-          </div>
-        {/* ))} */}
-         {/* {courses?.map((course) => ( */}
-         <div 
-            // key={course.id} 
-            className="bg-blue-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow "
-          >
-            <img 
-              // src={course.image || CourseImg} 
-              // alt={course.title} 
-              className="w-full h-48 object-cover rounded-md mb-4 bg-white"
-            />
-            <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold mb-2">Course Title</h3>
-              <span className="text-blue-500 font-medium">Course Price</span>
-            </div>
-            <p className="text-gray-600 mb-4">Course Description</p>
-          </div>
-        {/* ))} */}
-         {/* {courses?.map((course) => ( */}
-         <div 
-            // key={course.id} 
-            className="bg-blue-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow "
-          >
-            <img 
-              // src={course.image || CourseImg} 
-              // alt={course.title} 
-              className="w-full h-48 object-cover rounded-md mb-4 bg-white"
-            />
-            <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold mb-2">Course Title</h3>
-              <span className="text-blue-500 font-medium">Course Price</span>
-            </div>
-            <p className="text-gray-600 mb-4">Course Description</p>
-          </div>
-        {/* ))} */}
-         {/* {courses?.map((course) => ( */}
-         <div 
-            // key={course.id} 
-            className="bg-blue-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow "
-          >
-            <img 
-              // src={course.image || CourseImg} 
-              // alt={course.title} 
-              className="w-full h-48 object-cover rounded-md mb-4 bg-white"
-            />
-            <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold mb-2">Course Title</h3>
-              <span className="text-blue-500 font-medium">Course Price</span>
-            </div>
-            <p className="text-gray-600 mb-4">Course Description</p>
-          </div>
-        {/* ))} */}
-      </div>
       {popUp && <AddCourse />}
     </>
   );

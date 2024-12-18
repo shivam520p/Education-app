@@ -74,7 +74,7 @@ const AddCourse = () => {
                 <input
                   name="courseImage"
                   type="file"
-                    onChange={handleCourseChange}
+                  onChange={handleCourseChange}
                   className="w-full px-3 py-2 rounded-lg bg-white border border-gray-600"
                 />
               </div>
@@ -108,6 +108,39 @@ const AddCourse = () => {
                   type="text"
                   placeholder="Enter your course description.."
                   value={tutorCourses?.description}
+                  onChange={handleCourseChange}
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-gray-600"
+                />
+              </div>
+              <div className="">
+                <label
+                  htmlFor="video_title"
+                  className="block text-base font-medium text-gray-600"
+                >
+                  Add your course video title
+                  <sup className="text-red-500">*</sup>
+                </label>
+                <input
+                  name="video_title"
+                  type="text"
+                  placeholder="Enter your course video title.."
+                  value={tutorCourses?.video_title}
+                  onChange={handleCourseChange}
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-gray-600"
+                />
+              </div>
+              <div className="">
+                <label
+                  htmlFor="video"
+                  className="block text-base font-medium text-gray-600"
+                >
+                  Add your course video
+                  <sup className="text-red-500">*</sup>
+                </label>
+                <input
+                  name="video"
+                  type="file"
+                  accept="video/*"
                   onChange={handleCourseChange}
                   className="w-full px-3 py-2 rounded-lg bg-white border border-gray-600"
                 />

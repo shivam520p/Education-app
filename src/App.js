@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { BrowserRoute } from "./routes/BrowserRoute";
-import CommonState from "./hooks/CommonState";
 import { UserVerification } from "./auth/user/UserVerification";
 import { TutorProvider } from "./auth/TutorHandling/TutorProvider";
 import { AdminProvider } from "./auth/adminhandling/AdminProvider";
@@ -13,16 +12,14 @@ function App() {
     <>
       <BrowserRouter>
         <UserVerification>
-          <CommonState>
+          <AdminProvider>
             <TutorProvider>
-              <AdminProvider>
-                <PageProvider>
-                  <Toaster />
-                  <BrowserRoute />
-                </PageProvider>
-              </AdminProvider>
+              <PageProvider>
+                <Toaster />
+                <BrowserRoute />
+              </PageProvider>
             </TutorProvider>
-          </CommonState>
+          </AdminProvider>
         </UserVerification>
       </BrowserRouter>
     </>

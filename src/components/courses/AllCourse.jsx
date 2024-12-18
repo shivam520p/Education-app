@@ -5,8 +5,6 @@ import toast from "react-hot-toast";
 
 const AllCourse = () => {
   const { allCourses, getAllCourses } = useContext(AdminContext);
-  console.log(allCourses);
-  console.log(getAllCourses);
   useEffect(() => {
     getAllCourses();
   }, []);
@@ -86,8 +84,8 @@ const AllCourse = () => {
             >
               <div className="relative">
                 <motion.img
-                  src={course.image}
-                  alt={course.title}
+                  src={course.courseImage}
+                  alt={course.course_title}
                   className="w-full h-48 sm:h-56 md:h-64 object-contain object-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
@@ -97,7 +95,11 @@ const AllCourse = () => {
               <div className="p-4 md:p-6">
                 <h3 className="text-lg md:text-lg font-semibold mb-3 md:mb-4">
                   Course Name:
-                  <span className="text-gray-500 ml-3">{course.title}</span>
+                  <span className="text-gray-500 ml-3">{course.course_title}</span>
+                </h3>
+                <h3 className="text-lg md:text-lg font-semibold mb-3 md:mb-4">
+                  Course Price:
+                  <span className="text-gray-500 ml-3">{course.coursePrice}</span>
                 </h3>
               </div>
             </motion.div>
