@@ -101,7 +101,7 @@ const AllClasses = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="flex justify-center py-6 md:py-10 space-x-4"
         >
-          <button onClick={()=>{toast.error("No more data")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button onClick={()=>{toast.error("No more classes are available")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"
@@ -116,7 +116,7 @@ const AllClasses = () => {
               />
             </svg>
           </button>
-          <button onClick={()=>{toast.error("No more data")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button onClick={()=>{toast.error("No more classes are available")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"

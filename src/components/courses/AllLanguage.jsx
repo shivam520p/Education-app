@@ -87,7 +87,7 @@ const AllLanguage = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="flex justify-center items-center gap-4 mt-8 md:mt-12"
         >
-          <button onClick={()=>{toast.error("No more data")}} className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300 active:scale-95">
+          <button onClick={()=>{toast.error("No more languages are available")}} className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300 active:scale-95">
             <svg
               className="w-5 h-5 md:w-6 md:h-6 text-gray-600"
               fill="none"
@@ -102,7 +102,7 @@ const AllLanguage = () => {
               />
             </svg>
           </button>
-          <button onClick={()=>{toast.error("No more data")}} className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300 active:scale-95">
+          <button onClick={()=>{toast.error("No more languages are available")}} className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300 active:scale-95">
             <svg
               className="w-5 h-5 md:w-6 md:h-6 text-gray-600"
               fill="none"
