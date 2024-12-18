@@ -33,14 +33,14 @@ const AllCourses = () => {
               </tr>
             </thead>
             <tbody>
-              {allCourses?.map((course, index) => (
+              {allCourses.map((course, index) => (
                 <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
                   <td className="py-3 px-2 sm:px-4">{index + 1}.</td>
-                  <td className="py-3 px-2 sm:px-4 break-words">{course.title}</td>
+                  <td className="py-3 px-2 sm:px-4 break-words">{course.course_title}</td>
                   <td className="py-3 px-2 sm:px-4">
                     <img 
-                      src={course.image} 
-                      alt={course.title}
+                      src={course.courseImage} 
+                      alt={course.course_title}
                       className="w-16 h-16 sm:w-24 sm:h-24 rounded-lg"
                     />
                   </td>

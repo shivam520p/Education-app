@@ -5,8 +5,6 @@ import toast from "react-hot-toast";
 
 const AllClasses = () => {
   const { allClasses, getAllClasses } = useContext(AdminContext);
-  console.log(allClasses);
-  console.log(getAllClasses);
   useEffect(() => {
     getAllClasses();
   }, []);

@@ -4,8 +4,6 @@ import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 import toast from "react-hot-toast";
 const AllSubjects = () => {
   const { allSubjects, getAllSubjects } = useContext(AdminContext);
-  console.log(allSubjects);
-  console.log(getAllSubjects);
   useEffect(() => {
     getAllSubjects();
   }, []);
