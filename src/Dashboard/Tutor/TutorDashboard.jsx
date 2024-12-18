@@ -10,13 +10,15 @@ import {
   faChalkboardTeacher,
   faBook,
   faUser,
-  faCaretDown
+  faCaretDown,
+  faPlusCircle
 } from '@fortawesome/free-solid-svg-icons';
 import ProfileSettings from '../../Dashboard/Tutor/ProfileSettings';
 import EducationSettings from '../../Dashboard/Tutor/EducationSettings';
 import ExperienceDetails from '../../Dashboard/Tutor/ExperienceDetails';
 import CertificationDetails from '../../Dashboard/Tutor/CertificationDetails';
 import ChangePassword from '../../Dashboard/Tutor/ChangePassword';
+import AddYourCourse from './AddYourCourse';
 
 const TutorDashboard = () => {
   const navigate=useNavigate();
@@ -51,6 +53,10 @@ const TutorDashboard = () => {
           <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("certificationsettings")}}>
             <FontAwesomeIcon icon={faBook} className="mr-3" />
             <span>Certification Details</span>
+          </li>
+          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("addyourcourse")}}>
+            <FontAwesomeIcon icon={faPlusCircle} className="mr-3" />
+            <span>Add Your Course</span>
           </li>
           <li className="relative">
             <div 
@@ -134,6 +140,7 @@ const TutorDashboard = () => {
           {handleLink === 'educationsettings' && <EducationSettings/>}
           {handleLink === 'experiencesettings' && <ExperienceDetails/>}
           {handleLink === 'certificationsettings' && <CertificationDetails/>}
+          {handleLink === 'addyourcourse' && <AddYourCourse/>}
           {handleLink === 'changepassword' && <ChangePassword/>}
         </main>
       </div>

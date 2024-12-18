@@ -4,7 +4,6 @@ import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 const ProfileSettings = () => {
   const {
     tutorProfile,
-    setTutorProfile,
     tutorProfileHandleChange,
     tutorProfileUpdate,
     editAgainProfile,
