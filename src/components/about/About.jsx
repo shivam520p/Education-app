@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 export const AboutPage = () => {
   return (
     <>
-     <section className="mt-24 px-4 bg-blue-50">
+     <section className="mt-16 lg:mt-24 px-2 sm:px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
           <h1 className="text-5xl font-bold text-gray-700">About</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
@@ -25,8 +25,8 @@ export const AboutPage = () => {
           </div>
         </div>
       </section>
-    <section className="py-5">
-      <div className="container mx-auto flex flex-col gap-10">
+    <section className="py-5 w-full">
+      <div className="container mx-auto flex flex-col gap-10 px-2 sm:px-4">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -124,8 +124,7 @@ export const AboutPage = () => {
           Meet Our Top Educators
         </h1>
         <p className="text-m text-slate-500 tracking-wide">
-          Discover how Lernen is making a difference in the lives of students
-          and
+          Discover how Lernen is making a difference in the lives of students and
         </p>
         <p className="lg:text-m text-sm text-slate-500 tracking-wide -mt-4">
           educational institutions. Hear from our satisfied users:
@@ -229,7 +228,7 @@ export const AboutPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="container mt-5"
+          className="container mt-5 px-2 sm:px-4"
         >
           <h1 className="lg:text-4xl text-2xl font-semibold text-center tracking-wider -mb-10">
             What Our Users Are Saying

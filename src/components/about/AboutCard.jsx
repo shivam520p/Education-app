@@ -5,13 +5,13 @@ import StarIco from "../../assets/Icons/StarIco";
 const AboutCard = ({ cardName, price, image }) => {
   return (
     <motion.a 
-      className="roomCard border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer p-2"
+      className="roomCard w-full border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer p-2"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="rounded-xl customOverlay relative">
+      <div className="rounded-xl customOverlay relative w-full">
         <img
           src={image}
           alt={cardName}
