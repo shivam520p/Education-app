@@ -239,7 +239,7 @@ const Dashboard = () => {
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto">
           {handleLink === "dashboardinfo" && <DashboardInfo />}
           {handleLink === "allusers" && <AllUser />}
           {handleLink === "allstudents" && <AllStudent />}

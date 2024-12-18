@@ -80,7 +80,14 @@ export const TutorProvider = ({ children }) => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [tutorCourses, setTutorCourses] = useState({
+    course_title: "",
+    discription: "",
+    duration: "",
+    coursePrice: "",
+    courseImage: "",
+  });
+  
   const changePassword = async (e) => {
     e.preventDefault();
     try {
@@ -413,6 +420,31 @@ export const TutorProvider = ({ children }) => {
     }
   };
 
+  const handleCourseChange = (e) => {
+    const { name, value } = e.target;
+    setTutorCourses({ ...tutorCourses, [name]: value });
+  };
+  const addTutorCourses = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("course_title", tutorCourses.course_title);
+    formData.append("discription", tutorCourses.discription);
+    formData.append("duration", tutorCourses.duration);   
+    formData.append("coursePrice", tutorCourses.coursePrice);
+    formData.append("courseImage", tutorCourses.courseImage);
+    try {
+      const response = await axiosInstance.post("/course/addcourse", formData,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      });
+      if (response.status === 200) {
+        setTutorCourses(response.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <TutorContext.Provider
       value={{
@@ -453,7 +485,11 @@ export const TutorProvider = ({ children }) => {
         studentProfile,
         setStudentProfile,
         studentProfileHandleChange,
-        studentProfileUpdate,
+        studentProfileUpdate, 
+        tutorCourses,
+        setTutorCourses,
+        addTutorCourses,
+        handleCourseChange,
       }}
     >
       {children}

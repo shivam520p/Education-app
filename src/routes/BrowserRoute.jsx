@@ -20,7 +20,7 @@ import StudentDashboard from "../Dashboard/Student/StudentDashboard";
 
 export const BrowserRoute = () => {
   const location = useLocation();
-  const isLocation= location.pathname ==='/Dashboard' || location.pathname ==='/tutordashboard' || location.pathname ==='/studentdashboard';
+  const isLocation= location.pathname ==='/dashboard' || location.pathname ==='/tutordashboard' || location.pathname ==='/studentdashboard';
   return (
     <>
       {!isLocation && <Navbar />}
