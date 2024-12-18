@@ -48,7 +48,10 @@ export const UserVerification = ({ children }) => {
     email: "",
     password: "",
   });
-    
+  const[ adminData, setAdminData] = useState({
+    email: "",
+    password: "",
+  });
 
   const getUserData = async () => {
     try {
@@ -118,7 +121,6 @@ export const UserVerification = ({ children }) => {
       const response = await axiosInstance.post("/users/login", loginData);
       if (response.status === 201) {
         toast.success(response.data.message);
-        console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
         const userData=jwtDecode(response.data.token);
         localStorage.setItem("userData", JSON.stringify(userData.user));

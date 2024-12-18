@@ -23,7 +23,7 @@ import AddYourCourse from './AddYourCourse';
 const TutorDashboard = () => {
   const navigate=useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [handleLink, setHandleLink] = useState('');
+  const [handleLink, setHandleLink] = useState('profilesettings');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

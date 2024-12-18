@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { FaTwitter, FaInstagram, FaPinterest, FaGlobe } from "react-icons/fa";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import BookSession from "../models/BookSession";
 
@@ -39,38 +38,6 @@ const TutorDetails = () => {
                 alt="Instructor"
                 className="w-full h-full object-cover"
               />
-            </div>
-
-            {/* Social Links */}
-            <div className="flex justify-center gap-4 mt-6">
-              <motion.a
-                whileHover={{ scale: 1.2, color: "#1DA1F2" }}
-                href="#"
-                className="text-gray-600 hover:text-blue-400"
-              >
-                <FaTwitter size={20} className="sm:text-2xl" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, color: "#E4405F" }}
-                href="#"
-                className="text-gray-600 hover:text-pink-500"
-              >
-                <FaInstagram size={20} className="sm:text-2xl" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, color: "#E60023" }}
-                href="#"
-                className="text-gray-600 hover:text-red-600"
-              >
-                <FaPinterest size={20} className="sm:text-2xl" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, color: "#0077B5" }}
-                href="#"
-                className="text-gray-600 hover:text-blue-600"
-              >
-                <FaGlobe size={20} className="sm:text-2xl" />
-              </motion.a>
             </div>
           </div>
 

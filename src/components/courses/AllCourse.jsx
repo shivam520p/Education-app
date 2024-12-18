@@ -40,16 +40,6 @@ const AllCourse = () => {
     },
   };
 
-  const buttonVariants = {
-    hover: {
-      scale: 1.1,
-      rotate: 90,
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
-
   return (
     <>
       <section className="mt-24 px-4 bg-blue-50">
@@ -86,7 +76,7 @@ const AllCourse = () => {
                 <motion.img
                   src={course.courseImage}
                   alt={course.course_title}
-                  className="w-full h-48 sm:h-56 md:h-64 object-contain object-center"
+                  className="w-full h-48 sm:h-56 md:h-64 object-cover object-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
