@@ -2,6 +2,8 @@ import React, { createContext, useState } from "react";
 import axiosInstance from "../api/AxiosInstance";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+// import jwt_decode from "jwt-decode";
+import {jwtDecode} from 'jwt-decode';
 
 export const DataProvider = createContext();
 export const UserVerification = ({ children }) => {
@@ -118,6 +120,8 @@ export const UserVerification = ({ children }) => {
         toast.success(response.data.message);
         console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
+        const userData=jwtDecode(response.data.token);
+        localStorage.setItem("userData", JSON.stringify(userData.user));
         navigate("/");
         
       }

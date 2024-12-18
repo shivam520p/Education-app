@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TutorContext } from '../../auth/TutorHandling/TutorProvider';
+import { useNavigate } from 'react-router-dom';
 
 const Features4 = () => {
   const {allTutorDetails, getTutorDetails,setTutor} = useContext(TutorContext);
-  
+  const navigate=useNavigate();
   useEffect(() => {
     getTutorDetails();
   }, []);
@@ -96,11 +97,12 @@ const Features4 = () => {
                 </div>
               </div>
               <motion.a 
-                href="#" 
-                className="text-blue-600 hover:text-blue-700 flex items-center gap-2"
+                className="text-blue-600 hover:text-blue-700 flex items-center gap-2 cursor-pointer"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
-                onClick={()=>{setTutor(instructor)}}
+                onClick={()=>{setTutor(instructor);
+                  navigate("/instructordetails")
+                }}
               >
                 View Profile
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

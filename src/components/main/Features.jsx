@@ -2,6 +2,7 @@ import React from "react";
 import Icon1 from "../../assets/images/feature-icon1.png";
 import Icon2 from "../../assets/images/feature-icon2.png";
 import Icon3 from "../../assets/images/feature-icon3.png";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Features = () => {
@@ -10,22 +11,22 @@ const Features = () => {
       icon: Icon1,
       title: "Language Learning",
       description:
-        "Courses teaching languages such as English, Spanish, French, Mandarin, etc.",
-      link: "#",
+        "Teaching languages such as English, Spanish, French, Mandarin, etc.",
+      link: "/courses/languages",
     },
     {
       icon: Icon2,
-      title: "Creative Arts & Design",
+      title: "Subjects Learning",
       description:
-        "Courses on graphic design, digital art, photography, video editing, etc.",
-      link: "#",
+        "To analyze a concept, it’s important to understand the context in which it appears. During a debate, evidence.",
+      link: "/courses/subjects",
     },
     {
       icon: Icon3,
-      title: "Health & Fitness",
+      title: "Career Development",
       description:
-        "Courses on nutrition, fitness training, yoga, meditation, wellness coaching, etc.",
-      link: "#",
+        "Career development is the process of preparing for and advancing in a career. It involves seeking opportunities for growth and advancement.",
+      link: "/courses",
     },
   ];
 
@@ -71,7 +72,7 @@ const Features = () => {
                 transition: { duration: 0.3 }
               }}
               transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
-              className="bg-blue-50 shadow-sm rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col items-center text-center group hover:bg-gray-700 transition-all duration-300"
+              className="bg-blue-50 shadow-sm rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col items-center text-center group hover:bg-blue-400 transition-all duration-300"
             >
               <div className="mb-4 sm:mb-6 w-24 sm:w-28 lg:w-32 h-24 sm:h-28 lg:h-32 rounded-full flex justify-center items-center bg-white group-hover:bg-white">
                 <img
@@ -87,8 +88,8 @@ const Features = () => {
               <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 group-hover:text-white">
                 {category.description}
               </p>
-              <a
-                href={category.link}
+              <Link
+                to={category.link}
                 className="text-blue-500 text-base sm:text-lg hover:text-blue-600 hover:border-b-2 hover:border-white inline-flex items-center group-hover:text-white"
               >
                 View Category
@@ -105,7 +106,7 @@ const Features = () => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </a>
+                </Link>
             </motion.div>
           ))}
         </div>

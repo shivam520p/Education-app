@@ -27,6 +27,8 @@ export const AdminProvider = ({ children }) => {
   const [newLanguage, setNewLanguage] = useState({
     languageName: "",
   });
+  const [allContactUs, setAllContactUs] = useState([]);
+  const [allSession, setAllSession] = useState([]);
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -370,6 +372,26 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const getAllContactUs= async()=>{
+    try {
+      const response = await axiosInstance.get("/admin/getallcontactsmessages");
+      console.log(response);
+      if(response.status===200){
+        setAllContactUs(response.data.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  const getAllSession=async()=>{
+    try {
+      const response=await axiosInstance.get("/admin/getallSession");
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <AdminContext.Provider
       value={
@@ -403,7 +425,10 @@ export const AdminProvider = ({ children }) => {
           newLanguage,
           languageHandleChange,
           addLanguage,
-          deleteLanguage
+          deleteLanguage,
+          allContactUs,
+          getAllContactUs,
+          getAllSession
         }
       }
     >
