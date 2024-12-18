@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className='flex flex-col items-start justify-start'>
             <h3 className="text-4xl font-bold mb-4">Education</h3>
-            <p className="text-gray-300">
+            <p className="text-lg">
               Your company description goes here. <br />Add a brief overview of your business.
             </p>
           </div>

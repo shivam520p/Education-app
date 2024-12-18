@@ -4,6 +4,7 @@ import Icon2 from "../../assets/images/feature-icon2.png";
 import Icon3 from "../../assets/images/feature-icon3.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 const Features = () => {
   const categories = [
@@ -117,7 +118,7 @@ const Features = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="flex justify-center mt-8 sm:mt-12 space-x-4"
         >
-          <button className="p-1.5 sm:p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button onClick={()=>{toast.error("No more data")}} className="p-1.5 sm:p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
             <svg
               className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600"
               fill="none"
@@ -132,7 +133,7 @@ const Features = () => {
               />
             </svg>
           </button>
-          <button className="p-1.5 sm:p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button onClick={()=>{toast.error("No more data")}} className="p-1.5 sm:p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
             <svg
               className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600"
               fill="none"

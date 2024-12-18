@@ -6,7 +6,7 @@ import Choose2 from '../../assets/images/choose-us-img2.png';
 const Features5 = () => {
   return (
     <section className="py-8 md:py-10 px-4 w-full overflow-x-hidden">
-      <div className="container mx-auto max-w-[1200px]">
+      <div className="container mx-auto max-w-7xl">
         <motion.div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full"
           initial={{ opacity: 0 }}

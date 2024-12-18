@@ -159,7 +159,6 @@ export const TutorProvider = ({ children }) => {
             
           );
           setProfileEdit(true);
-          setTutorDetails(JSON.parse(localStorage.getItem("tutorDetails")));
           toast.success(response.data.message);
         }
       } catch (err) {

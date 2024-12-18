@@ -9,10 +9,27 @@ import { motion } from "framer-motion";
 export const AboutPage = () => {
   return (
     <>
-     <section className="mt-16 lg:mt-24 px-2 sm:px-4 bg-blue-50">
+      <motion.section 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mt-16 lg:mt-24 px-2 sm:px-4 bg-blue-50"
+      >
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
-          <h1 className="text-5xl font-bold text-gray-700">About</h1>
-          <div className="flex justify-center items-center gap-2 text-lg">
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-5xl font-bold text-gray-700"
+          >
+            About
+          </motion.h1>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex justify-center items-center gap-2 text-lg"
+          >
             <a href="/">
               <i className="fa-solid fa-house mr-2"></i>Home
             </a>
@@ -22,9 +39,9 @@ export const AboutPage = () => {
             <a href="/about" className="text-amber-500">
               About
             </a>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     <section className="py-5 w-full">
       <div className="container mx-auto flex flex-col gap-10 px-2 sm:px-4">
         <motion.div 
@@ -102,9 +119,6 @@ export const AboutPage = () => {
                 transformative for all.
               </p>
               <FeatureList2 />
-              <button className="px-8 py-2 text-l bg-blue-500 m-5 rounded-lg text-white hover:shadow-md">
-                Discover More
-              </button>
             </div>
           </div>
         </motion.div>

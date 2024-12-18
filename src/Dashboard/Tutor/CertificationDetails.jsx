@@ -82,12 +82,15 @@ const CertificationDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/2 mt-4 md:mt-0">
-              <img
-                src={certificate[0]?.certificationPic}
-                alt="Certification File"
-                className="w-full h-auto max-h-[400px] object-contain rounded-lg"
-              />
+            <div className="w-full md:w-1/2 mt-4 md:mt-0 space-y-4">
+              {certificate?.map((cert, index) => (
+                <img
+                  key={index}
+                  src={cert.certificationPic}
+                  alt={`Certification File ${index + 1}`}
+                  className="w-full h-auto max-h-[400px] object-contain rounded-lg"
+                />
+              ))}
             </div>
           </div>
           <div className="flex items-center justify-end gap-3 pt-6">

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
+import toast from "react-hot-toast";
 const AllSubjects = () => {
   const { allSubjects, getAllSubjects } = useContext(AdminContext);
   console.log(allSubjects);
@@ -99,7 +100,7 @@ const AllSubjects = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="flex justify-center py-6 md:py-10 space-x-4"
         >
-          <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button onClick={()=>{toast.error("No more data")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"
@@ -114,7 +115,7 @@ const AllSubjects = () => {
               />
             </svg>
           </button>
-          <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+          <button onClick={()=>{toast.error("No more data")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"

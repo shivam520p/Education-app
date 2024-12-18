@@ -5,10 +5,10 @@ import AboutCard4 from "../../assets/images/About4.png";
 import AboutCard from "./AboutCard";
 
 const cards = [
-  { cardName: "Sidhharth Sisodiya", price: "20", image: AboutCard1 },
-  { cardName: "Sidhharth Sisodiya", price: "23", image: AboutCard2 },
-  { cardName: "Sidhharth Sisodiya", price: "25", image: AboutCard3 },
-  { cardName: "Sidhharth Sisodiya", price: "30", image: AboutCard4 },
+  { cardName: "Sidhharth Sisodiya", image: AboutCard1 },
+  { cardName: "Sidhharth Sisodiya", image: AboutCard2 },
+  { cardName: "Sidhharth Sisodiya", image: AboutCard3 },
+  { cardName: "Sidhharth Sisodiya", image: AboutCard4 },
 ];
 
 const AboutCards = () => (

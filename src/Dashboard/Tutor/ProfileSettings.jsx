@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 
 const ProfileSettings = () => {
   const {
     tutorProfile,
+    setTutorProfile,
     tutorProfileHandleChange,
     tutorProfileUpdate,
     editAgainProfile,

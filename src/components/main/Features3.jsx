@@ -8,7 +8,7 @@ import CEO from "../../assets/images/ceo-img.png";
 
 const Features3 = () => {
   return (
-    <div className="container mx-auto px-2 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-full overflow-hidden">
+    <div className="container mx-auto px-2 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-8xl overflow-hidden">
       <div className="flex flex-wrap items-center">
         <motion.div
           className="w-full lg:w-1/2 mb-12 lg:mb-0 px-2 sm:px-6 lg:px-0"

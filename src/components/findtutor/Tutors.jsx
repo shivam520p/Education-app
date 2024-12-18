@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import { faUserGraduate, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast from "react-hot-toast";
 const Tutors = () => {
   const { allTutorDetails, getTutorDetails, setTutor } = useContext(TutorContext);
   useEffect(() => {
@@ -128,7 +129,7 @@ const Tutors = () => {
         transition={{ duration: 0.6, delay: 1.2 }}
         className="flex justify-center py-6 md:py-10 space-x-4"
       >
-        <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+        <button onClick={()=>{toast.error("No more Tutors")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
           <svg
             className="w-6 h-6 text-gray-600"
             fill="none"
@@ -143,7 +144,7 @@ const Tutors = () => {
             />
           </svg>
         </button>
-        <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
+        <button onClick={()=>{toast.error("No more Tutors")}} className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition duration-300">
           <svg
             className="w-6 h-6 text-gray-600"
             fill="none"
