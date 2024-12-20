@@ -29,6 +29,23 @@ export const AdminProvider = ({ children }) => {
     languageName: "",
   });
   const [allContactUs, setAllContactUs] = useState([]);
+  const [selectedClass, setSelectedClass]= useState({
+    class:'',
+    subjectName:[],
+    mode:'',
+    details:{
+      fullName:'',
+      mobile:'',
+      email:'',
+    },
+    address:{
+      street:'',
+      city:'',
+      state:'',
+      country:'',
+      pincode:'',
+    },
+  });
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -400,6 +417,7 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   }
+  console.log(selectedClass);
   return (
     <AdminContext.Provider
       value={
@@ -440,7 +458,9 @@ export const AdminProvider = ({ children }) => {
           tutorCourses,
           setTutorCourses,
           getTutorCourses,
-          tutorVerify
+          tutorVerify,
+          selectedClass,
+          setSelectedClass
         }
       }
     >
