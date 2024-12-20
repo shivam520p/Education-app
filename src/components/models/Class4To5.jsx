@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 const Class4To5 = () => {
-  const { selectedClass, setSelectedClass } = useContext(AdminContext);
+  const { setMode,selectedClass, setSelectedClass } = useContext(AdminContext);
   const subjects = [
     "All Subject",
     "English",
@@ -35,6 +35,15 @@ const Class4To5 = () => {
             <label htmlFor="subjects">{subject}</label>
           </div>
         ))}
+      </div>
+      <div className="flex items-center justify-end gap-x-6 pt-5">
+        <button
+        onClick={()=>{setMode("mode")}}
+          type="button"
+          className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
+        >
+          Next
+        </button>
       </div>
     </>
   );

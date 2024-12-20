@@ -5,6 +5,7 @@ import Tutors from "../findtutor/Tutors";
 import AllSubjects from "../courses/AllSubjects";
 import AllClasses from "../courses/AllClasses";
 import AllLanguages from "../courses/AllLanguage";
+import TitleSection from "./TitleSection";
 
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState("subjects");
@@ -177,6 +178,8 @@ const HeroSection = () => {
           )}
         </div>
       </div>
+
+      <TitleSection/>
     </>
   );
 };

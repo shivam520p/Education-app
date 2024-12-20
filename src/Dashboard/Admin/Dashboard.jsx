@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faPen,
   faTachometerAlt,
   faUsers,
   faSignOutAlt,
@@ -27,6 +28,7 @@ import AllCourses from "./Courses/AllCourses";
 import AllSubjects from "./Courses/AllSubjects";
 import AllClasses from "./Courses/AllClasses";
 import AllLanguage from "./Courses/AllLanguage";
+import WriteContent from "./WriteContent";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -175,6 +177,15 @@ const Dashboard = () => {
               </li>
             </ul>
           )}
+          <li
+            className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer"
+            onClick={() => {
+              setHandleLink("writeContent");
+            }}
+          >
+            <FontAwesomeIcon icon={faPen} className="mr-3" />
+            <span>Write Content</span>
+          </li>
         </ul>
       </div>
       <div className="mt-auto">
@@ -248,6 +259,7 @@ const Dashboard = () => {
           {handleLink === "allsubjects" && <AllSubjects />}
           {handleLink === "allclasses" && <AllClasses />}
           {handleLink === "alllanguages" && <AllLanguage />}
+          {handleLink=== "writeContent" && <WriteContent/>}
         </main>
       </div>
     </div>

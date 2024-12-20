@@ -11,9 +11,11 @@ import { NEET } from "./NEET";
 import { Programming } from "./Programming";
 import { Others } from "./Others";
 import Mode from "./Mode";
+import ContactInfo from "./ContactInfo";
+import { AddressDetail } from "./AddressDetail";
 
 const BookTutor = ({ subject }) => {
-  const { setPopUp, selectedClass, setSelectedClass } =
+  const { mode, setPopUp, selectedClass, setSelectedClass } =
     useContext(AdminContext);
 
   const classes = [
@@ -111,17 +113,11 @@ const BookTutor = ({ subject }) => {
               </div>
             )}
 
-            {renderClassComponent()}
-            <Mode/>
+            {!mode && renderClassComponent()}
 
-            <div className="flex items-center justify-end gap-x-6 pt-5">
-              <button
-                type="button"
-                className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
-              >
-                Next
-              </button>
-            </div>
+            {mode === "mode" && <Mode />}
+            {mode === "contactInfo" && <ContactInfo />}
+            {mode === "addressDetails" && <AddressDetail />}
           </form>
         </div>
       </div>

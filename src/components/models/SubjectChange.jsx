@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 const SubjectChange = () => {
-  const { selectedClass, setSelectedClass } = useContext(AdminContext);
+  const { setMode,selectedClass, setSelectedClass } = useContext(AdminContext);
 
   return (
     <>
@@ -21,12 +21,21 @@ const SubjectChange = () => {
             onClick={() =>
               setSelectedClass({
                 ...selectedClass,
-                subject: [...(selectedClass.subjectName || []), 'All Subject']
+                subject: [...(selectedClass.subjectName || []), "All Subject"],
               })
             }
           />
           <label htmlFor="subjects">All Subject</label>
         </div>
+      </div>
+      <div className="flex items-center justify-end gap-x-6 pt-5">
+        <button
+          onClick={()=>{setMode("mode")}}
+          type="button"
+          className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
+        >
+          Next
+        </button>
       </div>
     </>
   );
