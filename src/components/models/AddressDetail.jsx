@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 export const AddressDetail = () => {
-  const { selectedClass, setSelectedClass } = useContext(AdminContext);
+  const { selectedClass, setSelectedClass,submitQuary } = useContext(AdminContext);
   return (
     <>
       <div className="pt-4 h-[300px] overflow-y-auto">
@@ -19,8 +19,8 @@ export const AddressDetail = () => {
             onChange={(e) => {
               setSelectedClass({
                 ...selectedClass,
-                address: {
-                  ...selectedClass.address,
+                addressDetails: {
+                  ...selectedClass.addressDetails,
                   street: e.target.value,
                 },
               });
@@ -39,8 +39,8 @@ export const AddressDetail = () => {
             onChange={(e) => {
                 setSelectedClass({
                   ...selectedClass,
-                  address: {
-                    ...selectedClass.address,
+                  addressDetails: {
+                    ...selectedClass.addressDetails,
                     city: e.target.value
                   }
                 })
@@ -62,8 +62,8 @@ export const AddressDetail = () => {
             onChange={(e) => {
                 setSelectedClass({
                   ...selectedClass,
-                  address: {
-                    ...selectedClass.address,
+                  addressDetails: {
+                    ...selectedClass.addressDetails,
                     pinCode: e.target.value
                   }
                 })
@@ -85,8 +85,8 @@ export const AddressDetail = () => {
             onChange={(e) => {
                 setSelectedClass({
                   ...selectedClass,
-                  address: {
-                    ...selectedClass.address,
+                  addressDetails: {
+                    ...selectedClass.addressDetails,
                     state: e.target.value
                   }
                 })
@@ -151,8 +151,8 @@ export const AddressDetail = () => {
             onChange={(e) => {
                 setSelectedClass({
                   ...selectedClass,
-                  address: {
-                    ...selectedClass.address,
+                  addressDetails: {
+                    ...selectedClass.addressDetails,
                     country: e.target.value
                   }
                 })
@@ -176,6 +176,7 @@ export const AddressDetail = () => {
       </div>
       <div className="flex items-center justify-end gap-x-6 pt-5">
         <button
+        onClick={submitQuary}
           type="button"
           className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
         >

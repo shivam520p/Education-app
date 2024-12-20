@@ -62,8 +62,8 @@ const HeroSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               <motion.a
-                href="/courses"
-                className="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition flex items-center"
+                href="#courses"
+                className="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition flex items-center cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -152,7 +152,7 @@ const HeroSection = () => {
       <Tutors />
 
       {/* Subject, Class and Language section */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" id="courses">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center pb-8 md:pb-12">
           Tutors According to your needs
         </h1>

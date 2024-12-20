@@ -36,21 +36,21 @@ export const AdminProvider = ({ children }) => {
 
   const [allTitle, setAllTile] = useState([]);
   const [selectedClass, setSelectedClass] = useState({
-    class: "",
-    subjectName: [],
-    mode: "",
-    details: {
-      fullName: "",
-      mobile: "",
-      email: "",
-    },
-    address: {
-      street: "",
-      city: "",
-      state: "",
-      country: "",
-      pinCode: "",
-    },
+      class: "",
+      subjectName: [],
+      mode: "",
+      details: {
+        fullName: "",
+        mobile: "",
+        email: "",
+      },
+      addressDetails: {
+        street: "",
+        city: "",
+        state: "",
+        country: "",
+        pinCode: "",
+      },
   });
   const [mode, setMode] = useState("");
 
@@ -419,6 +419,16 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
+  const submitQuary= async(e)=>{
+    e.preventDefault();
+    try{
+      const response= await axiosInstance.post("lead/postleads",selectedClass)
+      console.log(response);
+    }catch(err){
+      console.log(err);
+    }
+
+  }
   const quoteHandleChange = (e) => {
     const { name, value } = e.target;
     setQuoteFrom({ ...quoteForm, [name]: value });
@@ -458,6 +468,7 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   return (
     <AdminContext.Provider
       value={{
@@ -510,6 +521,7 @@ export const AdminProvider = ({ children }) => {
         setAllTile,
         getAllQuotes,
         deleteQuotes,
+        submitQuary
       }}
     >
       {children}

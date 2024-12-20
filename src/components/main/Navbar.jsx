@@ -36,13 +36,6 @@ const Navbar = () => {
     { title: "Contact Us", path: "/contact" },
   ];
 
-  const courseLinks = [
-    { title: "Courses", path: "/courses" },
-    { title: "Subjects", path: "/courses/subjects" },
-    { title: "Languages", path: "/courses/languages" },
-    { title: "Classes", path: "/courses/classes" },
-  ];
-
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -156,17 +149,6 @@ const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.title}
-                      </Link>
-                    </li>
-                  ))}
-                  {courseLinks.map((course) => (
-                    <li key={course.path} className="border-b">
-                      <Link
-                        to={course.path}
-                        className="block py-3 sm:py-4 text-sm sm:text-base hover:text-blue-600 transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {course.title}
                       </Link>
                     </li>
                   ))}
