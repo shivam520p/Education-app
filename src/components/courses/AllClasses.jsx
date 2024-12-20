@@ -2,9 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 import toast from "react-hot-toast";
+import BookTutor from "../models/BookTutor";
 
 const AllClasses = () => {
-  const { allClasses, getAllClasses } = useContext(AdminContext);
+  const { allClasses, getAllClasses, setPopUp, popUp } =
+    useContext(AdminContext);
   useEffect(() => {
     getAllClasses();
   }, []);
@@ -44,6 +46,9 @@ const AllClasses = () => {
     <>
       <div className="py-4 px-4">
         <motion.div
+          onClick={() => {
+            setPopUp(true);
+          }}
           className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-3 px-4"
           variants={containerVariants}
           initial="hidden"
@@ -122,6 +127,7 @@ const AllClasses = () => {
           </button>
         </motion.div>
       </div>
+      {popUp && <BookTutor />}
     </>
   );
 };

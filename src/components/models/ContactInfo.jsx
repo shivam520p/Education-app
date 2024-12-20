@@ -6,7 +6,7 @@ const ContactInfo = () => {
   return (
     <>
     <div className="pt-4 h-[300px] overflow-y-auto">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <label htmlFor="fullName" className="text-lg font-semibold text-gray-600">Full Name :</label>
         <input
           type="text"
@@ -24,7 +24,7 @@ const ContactInfo = () => {
           className="bg-slate-100 px-3 py-3 border rounded-lg placeholder:text-lg outline-slate-500"
         />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
           <label htmlFor="email" className="text-lg font-semibold text-gray-600">Email Address :</label>
         <input
           type="email"
@@ -42,7 +42,7 @@ const ContactInfo = () => {
           className="bg-slate-100 px-3 py-3 border rounded-lg placeholder:text-lg outline-slate-500"
         />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
           <label htmlFor="mobile" className="text-lg font-semibold text-gray-600">Mobile Number:</label>
         <input
           type="text"
