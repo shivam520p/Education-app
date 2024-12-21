@@ -21,7 +21,7 @@ export const TutorProvider = ({ children }) => {
     studentSubject: "",
     about: "",
   });
-  
+
   const [tutorProfile, setTutorProfile] = useState({
     type: "address",
     gender: "",
@@ -69,6 +69,7 @@ export const TutorProvider = ({ children }) => {
     Password: "",
     newPassword: "",
   });
+  const [allSessionBook, setAllSessionBook]=useState([]);
 
   const passwordHandleChange = (e) => {
     const { name, value } = e.target;
@@ -83,13 +84,13 @@ export const TutorProvider = ({ children }) => {
   const [tutorCourses, setTutorCourses] = useState({
     course_title: "",
     video_title: "",
-    video:"",
+    video: "",
     description: "",
     duration: "",
     coursePrice: "",
     courseImage: "",
   });
-  
+
   const changePassword = async (e) => {
     e.preventDefault();
     try {
@@ -147,7 +148,6 @@ export const TutorProvider = ({ children }) => {
     }
   };
 
-
   const tutorProfileHandleChange = (e) => {
     const { name, value } = e.target;
     setTutorProfile({ ...tutorProfile, [name]: value });
@@ -165,7 +165,6 @@ export const TutorProvider = ({ children }) => {
           localStorage.setItem(
             "tutorDetails",
             JSON.stringify(response.data.createTutor.address)
-            
           );
           setProfileEdit(true);
           toast.success(response.data.message);
@@ -375,7 +374,6 @@ export const TutorProvider = ({ children }) => {
     }
   };
 
-
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -396,7 +394,10 @@ export const TutorProvider = ({ children }) => {
       });
       if (response.status === 200) {
         toast.success(response.data.message);
-        localStorage.setItem("userImg", JSON.stringify(response.data.updateUserImage.avatar));
+        localStorage.setItem(
+          "userImg",
+          JSON.stringify(response.data.updateUserImage.avatar)
+        );
       }
     } catch (err) {
       toast.error(err.response.data.message);
@@ -421,30 +422,30 @@ export const TutorProvider = ({ children }) => {
       console.log(error);
     }
   };
-
+  
   const handleCourseChange = (e) => {
     const { name } = e.target;
-    if (e.target.type === 'file') {
-      setTutorCourses(prev => ({
+    if (e.target.type === "file") {
+      setTutorCourses((prev) => ({
         ...prev,
-        [name]: e.target.files[0]
+        [name]: e.target.files[0],
       }));
     } else {
-      setTutorCourses(prev => ({
+      setTutorCourses((prev) => ({
         ...prev,
-        [name]: e.target.value
+        [name]: e.target.value,
       }));
     }
   };
   const addTutorCourses = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    
+
     formData.append("video_title", tutorCourses.video_title);
     formData.append("video", tutorCourses.video);
     formData.append("course_title", tutorCourses.course_title);
     formData.append("description", tutorCourses.description);
-    formData.append("duration", tutorCourses.duration);   
+    formData.append("duration", tutorCourses.duration);
     formData.append("coursePrice", tutorCourses.coursePrice);
     formData.append("courseImage", tutorCourses.courseImage);
 
@@ -452,7 +453,7 @@ export const TutorProvider = ({ children }) => {
       const response = await axiosInstance.post("/course/addcourse", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-        }
+        },
       });
       if (response.status === 200) {
         toast.success("Course added successfully!");
@@ -460,6 +461,17 @@ export const TutorProvider = ({ children }) => {
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to add course");
       console.error("Error adding course:", error);
+    }
+  };
+
+  const getAllSessionBook = async () => {
+    try {
+      const response = await axiosInstance.get("/tutor/getbooksession");
+      if(response.status===200){
+        setAllSessionBook(response.data.findUsers);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -502,11 +514,14 @@ export const TutorProvider = ({ children }) => {
         studentProfile,
         setStudentProfile,
         studentProfileHandleChange,
-        studentProfileUpdate, 
+        studentProfileUpdate,
         tutorCourses,
         setTutorCourses,
         addTutorCourses,
         handleCourseChange,
+        allSessionBook,
+        setAllSessionBook,
+        getAllSessionBook,
       }}
     >
       {children}

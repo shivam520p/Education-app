@@ -1,73 +1,162 @@
-import React, { useContext, useEffect } from 'react'
-import { FaTrash } from 'react-icons/fa'
-import { AdminContext } from '../../../auth/adminhandling/AdminProvider'
+import React, { useContext, useEffect } from "react";
+import { FaTrash } from "react-icons/fa";
+import { AdminContext } from "../../../auth/adminhandling/AdminProvider";
 
 const AllUser = () => {
-  const {getAllUsers, allStudent, allTutor} = useContext(AdminContext);
-
-  useEffect(()=>{
+  const { getAllUsers, allStudent, allTutor } = useContext(AdminContext);
+  useEffect(() => {
     getAllUsers();
-  },[allStudent,allTutor])
+  }, [allStudent, allTutor]);
 
   return (
     <>
-      <div className='bg-blue-100 w-full h-auto p-2 md:p-4 rounded-lg'>
-        <h1 className='text-xl md:text-3xl pb-3 md:pb-5 px-1'>All User</h1>
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white shadow-md rounded-lg">
-            <thead>
-              <tr className="bg-gray-200 text-gray-700">
-                <th className="py-2 md:py-3 px-2 md:px-4 text-left text-xs md:text-base">Sr No.</th>
-                <th className="py-2 md:py-3 px-2 md:px-4 text-left text-xs md:text-base">User Name</th>
-                <th className="py-2 md:py-3 px-2 md:px-4 text-left text-xs md:text-base">Email</th>
-                <th className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-left text-xs md:text-base">Number</th>
-                <th className="py-2 md:py-3 px-2 md:px-4 text-center text-xs md:text-base">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Students mapping */}
-              {allStudent && allStudent.map((student, index) => (
-                <tr key={student.userId._id} className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-xs md:text-base">{index + 1}.</td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-xs md:text-base">{student.userId.fullName}</td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-xs md:text-base truncate max-w-[150px] md:max-w-none">
-                    {student.userId.email}
-                  </td>
-                  <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-xs md:text-base">
-                    {student.userId.mobile}
-                  </td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-center">
-                    <button className="text-red-500 hover:text-red-700">
-                      <FaTrash className="text-sm md:text-base" />
-                    </button>
-                  </td>
-                </tr>
+      <div className="w-full h-auto p-2 md:p-4 rounded-lg">
+        <h1 className="text-xl md:text-3xl text-center pb-3 md:pb-5 px-1">
+          All Users
+        </h1>
+
+        {/* Tutors Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold pb-4">Tutors</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-hidden">
+            {/* Tutors mapping */}
+            {allTutor &&
+              allTutor.map((tutor, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col justify-center items-center bg-blue-100 shadow-md rounded-lg p-3"
+                >
+                  <div className="w-full bg-white p-4 rounded-lg">
+                    <div className="w-full flex justify-end">
+                      <button className="text-red-500 hover:text-red-700">
+                        <FaTrash className="text-lg" />
+                      </button>
+                    </div>
+                    <div className="flex flex-col justify-between items-center pb-2">
+                      <img
+                        src={tutor.userId.avatar}
+                        alt=""
+                        className="w-32 h-32 border object-cover rounded-full shadow-lg"
+                      />
+                    </div>
+                    <div className="w-full flex justify-start items-start border-t-2 border-red-300 pt-2">
+                      <div className="">
+                        <h3 className="text-xl">
+                          Name:{" "}
+                          <span className="text-gray-700 text-lg">
+                            {tutor.userId.fullName}
+                          </span>
+                        </h3>
+                        <p className="text-xl">
+                          Email:
+                          <span className="text-gray-700 text-lg">
+                            {tutor.userId.email}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Mobile:
+                          <span className="text-gray-700 text-lg">
+                            {tutor.userId.mobile}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Date Of Birth:
+                          <span className="text-gray-700 text-lg">
+                            {tutor.address.dateOfBirth}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Gender:
+                          <span className="text-gray-700 text-lg">
+                            {tutor.address.gender}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Address:
+                          <span className="text-gray-700 text-lg">
+                            {tutor.address.city},{tutor.address.state}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
-              
-              {/* Tutors mapping */}
-              {allTutor && allTutor.map((tutor, index) => (
-                <tr key={tutor._id} className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-xs md:text-base">{allStudent.length + index + 1}</td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-xs md:text-base">{tutor.userId.fullName}</td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-xs md:text-base truncate max-w-[150px] md:max-w-none">
-                    {tutor.userId.email}
-                  </td>
-                  <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-xs md:text-base">
-                    {tutor.userId.mobile}
-                  </td>
-                  <td className="py-2 md:py-3 px-2 md:px-4 text-center">
-                    <button className="text-red-500 hover:text-red-700">
-                      <FaTrash className="text-sm md:text-base" />
-                    </button>
-                  </td>
-                </tr>
+          </div>
+        </div>
+
+        {/* Students Section */}
+        <div>
+          <h2 className="text-2xl font-semibold pb-4">Students</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {/* Students mapping */}
+            {allStudent &&
+              allStudent.map((student, index) => (
+                <div
+                  key={student.userId._id}
+                  className="flex flex-col justify-center items-center bg-blue-100 shadow-md rounded-lg p-3"
+                >
+                  <div className="w-full bg-white p-4 rounded-lg">
+                    <div className="w-full flex justify-end">
+                      <button className="text-red-500 hover:text-red-700">
+                        <FaTrash className="text-lg" />
+                      </button>
+                    </div>
+                    <div className="flex flex-col justify-between items-center pb-2">
+                      <img
+                        src={student.userId.avatar}
+                        alt=""
+                        className="w-32 h-32 border object-cover rounded-full shadow-lg"
+                      />
+                    </div>
+                    <div className="w-full flex justify-start items-start border-t-2 border-red-300 pt-2">
+                      <div className="">
+                        <h3 className="text-xl">
+                          Name:{" "}
+                          <span className="text-gray-700 text-lg">
+                            {student.userId.fullName}
+                          </span>
+                        </h3>
+                        <p className="text-xl">
+                          Email:
+                          <span className="text-gray-700 text-lg">
+                            {student.userId.email}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Mobile:
+                          <span className="text-gray-700 text-lg">
+                            {student.userId.mobile}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Date Of Birth:
+                          <span className="text-gray-700 text-lg">
+                            {student.dateOfBirth}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Gender:
+                          <span className="text-gray-700 text-lg">
+                            {student.gender}
+                          </span>
+                        </p>
+                        <p className="text-xl">
+                          Address:
+                          <span className="text-gray-700 text-lg">
+                            {student.address.city},{student.address.state}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </table>
+          </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AllUser
+export default AllUser;

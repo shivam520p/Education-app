@@ -10,7 +10,7 @@ const GetStarted = () => {
 
   return (
     <>
-      <section className="mt-24 px-4 bg-blue-50">
+      <section className="mt-16 md:mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-8 md:py-16">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-700 text-center">
             Sign In
@@ -29,7 +29,7 @@ const GetStarted = () => {
         </div>
       </section>
 
-      <section className="bg-white px-4 py-8 md:py-16">
+      <section className="bg-white md:px-4 md:py-16">
         <div className="container mx-auto flex flex-col lg:flex-row justify-center items-center gap-8">
           {/* Left Section */}
           <motion.div

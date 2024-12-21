@@ -7,11 +7,12 @@ const SubjectChange = () => {
     selectedClass,
     setSelectedClass,
     allSubjects,
-    getAllSubjects
+    getAllSubjects,
+    
   } = useContext(AdminContext);
-  useEffect(()=>{
+  useEffect(() => {
     getAllSubjects();
-  })
+  });
   return (
     <>
       <div className="pt-4 h-[300px] overflow-y-auto">
@@ -30,14 +31,12 @@ const SubjectChange = () => {
             >
               <input
                 type="checkbox"
-                name="class"
-                onClick={() =>
+                value={subject.subjectName}
+                name="subjectName"
+                onClick={(e) =>
                   setSelectedClass({
                     ...selectedClass,
-                    subjectName: [
-                      ...(selectedClass.subjectName || []),
-                      "All Subject",
-                    ],
+                    subjectName: [...selectedClass.subjectName, subject.subjectName],
                   })
                 }
               />

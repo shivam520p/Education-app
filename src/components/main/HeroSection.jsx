@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import home from "../../assets/images/home.png";
 import Tutors from "../findtutor/Tutors";
@@ -6,6 +6,7 @@ import AllSubjects from "../courses/AllSubjects";
 import AllClasses from "../courses/AllClasses";
 import AllLanguages from "../courses/AllLanguage";
 import TitleSection from "./TitleSection";
+import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState("subjects");
@@ -14,6 +15,10 @@ const HeroSection = () => {
     { id: "classes", label: "Classes", component: AllClasses },
     { id: "languages", label: "Languages", component: AllLanguages },
   ];
+  const {getAllLeadsFromUser}= useContext(AdminContext);
+  useEffect(()=>{
+    getAllLeadsFromUser();
+  },[])
 
   return (
     <>

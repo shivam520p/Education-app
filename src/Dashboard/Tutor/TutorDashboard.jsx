@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faTachometerAlt,
@@ -11,19 +11,21 @@ import {
   faBook,
   faUser,
   faCaretDown,
-  faPlusCircle
-} from '@fortawesome/free-solid-svg-icons';
-import ProfileSettings from '../../Dashboard/Tutor/ProfileSettings';
-import EducationSettings from '../../Dashboard/Tutor/EducationSettings';
-import ExperienceDetails from '../../Dashboard/Tutor/ExperienceDetails';
-import CertificationDetails from '../../Dashboard/Tutor/CertificationDetails';
-import ChangePassword from '../../Dashboard/Tutor/ChangePassword';
-import AddYourCourse from './AddYourCourse';
+  faPlusCircle,
+  faCalendar ,
+} from "@fortawesome/free-solid-svg-icons";
+import ProfileSettings from "../../Dashboard/Tutor/ProfileSettings";
+import EducationSettings from "../../Dashboard/Tutor/EducationSettings";
+import ExperienceDetails from "../../Dashboard/Tutor/ExperienceDetails";
+import CertificationDetails from "../../Dashboard/Tutor/CertificationDetails";
+import ChangePassword from "../../Dashboard/Tutor/ChangePassword";
+import AddYourCourse from "./AddYourCourse";
+import AllSessionBook from "../Admin/Users/AllSessionBook";
 
 const TutorDashboard = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [handleLink, setHandleLink] = useState('profilesettings');
+  const [handleLink, setHandleLink] = useState("profilesettings");
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -38,28 +40,62 @@ const TutorDashboard = () => {
             <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
             <Link to="/">Dashboard</Link>
           </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("profilesettings")}}>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("profilesettings");
+            }}
+          >
             <FontAwesomeIcon icon={faUser} className="mr-3" />
-           <span>Profile Settings</span>
+            <span>Profile Settings</span>
           </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("educationsettings")}}>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("educationsettings");
+            }}
+          >
             <FontAwesomeIcon icon={faUserGraduate} className="mr-3" />
             <span>Education Details</span>
           </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("experiencesettings")}}>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("experiencesettings");
+            }}
+          >
             <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-3" />
             <span>Experience Details</span>
           </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("certificationsettings")}}>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("certificationsettings");
+            }}
+          >
             <FontAwesomeIcon icon={faBook} className="mr-3" />
             <span>Certification Details</span>
           </li>
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md" onClick={()=>{setHandleLink("addyourcourse")}}>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("addyourcourse");
+            }}
+          >
             <FontAwesomeIcon icon={faPlusCircle} className="mr-3" />
             <span>Add Your Course</span>
           </li>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("allSession");
+            }}
+          >
+            <FontAwesomeIcon icon={faCalendar} className="mr-3" />
+            <span>Your Sessions</span>
+          </li>
           <li className="relative">
-            <div 
+            <div
               className="flex items-center p-2 hover:bg-white hover:text-black rounded-md cursor-pointer"
               onClick={() => setIsSettingsOpen(!isSettingsOpen)}
             >
@@ -69,7 +105,7 @@ const TutorDashboard = () => {
             </div>
             {isSettingsOpen && (
               <ul className="absolute left-0 w-full rounded-md mt-1">
-                <li 
+                <li
                   className="flex items-center p-2 hover:bg-white hover:text-black rounded-md cursor-pointer"
                   onClick={() => setHandleLink("changepassword")}
                 >
@@ -85,9 +121,14 @@ const TutorDashboard = () => {
         <ul>
           <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
             <FontAwesomeIcon icon={faSignOutAlt} className="mr-3" />
-            <button onClick={()=>{localStorage.clear();
-              navigate("/")
-            }}>Logout</button>
+            <button
+              onClick={() => {
+                localStorage.clear();
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </div>
@@ -98,20 +139,23 @@ const TutorDashboard = () => {
     <div className="flex h-screen w-full">
       {/* Mobile Drawer - Updated with transition */}
       <div
-        className={`fixed inset-0 z-10 md:hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'visible' : 'invisible'
-          }`}
+        className={`fixed inset-0 z-10 md:hidden transition-all duration-300 ease-in-out ${
+          mobileOpen ? "visible" : "invisible"
+        }`}
       >
         {/* Overlay */}
         <div
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${mobileOpen ? 'opacity-50' : 'opacity-0'
-            }`}
+          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+            mobileOpen ? "opacity-50" : "opacity-0"
+          }`}
           onClick={handleDrawerToggle}
         ></div>
 
         {/* Drawer Panel */}
         <div
-          className={`fixed top-0 left-0 h-full w-64 bg-white transform transition-transform duration-300 ease-in-out ${mobileOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
+          className={`fixed top-0 left-0 h-full w-64 bg-white transform transition-transform duration-300 ease-in-out ${
+            mobileOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
           {drawer}
         </div>
@@ -136,12 +180,13 @@ const TutorDashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto">
-          {handleLink === 'profilesettings' && <ProfileSettings/>}
-          {handleLink === 'educationsettings' && <EducationSettings/>}
-          {handleLink === 'experiencesettings' && <ExperienceDetails/>}
-          {handleLink === 'certificationsettings' && <CertificationDetails/>}
-          {handleLink === 'addyourcourse' && <AddYourCourse/>}
-          {handleLink === 'changepassword' && <ChangePassword/>}
+          {handleLink === "profilesettings" && <ProfileSettings />}
+          {handleLink === "educationsettings" && <EducationSettings />}
+          {handleLink === "experiencesettings" && <ExperienceDetails />}
+          {handleLink === "certificationsettings" && <CertificationDetails />}
+          {handleLink === "addyourcourse" && <AddYourCourse />}
+          {handleLink === "changepassword" && <ChangePassword />}
+          {handleLink === "allSession" && <AllSessionBook />}
         </main>
       </div>
     </div>

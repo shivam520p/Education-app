@@ -251,7 +251,7 @@ const PersonalDetails = () => {
               onChange={studentProfileHandleChange}
               readOnly={profileEdit}
               placeholder="Enter your message..."
-              className="w-full sm:w-4/5 px-4 py-2 rounded-md bg-slate-100"
+              className="w-full px-4 py-2 rounded-md bg-slate-100"
             ></textarea>
           </div>
 

@@ -11,6 +11,7 @@ import {
   faChalkboardTeacher,
   faCaretDown,
   faCaretRight,
+  faBook,
   faBookOpen,
   faLanguage,
   faChalkboard,

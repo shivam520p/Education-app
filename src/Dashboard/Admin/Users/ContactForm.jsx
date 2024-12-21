@@ -3,9 +3,10 @@ import { AdminContext } from '../../../auth/adminhandling/AdminProvider';
 
 
 const ContactForm = () => {
-  const {allContactUs,getAllContactUs}=useContext(AdminContext);
+  const {allContactUs,getAllContactUs,getAllLeadsFromUser}=useContext(AdminContext);
   useEffect(()=>{
     getAllContactUs();
+    getAllLeadsFromUser();
   },[]);
   return (
     <>

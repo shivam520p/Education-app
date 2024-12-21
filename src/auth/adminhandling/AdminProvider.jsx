@@ -53,6 +53,7 @@ export const AdminProvider = ({ children }) => {
       },
   });
   const [mode, setMode] = useState("");
+  const [allLeads, setAllLeads]=useState([]);
 
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
@@ -227,7 +228,6 @@ export const AdminProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
-      toast.error("Failed to fetch subjects");
     }
   };
 
@@ -395,6 +395,14 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const getAllSessionBook=async()=>{
+    try {
+      const response= await axiosInstance.get("/tutor/getbooksession")
+      console.log(response);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const getTutorCourses = async () => {
     try {
       const response = await axiosInstance.get("/tutor/getourcourses");
@@ -434,6 +442,9 @@ export const AdminProvider = ({ children }) => {
     try {
       const response = await axiosInstance.get("lead/getleads");
       console.log(response);
+      if(response.status===200){
+        setAllLeads(response.data.lead);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -517,6 +528,7 @@ export const AdminProvider = ({ children }) => {
         deleteLanguage,
         allContactUs,
         getAllContactUs,
+        getAllSessionBook,
         tutorCourses,
         setTutorCourses,
         getTutorCourses,
@@ -534,6 +546,8 @@ export const AdminProvider = ({ children }) => {
         getAllQuotes,
         deleteQuotes,
         submitQuary,
+        allLeads,
+        setAllLeads,
         getAllLeadsFromUser
       }}
     >

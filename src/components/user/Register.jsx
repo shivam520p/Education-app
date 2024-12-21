@@ -17,7 +17,7 @@ const Register = () => {
 
   return (
     <>
-      <section className="mt-24 px-4 bg-blue-50">
+      <section className="mt-16 lg:mt-24 px-4 bg-blue-50">
         <div className="container mx-auto flex flex-col justify-center items-center gap-5 py-16">
           <h1 className="text-5xl font-bold text-gray-700">Sign Up</h1>
           <div className="flex justify-center items-center gap-2 text-lg">
@@ -33,14 +33,14 @@ const Register = () => {
           </div>
         </div>
       </section>
-      <section className="bg-white px-4 py-16">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center">
+      <section className="md:px-4 md:py-16">
+        <div className="container mx-auto md:px-4 flex flex-col lg:flex-row justify-center items-center">
           {/* Left Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="rounded-lg shadow-lg w-full lg:w-1/3 py-3 px-3"
+            className="rounded-lg shadow-lg w-full lg:w-1/3 py-3 px-3 bg-blue-50"
           >
             <div className="bg-white px-6 md:px-10 py-10 rounded-lg">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
