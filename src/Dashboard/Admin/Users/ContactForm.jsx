@@ -11,7 +11,7 @@ const ContactForm = () => {
   return (
     <>
     <div className='bg-blue-100 w-full h-auto p-2 md:p-4 rounded-lg'>
-        <h1 className='text-xl md:text-3xl pb-3 md:pb-5 px-1'>All Contact Us</h1>
+        <h1 className='text-xl md:text-3xl pb-3 md:pb-5 px-1'>User Inquiries</h1>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white shadow-md rounded-lg">
             <thead>

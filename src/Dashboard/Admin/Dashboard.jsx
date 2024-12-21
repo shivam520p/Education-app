@@ -11,7 +11,10 @@ import {
   faChalkboardTeacher,
   faCaretDown,
   faCaretRight,
+  faList,
   faBook,
+  faChevronDown,
+  faChevronRight,
   faBookOpen,
   faLanguage,
   faChalkboard,
@@ -20,7 +23,6 @@ import {
   faInfoCircle,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
-import DashboardInfo from "./DashboardInfo";
 import AllUser from "./Users/AllUser";
 import AllStudent from "./Users/AllStudent";
 import AllTutor from "./Users/AllTutor";
@@ -28,6 +30,8 @@ import AllSubjects from "./Courses/AllSubjects";
 import AllClasses from "./Courses/AllClasses";
 import AllLanguage from "./Courses/AllLanguage";
 import WriteContent from "./WriteContent";
+import ContactForm from "./Users/ContactForm";
+import AllLeads from "./Users/AllLeads";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -35,7 +39,7 @@ const Dashboard = () => {
   const [usersOpen, setUsersOpen] = useState(false);
   const [courseOpen, setCourseOpen] = useState(false);
   const [pageOpen, setPageOpen] = useState(false);
-  const [handleLink, setHandleLink] = useState("dashboardinfo");
+  const [handleLink, setHandleLink] = useState("contactForm");
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -48,12 +52,22 @@ const Dashboard = () => {
           <li
             className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
             onClick={() => {
-              setHandleLink("dashboardinfo");
+              setHandleLink("contactForm");
             }}
           >
             <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
-            <span>Dashboard</span>
+            <span>Inquiries</span>
           </li>
+          <li
+            className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
+            onClick={() => {
+              setHandleLink("allLeads");
+            }}
+          >
+            <FontAwesomeIcon icon={faList} className="mr-3" />
+            <span>Leads</span>
+          </li>
+
           <li
             className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer"
             onClick={() => setUsersOpen(!usersOpen)}
@@ -98,13 +112,15 @@ const Dashboard = () => {
             className="flex items-center p-2 hover:Bg-white rounded-md cursor-pointer"
             onClick={() => setCourseOpen(!courseOpen)}
           >
-            <FontAwesomeIcon icon={faUsers} className="mr-3" />
+            <FontAwesomeIcon icon={faBook} className="mr-3" />{" "}
+           
             <span>All Subject</span>
             <FontAwesomeIcon
-              icon={courseOpen ? faCaretDown : faCaretRight}
+              icon={courseOpen ? faChevronDown : faChevronRight}
               className="ml-auto"
             />
           </li>
+
           {courseOpen && (
             <ul className="pl-8 space-y-2">
               <li
@@ -241,14 +257,15 @@ const Dashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto">
-          {handleLink === "dashboardinfo" && <DashboardInfo />}
+          {handleLink === "contactForm" && <ContactForm />}
+          {handleLink === "allLeads" && <AllLeads />}
           {handleLink === "allusers" && <AllUser />}
           {handleLink === "allstudents" && <AllStudent />}
           {handleLink === "alltutors" && <AllTutor />}
           {handleLink === "allsubjects" && <AllSubjects />}
           {handleLink === "allclasses" && <AllClasses />}
           {handleLink === "alllanguages" && <AllLanguage />}
-          {handleLink=== "writeContent" && <WriteContent/>}
+          {handleLink === "writeContent" && <WriteContent />}
         </main>
       </div>
     </div>

@@ -8,6 +8,7 @@ const AllLeads = () => {
   useEffect(() => {
     getAllLeadsFromUser();
   }, []);
+
   return (
     <>
       <section>
@@ -50,9 +51,10 @@ const AllLeads = () => {
                         <p>{leads.details.fullName}</p>
                       </td>
                       <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
-                        <p>{leads.details.email}</p>
-                        <p>{leads.details.mobile}</p>
+                        <p>{leads.details.email.slice(0, 4) + "XXXX"}</p>
+                        <p>{leads.details.mobile.slice(0, 4) + "XXXX"}</p>
                       </td>
+
                       <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
                         <p>
                           {leads.addressDetails.street},{" "}
@@ -68,7 +70,10 @@ const AllLeads = () => {
                       </td>
                       <td className="py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
                         <button className="rounded-md bg-blue-500 py-2 px-3 text-sm font-semibold text-white hover:shadow-md">
-                        <FontAwesomeIcon icon={faSignOutAlt} className="mr-3" />
+                          <FontAwesomeIcon
+                            icon={faSignOutAlt}
+                            className="mr-3"
+                          />
                           View Details
                         </button>
                       </td>
