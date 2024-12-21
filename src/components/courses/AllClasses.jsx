@@ -7,6 +7,7 @@ import BookTutor from "../models/BookTutor";
 const AllClasses = () => {
   const { allClasses, getAllClasses, setPopUp, popUp } =
     useContext(AdminContext);
+
   useEffect(() => {
     getAllClasses();
   }, []);

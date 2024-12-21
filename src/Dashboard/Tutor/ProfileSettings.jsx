@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 
 const ProfileSettings = () => {
@@ -17,14 +17,20 @@ const ProfileSettings = () => {
   return (
     <div className="flex flex-col lg:flex-row w-full min-h-screen p-2">
       <div className="w-full lg:w-2/3 p-3 lg:p-5 rounded-xl">
-        <h3 className="text-xl lg:text-2xl font-semibold mb-2">Personal Details</h3>
+        <h3 className="text-xl lg:text-2xl font-semibold mb-2">
+          Personal Details
+        </h3>
         <p className="text-sm lg:text-base text-gray-700 mb-6">
-          Please provide your personal information below to complete your profile
+          Please provide your personal information below to complete your
+          profile
         </p>
 
         <form onSubmit={tutorProfileUpdate} className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-t-2 border-gray-300 py-4">
-            <label htmlFor="fullName" className="w-full sm:w-1/5 text-sm lg:text-base">
+            <label
+              htmlFor="fullName"
+              className="w-full sm:w-1/5 text-sm lg:text-base"
+            >
               Full Name:
             </label>
             <input
@@ -38,7 +44,10 @@ const ProfileSettings = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-t-2 border-gray-300 py-4">
-            <label htmlFor="email" className="w-full sm:w-1/5 text-sm lg:text-base">
+            <label
+              htmlFor="email"
+              className="w-full sm:w-1/5 text-sm lg:text-base"
+            >
               Email:
             </label>
             <input
@@ -52,7 +61,10 @@ const ProfileSettings = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-t-2 border-gray-300 py-4">
-            <label htmlFor="gender" className="w-full sm:w-1/5 text-sm lg:text-base">
+            <label
+              htmlFor="gender"
+              className="w-full sm:w-1/5 text-sm lg:text-base"
+            >
               Gender:
             </label>
             <div className="flex space-x-4 items-center justify-start w-full sm:w-4/5">
@@ -93,7 +105,10 @@ const ProfileSettings = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-t-2 border-gray-300 py-4">
-            <label htmlFor="dateOfBirth" className="w-full sm:w-1/5 text-sm lg:text-base">
+            <label
+              htmlFor="dateOfBirth"
+              className="w-full sm:w-1/5 text-sm lg:text-base"
+            >
               Date of Birth:
             </label>
             <input
@@ -107,7 +122,9 @@ const ProfileSettings = () => {
           </div>
 
           <div className="flex flex-col gap-4 border-t-2 border-gray-300 py-4">
-            <label className="w-full sm:w-1/5 text-sm lg:text-base">Address:</label>
+            <label className="w-full sm:w-1/5 text-sm lg:text-base">
+              Address:
+            </label>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div>
@@ -134,18 +151,14 @@ const ProfileSettings = () => {
                       Select a State
                     </option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
-                    <option value="Arunachal Pradesh">
-                      Arunachal Pradesh
-                    </option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                     <option value="Assam">Assam</option>
                     <option value="Bihar">Bihar</option>
                     <option value="Chhattisgarh">Chhattisgarh</option>
                     <option value="Goa">Goa</option>
                     <option value="Gujarat">Gujarat</option>
                     <option value="Haryana">Haryana</option>
-                    <option value="Himachal Pradesh">
-                      Himachal Pradesh
-                    </option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
                     <option value="Jharkhand">Jharkhand</option>
                     <option value="Karnataka">Karnataka</option>
                     <option value="Kerala">Kerala</option>
@@ -207,7 +220,9 @@ const ProfileSettings = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">ZIP / Postal Code</label>
+                  <label className="block text-sm mb-1">
+                    ZIP / Postal Code
+                  </label>
                   <input
                     id="postal-code"
                     name="pinCode"
@@ -223,7 +238,10 @@ const ProfileSettings = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-t-2 border-gray-300 py-4">
-            <label htmlFor="language" className="w-full sm:w-1/5 text-sm lg:text-base">
+            <label
+              htmlFor="language"
+              className="w-full sm:w-1/5 text-sm lg:text-base"
+            >
               Language:
             </label>
             <select
@@ -243,7 +261,9 @@ const ProfileSettings = () => {
           </div>
 
           <div className="flex flex-col gap-4 border-t-2 border-gray-300 py-4">
-            <label className="w-full sm:w-1/5 text-sm lg:text-base">Discription:</label>
+            <label className="w-full sm:w-1/5 text-sm lg:text-base">
+              Discription:
+            </label>
             <textarea
               rows="5"
               name="about"
@@ -251,11 +271,11 @@ const ProfileSettings = () => {
               onChange={tutorProfileHandleChange}
               readOnly={profileEdit}
               placeholder="Enter your message..."
-              className="w-full sm:w-4/5 px-4 py-2 rounded-md bg-slate-100"
+              className="w-full px-4 py-2 rounded-md bg-slate-100"
             ></textarea>
           </div>
 
-          <div className="flex items-center justify-end gap-5 pb-10">
+          <div className="flex items-center justify-end gap-5">
             <button
               onClick={editAgainProfile}
               type="button"
@@ -280,7 +300,10 @@ const ProfileSettings = () => {
           <h3 className="text-xl font-semibold mb-4">Profile Photo</h3>
           <div className="relative w-48 h-48 mx-auto">
             <img
-              src={JSON.parse(localStorage.getItem("userImg")) || "/default-avatar.png"}
+              src={
+                JSON.parse(localStorage.getItem("userImg")) ||
+                "/default-avatar.png"
+              }
               alt="Profile"
               className="w-full h-full rounded-full object-cover border-4 border-gray-200"
             />

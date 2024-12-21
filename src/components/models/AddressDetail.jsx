@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 export const AddressDetail = () => {
-  const { selectedClass, setSelectedClass,submitQuary } = useContext(AdminContext);
+  const { selectedClass, setSelectedClass,submitQuary, setPopUp } = useContext(AdminContext);
   return (
     <>
       <div className="pt-4 h-[300px] overflow-y-auto">
@@ -176,7 +176,10 @@ export const AddressDetail = () => {
       </div>
       <div className="flex items-center justify-end gap-x-6 pt-5">
         <button
-        onClick={submitQuary}
+          onClick={(e)=>{
+            submitQuary(e);
+            setPopUp(false);
+          }}
           type="button"
           className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
         >
@@ -186,3 +189,5 @@ export const AddressDetail = () => {
     </>
   );
 };
+
+export default AddressDetail;

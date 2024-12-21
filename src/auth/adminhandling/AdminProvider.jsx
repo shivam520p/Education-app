@@ -36,7 +36,7 @@ export const AdminProvider = ({ children }) => {
 
   const [allTitle, setAllTile] = useState([]);
   const [selectedClass, setSelectedClass] = useState({
-      class: "",
+      classId: "",
       subjectName: [],
       mode: "",
       details: {
@@ -420,6 +420,7 @@ export const AdminProvider = ({ children }) => {
   };
 
   const submitQuary= async(e)=>{
+    console.log(selectedClass)
     e.preventDefault();
     try{
       const response= await axiosInstance.post("lead/postleads",selectedClass)
@@ -427,8 +428,17 @@ export const AdminProvider = ({ children }) => {
     }catch(err){
       console.log(err);
     }
-
   }
+
+  const getAllLeadsFromUser= async()=>{
+    try {
+      const response = await axiosInstance.get("lead/getleads");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const quoteHandleChange = (e) => {
     const { name, value } = e.target;
     setQuoteFrom({ ...quoteForm, [name]: value });
@@ -437,9 +447,11 @@ export const AdminProvider = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/title/posttitle", quoteForm);
-      if (response.status === 200) {
+      console.log(response)
+      if (response.status === 201) {
         toast.success(response.data.message);
         setQuoteFrom({titleName:"", titleContent:""});
+        setPopUp(false);
       }
     } catch (err) {
       toast.error("All Fields are required..!!");
@@ -521,7 +533,8 @@ export const AdminProvider = ({ children }) => {
         setAllTile,
         getAllQuotes,
         deleteQuotes,
-        submitQuary
+        submitQuary,
+        getAllLeadsFromUser
       }}
     >
       {children}

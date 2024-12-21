@@ -11,7 +11,6 @@ import {
   faChalkboardTeacher,
   faCaretDown,
   faCaretRight,
-  faBook,
   faBookOpen,
   faLanguage,
   faChalkboard,
@@ -24,7 +23,6 @@ import DashboardInfo from "./DashboardInfo";
 import AllUser from "./Users/AllUser";
 import AllStudent from "./Users/AllStudent";
 import AllTutor from "./Users/AllTutor";
-import AllCourses from "./Courses/AllCourses";
 import AllSubjects from "./Courses/AllSubjects";
 import AllClasses from "./Courses/AllClasses";
 import AllLanguage from "./Courses/AllLanguage";
@@ -108,15 +106,6 @@ const Dashboard = () => {
           </li>
           {courseOpen && (
             <ul className="pl-8 space-y-2">
-              <li
-                className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
-                onClick={() => {
-                  setHandleLink("allcourses");
-                }}
-              >
-                <FontAwesomeIcon icon={faBook} className="mr-3" />
-                <span> Courses</span>
-              </li>
               <li
                 className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
                 onClick={() => {
@@ -255,7 +244,6 @@ const Dashboard = () => {
           {handleLink === "allusers" && <AllUser />}
           {handleLink === "allstudents" && <AllStudent />}
           {handleLink === "alltutors" && <AllTutor />}
-          {handleLink === "allcourses" && <AllCourses />}
           {handleLink === "allsubjects" && <AllSubjects />}
           {handleLink === "allclasses" && <AllClasses />}
           {handleLink === "alllanguages" && <AllLanguage />}

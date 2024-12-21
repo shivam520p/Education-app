@@ -2,15 +2,8 @@ import React, { useContext } from "react";
 import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 const Class4To5 = () => {
-  const { setMode,selectedClass, setSelectedClass } = useContext(AdminContext);
-  const subjects = [
-    "All Subject",
-    "English",
-    "Mathematics",
-    "Science",
-    "Social Science",
-  ];
-
+  const { setMode, selectedClass, setSelectedClass, allSubjects } =
+    useContext(AdminContext);
   return (
     <>
       <div className="pt-4 h-[300px]">
@@ -21,16 +14,20 @@ const Class4To5 = () => {
           Subjects you want to learn?
           <sup className="text-red-500">*</sup>
         </label>
-        {subjects.map((subject) => (
+        {allSubjects.map((subject) => (
           <div
             key={subject}
             className="flex items-center gap-2 border-2 py-2 px-2 m-1"
           >
-            <input type="checkbox" name="class"
-            onClick={()=>{
-                setSelectedClass({...selectedClass, 
-                    subjectName:[...selectedClass.subjectName||[],subject]})
-            }} 
+            <input
+              type="checkbox"
+              name="class"
+              onClick={() => {
+                setSelectedClass({
+                  ...selectedClass,
+                  subjectName: [...(selectedClass.subjectName || []), subject],
+                });
+              }}
             />
             <label htmlFor="subjects">{subject}</label>
           </div>
@@ -38,7 +35,9 @@ const Class4To5 = () => {
       </div>
       <div className="flex items-center justify-end gap-x-6 pt-5">
         <button
-        onClick={()=>{setMode("mode")}}
+          onClick={() => {
+            setMode("mode");
+          }}
           type="button"
           className="rounded-md bg-blue-500 px-10 py-2 text-sm font-semibold text-white hover:shadow-md"
         >
