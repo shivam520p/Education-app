@@ -157,12 +157,12 @@ const Navbar = () => {
 
               <div className="p-4">
                 <Link
-                  to={`${token ? (userData?.role=== "1" ? "/studentdashboard" : "/tutordashboard") : "/login"}`}
-                  className="block w-full py-2 sm:py-3 text-center bg-blue-600 text-white text-sm sm:text-base rounded-full hover:bg-blue-700 transition-colors"
+              to={`${token ? (userData?.role=== "1" ? "/studentdashboard" :( userData?.role==="2" ? "/tutordashboard" : "/dashboard")) : "/login"}`}
+              className="block w-full py-2 sm:py-3 text-center bg-blue-600 text-white text-sm sm:text-base rounded-full hover:bg-blue-700 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Get Started
-                </Link>
+              {`${userData!==null ?(userData?.role==="3"?"Admin":userData.fullName):"Get Started"}`}
+              </Link>
               </div>
             </div>
           </div>

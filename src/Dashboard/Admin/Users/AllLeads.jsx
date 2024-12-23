@@ -7,8 +7,11 @@ const AllLeads = () => {
     useContext(AdminContext);
   const [lead, setLead] = useState(null);
   useEffect(() => {
-    getAllLeadsFromUser();
-  }, [allLeads]);
+    if (localStorage.getItem("lead")) {
+      getAllLeadsFromUser();
+      localStorage.setItem('lead',true);
+    }
+  }, []);
 
   return (
     <>

@@ -404,7 +404,7 @@ export const AdminProvider = ({ children }) => {
   const tutorVerify = async (id) => {
     try {
       const response = await axiosInstance.put(`/admin/updatestatus/${id}`);
-      console.log(response)
+      console.log(response);
       if (response.status === 200) {
         toast.success(response.data.message);
       }
@@ -452,7 +452,7 @@ export const AdminProvider = ({ children }) => {
       console.log(response);
       if (response.status === 201) {
         toast.success(response.data.message);
-        setQuoteFrom({ titleName: "", titleContent: "" });  
+        setQuoteFrom({ titleName: "", titleContent: "" });
         setPopUp(false);
       }
     } catch (err) {
@@ -482,17 +482,16 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  const deleteLeads = async (id)=>{
+  const deleteLeads = async (id) => {
     try {
-      const response= await axiosInstance.delete(`/lead/removeLead/${id}`);
-      if(response.status===200){
+      const response = await axiosInstance.delete(`/lead/removeLead/${id}`);
+      if (response.status === 200) {
         toast.success(response.data.message);
       }
     } catch (err) {
       console.log(err);
-      
     }
-  }
+  };
 
   return (
     <AdminContext.Provider
@@ -551,7 +550,7 @@ export const AdminProvider = ({ children }) => {
         allLeads,
         setAllLeads,
         getAllLeadsFromUser,
-        deleteLeads
+        deleteLeads,
       }}
     >
       {children}
