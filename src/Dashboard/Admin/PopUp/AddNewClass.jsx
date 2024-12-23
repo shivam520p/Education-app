@@ -5,12 +5,7 @@ const AddNewClass = () => {
   const { setPopUp, classHandleChange, addClass } = useContext(AdminContext);
   return (
     <>
-      <div
-        id="authentication-modal"
-        tabindex="-1"
-        aria-hidden="true"
-        className={`fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50`}
-      >
+      <div className="fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50">
         <div className="relative p-3 w-full max-w-md max-h-full bg-blue-100 rounded-lg">
           <div className="p-3 bg-white rounded-lg">
             <form className="space-y-2" action="#" onSubmit={addClass}>

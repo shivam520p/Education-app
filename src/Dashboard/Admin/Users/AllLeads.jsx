@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../auth/adminhandling/AdminProvider";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaEye, FaTrash } from "react-icons/fa";
+import LeadViewCard from "./LeadViewCard";
 const AllLeads = () => {
-  const { allLeads, getAllLeadsFromUser } = useContext(AdminContext);
-  console.log(allLeads);
+  const { allLeads, getAllLeadsFromUser, popUp, setPopUp, deleteLeads } =
+    useContext(AdminContext);
+  const [lead, setLead] = useState(null);
   useEffect(() => {
     getAllLeadsFromUser();
-  }, []);
+  }, [allLeads]);
 
   return (
     <>
@@ -43,7 +44,10 @@ const AllLeads = () => {
               <tbody>
                 {allLeads &&
                   allLeads.map((leads, index) => (
-                    <tr className="border-b border-gray-200 hover:bg-gray-50">
+                    <tr
+                      key={index}
+                      className="border-b border-gray-200 hover:bg-gray-50"
+                    >
                       <td className="py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
                         {index + 1}.
                       </td>
@@ -51,8 +55,10 @@ const AllLeads = () => {
                         <p>{leads.details.fullName}</p>
                       </td>
                       <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
-                        <p>{leads.details.email.slice(0, 4) + "XXXX"}</p>
-                        <p>{leads.details.mobile.slice(0, 4) + "XXXX"}</p>
+                        <p>
+                          {leads.details.email.slice(0, 4) + "xxx@gmail.com"}
+                        </p>
+                        <p>{leads.details.mobile.slice(0, 4) + "XXXXXX"}</p>
                       </td>
 
                       <td className="hidden md:table-cell py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
@@ -66,15 +72,24 @@ const AllLeads = () => {
                         </p>
                       </td>
                       <td className="py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
-                        <p>{leads.classesId.updatedAt}</p>
+                        <p>{new Date(leads.createDate).toLocaleString()}</p>
                       </td>
-                      <td className="py-2 md:py-3 px-2 md:px-4 text-sm md:text-base text-center">
-                        <button className="rounded-md bg-blue-500 py-2 px-3 text-sm font-semibold text-white hover:shadow-md">
-                          <FontAwesomeIcon
-                            icon={faSignOutAlt}
-                            className="mr-3"
-                          />
-                          View Details
+                      <td className="flex gap-5 items-center justify-center py-2 md:py-6 px-2 md:px-4">
+                        <button
+                          onClick={() => {
+                            setPopUp(true);
+                            setLead(leads);
+                          }}
+                          className=""
+                        >
+                          <FaEye className="text-2xl text-blue-400 hover:text-blue-700" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            deleteLeads(leads._id);
+                          }}
+                        >
+                          <FaTrash className="text-lg text-red-400 hover:text-red-700" />
                         </button>
                       </td>
                     </tr>
@@ -84,6 +99,7 @@ const AllLeads = () => {
           </div>
         </div>
       </section>
+      {popUp && <LeadViewCard lead={lead} />}
     </>
   );
 };

@@ -4,32 +4,28 @@ import { TutorContext } from "../../../auth/TutorHandling/TutorProvider";
 
 const AddCourse = () => {
   const { setPopUp } = useContext(AdminContext);
-  const {tutorCourses, handleCourseChange,addTutorCourses} = useContext(TutorContext);
+  const { tutorCourses, handleCourseChange, addTutorCourses } =
+    useContext(TutorContext);
   return (
     <>
-      <div
-        id="authentication-modal"
-        tabindex="-1"
-        aria-hidden="true"
-        className={`fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50`}
-      >
+      <div className="fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50">
         <div className="relative p-3 w-full max-w-md max-h-full bg-blue-100 rounded-md">
           <div className="p-4 bg-white rounded-md">
             <div className="flex justify-between items-center pb-4 border-b border-gray-300">
-                <div className="text-xl font-semibold text-gray-800">
-                    Add new course
-                </div>
-            <div className=" flex justify-end items-end">
-              <i
-                onClick={() => {
-                  setPopUp(false);
-                }}
-                className="hover:cursor-pointer text-xl text-gray-500 fa-solid fa-xmark"
-              ></i>
-            </div>
+              <div className="text-xl font-semibold text-gray-800">
+                Add new course
+              </div>
+              <div className=" flex justify-end items-end">
+                <i
+                  onClick={() => {
+                    setPopUp(false);
+                  }}
+                  className="hover:cursor-pointer text-xl text-gray-500 fa-solid fa-xmark"
+                ></i>
+              </div>
             </div>
             <form className="space-y-2" onSubmit={addTutorCourses}>
-            <div className="pt-4">
+              <div className="pt-4">
                 <label
                   htmlFor="courseTitle"
                   className="block text-base font-medium text-gray-600"

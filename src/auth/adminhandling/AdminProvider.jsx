@@ -36,24 +36,24 @@ export const AdminProvider = ({ children }) => {
 
   const [allTitle, setAllTile] = useState([]);
   const [selectedClass, setSelectedClass] = useState({
-      classId: "",
-      subjectName: [],
-      mode: "",
-      details: {
-        fullName: "",
-        mobile: "",
-        email: "",
-      },
-      addressDetails: {
-        street: "",
-        city: "",
-        state: "",
-        country: "",
-        pinCode: "",
-      },
+    classId: "",
+    subjectName: [],
+    mode: "",
+    details: {
+      fullName: "",
+      mobile: "",
+      email: "",
+    },
+    addressDetails: {
+      street: "",
+      city: "",
+      state: "",
+      country: "",
+      pinCode: "",
+    },
   });
   const [mode, setMode] = useState("");
-  const [allLeads, setAllLeads]=useState([]);
+  const [allLeads, setAllLeads] = useState([]);
 
   const courseHandleChange = (e) => {
     const { name, value, files } = e.target;
@@ -108,7 +108,6 @@ export const AdminProvider = ({ children }) => {
         getAllCourses();
       }
     } catch (err) {
-      toast.error(err.response.data.message || "Failed to add course");
       console.error(err);
     }
   };
@@ -151,7 +150,6 @@ export const AdminProvider = ({ children }) => {
         getAllLanguage();
       }
     } catch (err) {
-      toast.error(err.response.data.message || "Failed to add language");
       console.error(err);
     }
   };
@@ -175,7 +173,6 @@ export const AdminProvider = ({ children }) => {
         getAllLanguage();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to delete language");
       console.error(err);
     }
   };
@@ -215,7 +212,6 @@ export const AdminProvider = ({ children }) => {
         getAllSubjects();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to add subject");
       console.error(err);
     }
   };
@@ -239,7 +235,6 @@ export const AdminProvider = ({ children }) => {
         getAllSubjects();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to delete course");
       console.error(err);
     }
   };
@@ -286,16 +281,13 @@ export const AdminProvider = ({ children }) => {
       if (response.status === 200) {
         setPopUp(false);
         toast.success("Class added successfully!");
-        // Clear the form
         setNewClasses({
           className: "",
           image: "",
         });
-        // Refresh the subjects list
         getAllClasses();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to add class");
       console.error(err);
     }
   };
@@ -308,7 +300,6 @@ export const AdminProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
-      toast.error("Failed to fetch subjects");
     }
   };
 
@@ -320,7 +311,6 @@ export const AdminProvider = ({ children }) => {
         getAllClasses();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to delete class");
       console.error(err);
     }
   };
@@ -333,7 +323,6 @@ export const AdminProvider = ({ children }) => {
         getAllCourses();
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to delete course");
       console.error(err);
     }
   };
@@ -357,7 +346,6 @@ export const AdminProvider = ({ children }) => {
         setAllTutor(response.data.Tutor_Data);
       }
     } catch (error) {
-      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -369,7 +357,6 @@ export const AdminProvider = ({ children }) => {
         toast.success("Tutor deleted successfully...!!");
       }
     } catch (err) {
-      toast.error(err);
       console.log(err);
     }
   };
@@ -380,7 +367,6 @@ export const AdminProvider = ({ children }) => {
         toast.success("Student deleted successfully...!!");
       }
     } catch (err) {
-      toast.error(err);
       console.log(err);
     }
   };
@@ -395,14 +381,14 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const getAllSessionBook=async()=>{
+  const getAllSessionBook = async () => {
     try {
-      const response= await axiosInstance.get("/tutor/getbooksession")
+      const response = await axiosInstance.get("/tutor/getbooksession");
       console.log(response);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   const getTutorCourses = async () => {
     try {
       const response = await axiosInstance.get("/tutor/getourcourses");
@@ -418,6 +404,7 @@ export const AdminProvider = ({ children }) => {
   const tutorVerify = async (id) => {
     try {
       const response = await axiosInstance.put(`/admin/updatestatus/${id}`);
+      console.log(response)
       if (response.status === 200) {
         toast.success(response.data.message);
       }
@@ -427,28 +414,32 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  const submitQuary= async(e)=>{
-    console.log(selectedClass)
+  const submitQuary = async (e) => {
+    console.log(selectedClass);
     e.preventDefault();
-    try{
-      const response= await axiosInstance.post("lead/postleads",selectedClass)
-      console.log(response);
-    }catch(err){
+    try {
+      const response = await axiosInstance.post(
+        "lead/postleads",
+        selectedClass
+      );
+      if (response.status === 201) {
+        toast.success(response.data.message);
+      }
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  const getAllLeadsFromUser= async()=>{
+  const getAllLeadsFromUser = async () => {
     try {
       const response = await axiosInstance.get("lead/getleads");
-      console.log(response);
-      if(response.status===200){
-        setAllLeads(response.data.lead);
+      if (response.status === 200) {
+        setAllLeads(response?.data?.lead);
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const quoteHandleChange = (e) => {
     const { name, value } = e.target;
@@ -458,10 +449,10 @@ export const AdminProvider = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/title/posttitle", quoteForm);
-      console.log(response)
+      console.log(response);
       if (response.status === 201) {
         toast.success(response.data.message);
-        setQuoteFrom({titleName:"", titleContent:""});
+        setQuoteFrom({ titleName: "", titleContent: "" });
         setPopUp(false);
       }
     } catch (err) {
@@ -487,10 +478,21 @@ export const AdminProvider = ({ children }) => {
         toast.success("Quotes deleted successfully...!!");
       }
     } catch (err) {
-      toast.error(err);
       console.log(err);
     }
   };
+
+  const deleteLeads = async (id)=>{
+    try {
+      const response= await axiosInstance.delete(`/lead/removeLead/${id}`);
+      if(response.status===200){
+        toast.success(response.data.message);
+      }
+    } catch (err) {
+      console.log(err);
+      
+    }
+  }
 
   return (
     <AdminContext.Provider
@@ -548,7 +550,8 @@ export const AdminProvider = ({ children }) => {
         submitQuary,
         allLeads,
         setAllLeads,
-        getAllLeadsFromUser
+        getAllLeadsFromUser,
+        deleteLeads
       }}
     >
       {children}

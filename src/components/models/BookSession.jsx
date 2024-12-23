@@ -2,17 +2,13 @@ import React, { useContext } from "react";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 import { PageContext } from "../../auth/PagesHandle/PageProvider";
 
-const BookSession = ({tutor}) => {
-  const {setPopUp}= useContext(TutorContext);
-  const {bookSessionHandleSubmit,bookSessionHandleChange,bookSession}= useContext(PageContext);
+const BookSession = ({ tutor }) => {
+  const { setPopUp } = useContext(TutorContext);
+  const { bookSessionHandleSubmit, bookSessionHandleChange, bookSession } =
+    useContext(PageContext);
   return (
     <>
-      <div
-        id="authentication-modal"
-        tabindex="-1"
-        aria-hidden="true"
-        className="fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50"
-      >
+      <div className="fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50">
         <div className="relative p-4 w-full max-w-md max-h-full">
           {/* <!-- Modal content --> */}
           <div className="relative p-3 bg-white rounded-lg shadow dark:bg-gray-700">
@@ -24,7 +20,7 @@ const BookSession = ({tutor}) => {
                 </h3>
                 <button
                   type="button"
-                  onClick={()=>setPopUp(false)}
+                  onClick={() => setPopUp(false)}
                   className="end-2.5 text-blue-500 bg-transparent hover:bg-gray-200 hover:text-blue-600 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                   data-modal-hide="authentication-modal"
                 >
@@ -48,7 +44,12 @@ const BookSession = ({tutor}) => {
               </div>
               {/* <!-- Modal body --> */}
               <div className="p-4 md:p-5">
-                <form className="space-y-2" onSubmit={(e)=>{bookSessionHandleSubmit(e)(tutor._id)}}>
+                <form
+                  className="space-y-2"
+                  onSubmit={(e) => {
+                    bookSessionHandleSubmit(e)(tutor._id);
+                  }}
+                >
                   <div>
                     <label
                       htmlFor="date"

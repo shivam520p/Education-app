@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { FaTrash } from "react-icons/fa";
 import { AdminContext } from "../../../auth/adminhandling/AdminProvider";
 
 const AllUser = () => {
@@ -27,11 +26,6 @@ const AllUser = () => {
                   className="flex flex-col justify-center items-center bg-blue-100 shadow-md rounded-lg p-3"
                 >
                   <div className="w-full bg-white p-4 rounded-lg">
-                    <div className="w-full flex justify-end">
-                      <button className="text-red-500 hover:text-red-700">
-                        <FaTrash className="text-lg" />
-                      </button>
-                    </div>
                     <div className="flex flex-col justify-between items-center pb-2">
                       <img
                         src={tutor.userId.avatar}
@@ -97,11 +91,6 @@ const AllUser = () => {
                   className="flex flex-col justify-center items-center bg-blue-100 shadow-md rounded-lg p-3"
                 >
                   <div className="w-full bg-white p-4 rounded-lg">
-                    <div className="w-full flex justify-end">
-                      <button className="text-red-500 hover:text-red-700">
-                        <FaTrash className="text-lg" />
-                      </button>
-                    </div>
                     <div className="flex flex-col justify-between items-center pb-2">
                       <img
                         src={student.userId.avatar}
