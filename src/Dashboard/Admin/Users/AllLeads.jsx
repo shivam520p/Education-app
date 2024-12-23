@@ -6,12 +6,12 @@ const AllLeads = () => {
   const { allLeads, getAllLeadsFromUser, popUp, setPopUp, deleteLeads } =
     useContext(AdminContext);
   const [lead, setLead] = useState(null);
-  useEffect(() => {
-    if (localStorage.getItem("lead")) {
+ useEffect(() => {
+    if (!localStorage.getItem("lead")) {
       getAllLeadsFromUser();
       localStorage.setItem('lead',true);
     }
-  }, []);
+  }, []); 
 
   return (
     <>
