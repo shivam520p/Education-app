@@ -452,7 +452,7 @@ export const AdminProvider = ({ children }) => {
       console.log(response);
       if (response.status === 201) {
         toast.success(response.data.message);
-        setQuoteFrom({ titleName: "", titleContent: "" });
+        setQuoteFrom({ titleName: "", titleContent: "" });  
         setPopUp(false);
       }
     } catch (err) {
