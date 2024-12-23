@@ -6,12 +6,9 @@ const AllLeads = () => {
   const { allLeads, getAllLeadsFromUser, popUp, setPopUp, deleteLeads } =
     useContext(AdminContext);
   const [lead, setLead] = useState(null);
- useEffect(() => {
-    if (!localStorage.getItem("lead")) {
-      getAllLeadsFromUser();
-      localStorage.setItem('lead',true);
-    }
-  }, []); 
+  useEffect(() => {
+    getAllLeadsFromUser();
+  }, []);
 
   return (
     <>
@@ -83,7 +80,6 @@ const AllLeads = () => {
                             setPopUp(true);
                             setLead(leads);
                           }}
-                          className=""
                         >
                           <FaEye className="text-2xl text-blue-400 hover:text-blue-700" />
                         </button>

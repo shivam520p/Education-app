@@ -5,7 +5,7 @@ const AllUser = () => {
   const { getAllUsers, allStudent, allTutor } = useContext(AdminContext);
   useEffect(() => {
     getAllUsers();
-  }, [allStudent, allTutor]);
+  },[]);
 
   return (
     <>

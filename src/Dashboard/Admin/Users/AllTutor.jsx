@@ -8,7 +8,7 @@ const AllUser = () => {
     useContext(AdminContext);
   useEffect(() => {
     getAllUsers();
-  }, [allTutor]);
+  }, []);
 
   return (
     <>
@@ -25,7 +25,7 @@ const AllUser = () => {
                 <div className="w-full bg-white p-4 rounded-lg">
                   <div className="w-full flex justify-end">
                     <button
-                      onClick={tutorDelete}
+                      onClick={()=>{tutorDelete(tutor._id)}}
                       className="text-red-500 hover:text-red-700"
                     >
                       <FaTrash className="text-lg" />

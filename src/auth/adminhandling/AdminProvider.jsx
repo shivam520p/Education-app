@@ -341,6 +341,7 @@ export const AdminProvider = ({ children }) => {
   const getAllUsers = async () => {
     try {
       const response = await axiosInstance.get("/admin/getallDetails");
+      console.log(response.data)
       if (response.status === 200) {
         setAllStudent(response.data.student_Data);
         setAllTutor(response.data.Tutor_Data);
