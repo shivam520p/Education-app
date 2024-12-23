@@ -3,10 +3,9 @@ import { AdminContext } from "../../auth/adminhandling/AdminProvider";
 
 const AllTileOnScreen = () => {
   const { allTitle, getAllQuotes,deleteQuotes } = useContext(AdminContext);
-
   useEffect(() => {
     getAllQuotes();
-  }, [allTitle]);
+  }, []);
 
   return (
     <section className="flex items-center justify-center">
