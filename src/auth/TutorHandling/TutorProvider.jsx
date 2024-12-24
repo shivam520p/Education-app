@@ -69,7 +69,7 @@ export const TutorProvider = ({ children }) => {
     Password: "",
     newPassword: "",
   });
-  const [allSessionBook, setAllSessionBook]=useState([]);
+  const [allSessionBook, setAllSessionBook] = useState([]);
 
   const passwordHandleChange = (e) => {
     const { name, value } = e.target;
@@ -164,7 +164,7 @@ export const TutorProvider = ({ children }) => {
         if (response.status === 200) {
           localStorage.setItem(
             "tutorDetails",
-            JSON.stringify(response.data.createTutor.address)
+            JSON.stringify(response.data.data.address)
           );
           setProfileEdit(true);
           toast.success(response.data.message);
@@ -212,7 +212,7 @@ export const TutorProvider = ({ children }) => {
         if (response.status === 200) {
           localStorage.setItem(
             "education",
-            JSON.stringify(response.data.createTutor.qualifications)
+            JSON.stringify(response.data.data.qualifications)
           );
           setProfileEdit(true);
           toast.success(response.data.message);
@@ -227,6 +227,7 @@ export const TutorProvider = ({ children }) => {
           "/tutor/updatetutordetails",
           educationDetails
         );
+        console.log(response)
         if (response.status === 200) {
           localStorage.setItem(
             "education",
@@ -259,7 +260,7 @@ export const TutorProvider = ({ children }) => {
         if (response.status === 200) {
           localStorage.setItem(
             "experience",
-            JSON.stringify(response.data.createTutor.experience)
+            JSON.stringify(response.data.data.experience)
           );
           setProfileEdit(true);
           toast.success(response.data.message);
@@ -342,7 +343,7 @@ export const TutorProvider = ({ children }) => {
           );
           localStorage.setItem(
             "certificate",
-            JSON.stringify(response.data.createTutor.certifications)
+            JSON.stringify(response.data.data.certifications)
           );
         }
       } catch (err) {
@@ -392,11 +393,12 @@ export const TutorProvider = ({ children }) => {
           "Content-Type": "multipart/form-data",
         },
       });
+      console.log(response)
       if (response.status === 200) {
         toast.success(response.data.message);
         localStorage.setItem(
           "userImg",
-          JSON.stringify(response.data.updateUserImage.avatar)
+          JSON.stringify(response.data.data.avatar)
         );
       }
     } catch (err) {
@@ -422,7 +424,7 @@ export const TutorProvider = ({ children }) => {
       console.log(error);
     }
   };
-  
+
   const handleCourseChange = (e) => {
     const { name } = e.target;
     if (e.target.type === "file") {
@@ -455,7 +457,7 @@ export const TutorProvider = ({ children }) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response)
+      console.log(response);
       if (response.status === 200) {
         toast.success("Course added successfully!");
       }
@@ -468,7 +470,7 @@ export const TutorProvider = ({ children }) => {
   const getAllSessionBook = async () => {
     try {
       const response = await axiosInstance.get("/tutor/getbooksession");
-      if(response.status===200){
+      if (response.status === 200) {
         setAllSessionBook(response.data.findUsers);
       }
     } catch (error) {

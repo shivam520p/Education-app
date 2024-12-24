@@ -256,7 +256,7 @@ const Dashboard = () => {
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1">
+        <main>
           {handleLink === "contactForm" && <ContactForm />}
           {handleLink === "allLeads" && <AllLeads />}
           {handleLink === "allusers" && <AllUser />}
