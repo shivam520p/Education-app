@@ -553,7 +553,9 @@ export const AdminProvider = ({ children }) => {
     const response=await axiosInstance.put(`lead/update-lead-status/${id}`,{
       status:value
     })
-    console.log(response)
+    if(response.status===200){
+      getAllLeadsFromUser();
+    }
   }
   catch(err){
     console.log(err);

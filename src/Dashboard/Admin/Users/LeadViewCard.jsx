@@ -6,12 +6,10 @@ const LeadViewCard = ({ lead }) => {
 
   return (
     <>
-      <div
-        className={`fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50`}
-      >
+      <div className="fixed inset-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50">
         <div className="relative p-3 w-full max-w-md max-h-full bg-blue-100 rounded-lg">
           <div className="p-3 bg-white rounded-lg">
-            <div className="flex justify-end">
+            <div className="flex justify-end pb-3">
               <span className="text-red-400 hover:text-red-600">
                 <i
                   onClick={() => {
