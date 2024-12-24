@@ -256,7 +256,7 @@ const Dashboard = () => {
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1">
           {handleLink === "contactForm" && <ContactForm />}
           {handleLink === "allLeads" && <AllLeads />}
           {handleLink === "allusers" && <AllUser />}

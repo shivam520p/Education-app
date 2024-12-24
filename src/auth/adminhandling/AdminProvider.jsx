@@ -402,12 +402,65 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  const tutorVerify = async (id) => {
+  const tutorVerify = async (tutor) => {
     try {
-      const response = await axiosInstance.put(`/admin/updatestatus/${id}`);
+      if(tutor.isBlocked){
+      
+      }
+        else{const response = await axiosInstance.put(`/admin/updatestatus/${tutor._id}`);
       console.log(response);
       if (response.status === 200) {
         toast.success(response.data.message);
+      getAllUsers()
+       } }
+    } catch (err) {
+      toast.error(err.response.data.message);
+      console.log(err);
+    }
+  };
+
+  const tutorBlock = async (block,id) => {
+    console.log(id)
+    try {
+      let blockTutor='';
+      if(block){
+      blockTutor='unblock';  
+      } 
+      else{
+        blockTutor='block';
+      }
+      console.log(block,blockTutor)
+      const response = await axiosInstance.put(`/admin/blocked/${id}`,{
+        action:blockTutor
+      });
+               console.log(response);
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        getAllUsers()
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
+      console.log(err);
+    }
+  };
+  const studentBlock = async (block,id) => {
+    console.log(id)
+    try {
+      let blockStudent='';
+      if(block){
+      blockStudent='unblock';  
+      } 
+      else{
+        blockStudent='block';
+      }
+      console.log(block,blockStudent)
+      const response = await axiosInstance.put(`/admin/blocked/${id}`,{
+        action:blockStudent
+      });
+               console.log(response);
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        getAllUsers()
       }
     } catch (err) {
       toast.error(err.response.data.message);
@@ -493,10 +546,25 @@ export const AdminProvider = ({ children }) => {
       console.log(err);
     }
   };
+ 
+  const statusOfLeads=async(value,id)=>{
+    console.log(value,id)
+   try{
+    const response=await axiosInstance.put(`lead/update-lead-status/${id}`,{
+      status:value
+    })
+    console.log(response)
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+
 
   return (
     <AdminContext.Provider
       value={{
+        statusOfLeads,
         getAllUsers,
         allStudent,
         allTutor,
@@ -552,6 +620,8 @@ export const AdminProvider = ({ children }) => {
         setAllLeads,
         getAllLeadsFromUser,
         deleteLeads,
+        tutorBlock,
+        studentBlock
       }}
     >
       {children}
