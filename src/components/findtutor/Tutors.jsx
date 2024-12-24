@@ -6,9 +6,9 @@ import { faUserGraduate, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast from "react-hot-toast";
 const Tutors = () => {
-  const { allTutorDetails, getTutorDetails, setTutor } = useContext(TutorContext);
+  const { allTutorDetails, getTutorToDisplay } = useContext(TutorContext);
   useEffect(() => {
-    getTutorDetails();
+    getTutorToDisplay();
   }, []);
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -40,10 +40,6 @@ const Tutors = () => {
       },
     },
   };
- 
-  useEffect(() => {
-    getTutorDetails();
-  }, []);
   return (
     <div className="px-4 py-10">
       <motion.div
@@ -86,17 +82,17 @@ const Tutors = () => {
 
             <div className="p-4 md:p-6">
               <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">
-                {tutor.userId.fullName}
+                {tutor.userId?.fullName}
               </h3>
 
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-2">
                 <FontAwesomeIcon icon={faUserTie} />
-                  <span>{tutor.experience[0]?.institutionName}</span>
+                  <span>{tutor?.experience[0]?.institutionName}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FontAwesomeIcon icon={faUserGraduate} />
-                  <span>{tutor.qualifications[0]?.degree}</span>
+                  <span>{tutor?.qualifications[0]?.degree}</span>
                 </div>
               </div>
 

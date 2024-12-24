@@ -12,7 +12,8 @@ import {
   faUser,
   faCaretDown,
   faPlusCircle,
-  faCalendar ,
+  faCalendar,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import ProfileSettings from "../../Dashboard/Tutor/ProfileSettings";
 import EducationSettings from "../../Dashboard/Tutor/EducationSettings";
@@ -36,10 +37,6 @@ const TutorDashboard = () => {
       <div>
         <div className="py-5 text-xl font-bold border-b">Tutor Panel</div>
         <ul className="space-y-2 py-5 cursor-pointer">
-          <li className="flex items-center p-2 hover:bg-white hover:text-black rounded-md">
-            <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
-            <Link to="/">Dashboard</Link>
-          </li>
           <li
             className="flex items-center p-2 hover:bg-white hover:text-black rounded-md"
             onClick={() => {
@@ -123,7 +120,7 @@ const TutorDashboard = () => {
             <FontAwesomeIcon icon={faSignOutAlt} className="mr-3" />
             <button
               onClick={() => {
-                localStorage.clear();
+                localStorage.clear()
                 navigate("/");
               }}
             >
@@ -175,7 +172,12 @@ const TutorDashboard = () => {
           <button className="text-white md:hidden" onClick={handleDrawerToggle}>
             <FontAwesomeIcon icon={faBars} />
           </button>
-          <div className="text-xl font-bold">Profile</div>
+          <div className="text-xl font-bold">
+            <Link to="/">
+              <FontAwesomeIcon icon={faHome} className="mr-2" />
+              Home
+            </Link>
+          </div>
         </header>
 
         {/* Main Content Area */}

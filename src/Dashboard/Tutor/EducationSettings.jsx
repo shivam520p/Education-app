@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 const EducationSettings = () => {
   const {
+
     editAgainProfile,
     educationDetails,
     educationDetailsHandleChange,
@@ -30,6 +31,7 @@ const EducationSettings = () => {
                 name="degree"
                 value={educationDetails?.degree}
                 onChange={educationDetailsHandleChange}
+                disabled={profileEdit}
                 placeholder="Enter your degree name"
                 className="bg-slate-100 w-[80%] px-4 py-2 rounded-md"
               />
@@ -41,6 +43,7 @@ const EducationSettings = () => {
                 name="institution"
                 value={educationDetails?.institution}
                 onChange={educationDetailsHandleChange}
+                disabled={profileEdit}
                 placeholder="Enter your institution"
                 className="bg-slate-100 w-[80%] px-4 py-2 rounded-md"
               />

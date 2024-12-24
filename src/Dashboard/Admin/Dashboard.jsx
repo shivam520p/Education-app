@@ -113,7 +113,6 @@ const Dashboard = () => {
             onClick={() => setCourseOpen(!courseOpen)}
           >
             <FontAwesomeIcon icon={faBook} className="mr-3" />{" "}
-           
             <span>All Subject</span>
             <FontAwesomeIcon
               icon={courseOpen ? faChevronDown : faChevronRight}
@@ -252,7 +251,11 @@ const Dashboard = () => {
           <button className="text-white md:hidden" onClick={handleDrawerToggle}>
             <FontAwesomeIcon icon={faBars} />
           </button>
-          <div className="text-xl font-bold">Profile</div>
+          <div className="text-xl font-bold">
+            <Link to="/">
+              <FontAwesomeIcon icon={faHome} className="mr-2" />Home
+            </Link>
+          </div>
         </header>
 
         {/* Main Content Area */}

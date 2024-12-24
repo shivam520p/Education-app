@@ -11,7 +11,7 @@ const CertificationDetails = () => {
   } = useContext(TutorContext);
 
   const [certificate, setCertificate] = useState([]);
-  
+
   // On initial mount, retrieve certificate from localStorage
   useEffect(() => {
     const savedCertificate = localStorage.getItem("certificate");
@@ -19,25 +19,25 @@ const CertificationDetails = () => {
       try {
         setCertificate(JSON.parse(savedCertificate));
       } catch (error) {
-        console.error("Failed to parse certificate data from localStorage", error);
+        console.error(
+          "Failed to parse certificate data from localStorage",
+          error
+        );
       }
     }
   }, []);
-  
+
   return (
     <div className="flex items-center justify-start p-4">
-      <form
-        action=""
-        onSubmit={certificatesDetailsUpdate}
-        className="w-full"
-      >
+      <form action="" onSubmit={certificatesDetailsUpdate} className="w-full">
         <div className="flex flex-col md:flex-row items-start justify-between gap-5">
           <div className="flex flex-col w-full md:w-1/2">
             <h3 className="text-xl lg:text-2xl font-semibold mb-2">
               Certification Details
             </h3>
             <p className="text-sm lg:text-lg text-gray-700 mb-4">
-              Please provide your certification details below to complete your profile.
+              Please provide your certification details below to complete your
+              profile.
             </p>
             <div className="space-y-4 w-full">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-t-2 border-gray-300 pt-4">
@@ -134,18 +134,11 @@ const CertificationDetails = () => {
 
           <div className="flex p-3 w-full md:w-1/2 mt-4 md:mt-0 space-y-4 bg-blue-100 h-[400px] lg:h-[800px] rounded-lg">
             <div className="flex justify-center items-center w-full bg-white rounded-lg">
-              {certificate && certificate.length > 0 ? (
-                certificate.map((cert, index) => (
-                  <img
-                    key={index}
-                    src={cert.certificationPic}
-                    alt={`Certification File ${index + 1}`}
-                    className="w-full h-auto max-h-[400px] object-contain rounded-lg"
-                  />
-                ))
-              ) : (
-                <p>No certificates uploaded.</p>
-              )}
+              <img
+                src={certificatesDetails.certificationPic}
+                alt={`Certification File `}
+                className="w-full h-auto max-h-[400px] object-contain rounded-lg"
+              />
             </div>
           </div>
         </div>

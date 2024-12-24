@@ -48,11 +48,6 @@ export const UserVerification = ({ children }) => {
     email: "",
     password: "",
   });
-  const[ adminData, setAdminData] = useState({
-    email: "",
-    password: "",
-  });
-
   const getUserData = async () => {
     try {
       const response = await axiosInstance.get("/users/getuser");
@@ -104,7 +99,16 @@ export const UserVerification = ({ children }) => {
         localStorage.setItem("token", response.data.token);
         const userData=jwtDecode(response.data.token);
         localStorage.setItem("userData", JSON.stringify(userData.user));
-        navigate("/");
+        if(userData.user.role==='1'){
+          navigate("/studentdashboard");
+          window.location.reload();
+        }else if(userData.user.role==='2'){
+          navigate("/tutordashboard");
+          window.location.reload();
+        }else{
+          navigate("/dashboard");
+          window.location.reload();
+        }
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -124,7 +128,16 @@ export const UserVerification = ({ children }) => {
         localStorage.setItem("token", response.data.token);
         const userData=jwtDecode(response.data.token);
         localStorage.setItem("userData", JSON.stringify(userData.user));
-        navigate("/");
+        if(userData.user.role==='1'){
+          navigate("/studentdashboard");
+          window.location.reload();
+        }else if(userData.user.role==='2'){
+          navigate("/tutordashboard");
+          window.location.reload();
+        }else{
+          navigate("/dashboard");
+          window.location.reload();
+        }
         
       }
     } catch (error) {

@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TutorContext } from "../../auth/TutorHandling/TutorProvider";
 
 const ProfileSettings = () => {
   const {
+    tutorName,
     tutorProfile,
     tutorProfileHandleChange,
+    getTutorDetails,
     tutorProfileUpdate,
     editAgainProfile,
     profileEdit,
@@ -13,7 +15,10 @@ const ProfileSettings = () => {
     loading,
     error,
   } = useContext(TutorContext);
-  const tutorData = JSON.parse(localStorage.getItem("userData"));
+  
+  useEffect(() => {
+    getTutorDetails();
+  }, []);
   return (
     <div className="flex flex-col lg:flex-row w-full min-h-screen p-2">
       <div className="w-full lg:w-2/3 p-3 lg:p-5 rounded-xl">
@@ -36,7 +41,7 @@ const ProfileSettings = () => {
             <input
               type="text"
               name="fullName"
-              value={tutorData?.fullName}
+              value={tutorName?.fullName}
               readOnly
               placeholder="Enter your full name"
               className="w-full sm:w-4/5 px-4 py-2 rounded-md bg-slate-100"
@@ -54,7 +59,7 @@ const ProfileSettings = () => {
               type="email"
               name="email"
               readOnly
-              value={tutorData?.email}
+              value={tutorName?.email}
               placeholder="Enter your email"
               className="w-full sm:w-4/5 px-4 py-2 rounded-md bg-slate-100"
             />
@@ -300,10 +305,7 @@ const ProfileSettings = () => {
           <h3 className="text-xl font-semibold mb-4">Profile Photo</h3>
           <div className="relative w-48 h-48 mx-auto">
             <img
-              src={
-                JSON.parse(localStorage.getItem("userImg")) ||
-                "/default-avatar.png"
-              }
+              src={tutorName?.avatar || "/default-avatar.png"}
               alt="Profile"
               className="w-full h-full rounded-full object-cover border-4 border-gray-200"
             />

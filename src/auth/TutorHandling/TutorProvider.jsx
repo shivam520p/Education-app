@@ -9,8 +9,17 @@ export const TutorProvider = ({ children }) => {
   useEffect(() => {
     setProfileEdit(true);
   }, []);
-  const [allTutorDetails, setAllTutorDetails] = useState([]);
   const [tutor, setTutor] = useState(null);
+  const [tutorName, setTutorName] = useState({
+    fullName: "",
+    email: "",
+    avatar: "",
+  });
+  const [studentName, setStudentName] = useState({
+    fullName: "",
+    email: "",
+    avatar: "",
+  });
   const [studentProfile, setStudentProfile] = useState({
     gender: "",
     dateOfBirth: "",
@@ -113,20 +122,18 @@ export const TutorProvider = ({ children }) => {
   };
   const studentProfileUpdate = async (e) => {
     e.preventDefault();
-    const profileEdit = localStorage.getItem("profileEdit");
-    if (profileEdit) {
+    if (studentProfile.gender) {
       try {
         const response = await axiosInstance.put(
           "/student/updatestudentdetails",
           studentProfile
         );
         if (response.status === 200) {
-          toast.success("Your profile is updated successfully...!!");
+          toast.success(response?.data?.message);
           setProfileEdit(true);
-          localStorage.setItem("profileEdit", JSON.stringify(studentProfile));
         }
       } catch (err) {
-        toast.error(err);
+        toast.error(toast.success.message);
         console.log(err);
       }
     } else {
@@ -136,15 +143,37 @@ export const TutorProvider = ({ children }) => {
           studentProfile
         );
         if (response.status === 201) {
-          toast.success("Your profile is added successfully...");
+          toast.success(response?.data?.message);
           setProfileEdit(true);
-          localStorage.setItem("edit", profileEdit);
-          localStorage.setItem("profileEdit", JSON.stringify(studentProfile));
         }
       } catch (err) {
         toast.error(err);
         console.log(err);
       }
+    }
+  };
+  const getStudentProfileDetails = async () => {
+    try {
+      const response = await axiosInstance.get("/student/getourDetails");
+      if (response.status === 200) {
+        setStudentProfile({
+          gender: response.data.date.gender,
+          dateOfBirth: response.data.date.dateOfBirth,
+          language: response.data.date.language,
+          city: response.data.date.address.city,
+          country: response.data.date.address.country,
+          state: response.data.date.address.state,
+          pinCode: response.data.date.address.pinCode,
+          about: response.data.date.about,
+        });
+        setStudentName({
+          fullName: response.data.date.userId.fullName,
+          email: response.data.date.userId.email,
+          avatar: response.data.date.userId.avatar,
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -154,18 +183,13 @@ export const TutorProvider = ({ children }) => {
   };
   const tutorProfileUpdate = async (e) => {
     e.preventDefault();
-    const tutorDetails = localStorage.getItem("tutorDetails");
-    if (!tutorDetails) {
+    if (!tutorProfile.gender) {
       try {
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           tutorProfile
         );
         if (response.status === 200) {
-          localStorage.setItem(
-            "tutorDetails",
-            JSON.stringify(response.data.data.address)
-          );
           setProfileEdit(true);
           toast.success(response.data.message);
         }
@@ -179,13 +203,9 @@ export const TutorProvider = ({ children }) => {
           "/tutor/updatetutordetails",
           tutorProfile
         );
+        console.log(response);
         if (response.status === 200) {
-          localStorage.setItem(
-            "tutorDetails",
-            JSON.stringify(response.data.updatedTutor.address)
-          );
           setProfileEdit(true);
-          setTutorDetails(JSON.parse(localStorage.getItem("tutorDetails")));
           toast.success(response.data.message);
         }
       } catch (err) {
@@ -202,18 +222,13 @@ export const TutorProvider = ({ children }) => {
 
   const educationDetailsUpdate = async (e) => {
     e.preventDefault();
-    const education = localStorage.getItem("education");
-    if (!education) {
+    if (!educationDetails.degree) {
       try {
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           educationDetails
         );
         if (response.status === 200) {
-          localStorage.setItem(
-            "education",
-            JSON.stringify(response.data.data.qualifications)
-          );
           setProfileEdit(true);
           toast.success(response.data.message);
         }
@@ -227,12 +242,7 @@ export const TutorProvider = ({ children }) => {
           "/tutor/updatetutordetails",
           educationDetails
         );
-        console.log(response)
         if (response.status === 200) {
-          localStorage.setItem(
-            "education",
-            JSON.stringify(response.data.updatedTutor.qualifications)
-          );
           setProfileEdit(true);
           toast.success(response.data.message);
         }
@@ -247,21 +257,15 @@ export const TutorProvider = ({ children }) => {
     const { name, value } = e.target;
     setExperienceDetails({ ...experienceDetails, [name]: value });
   };
-
   const experienceDetailsUpdate = async (e) => {
     e.preventDefault();
-    const experience = localStorage.getItem("experience");
-    if (!experience) {
+    if (!experienceDetails.role) {
       try {
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
           experienceDetails
         );
         if (response.status === 200) {
-          localStorage.setItem(
-            "experience",
-            JSON.stringify(response.data.data.experience)
-          );
           setProfileEdit(true);
           toast.success(response.data.message);
         }
@@ -276,10 +280,6 @@ export const TutorProvider = ({ children }) => {
           experienceDetails
         );
         if (response.status === 200) {
-          localStorage.setItem(
-            "experience",
-            JSON.stringify(response.data.updatedTutor.experience)
-          );
           setProfileEdit(true);
           toast.success(response.data.message);
         }
@@ -309,7 +309,6 @@ export const TutorProvider = ({ children }) => {
 
   const certificatesDetailsUpdate = async (e) => {
     e.preventDefault();
-    const cer = JSON.parse(localStorage.getItem("certificate"));
     const formData = new FormData();
     // Add type
     formData.append("type", "certifications");
@@ -326,7 +325,7 @@ export const TutorProvider = ({ children }) => {
       formData.append("certificationPic", certificatesDetails.certificationPic);
     }
 
-    if (!cer) {
+    if (!certificatesDetails.name) {
       try {
         const response = await axiosInstance.post(
           "/tutor/addTutorDetails",
@@ -341,10 +340,7 @@ export const TutorProvider = ({ children }) => {
           toast.success(
             "Certificate details have been submitted successfully!"
           );
-          localStorage.setItem(
-            "certificate",
-            JSON.stringify(response.data.data.certifications)
-          );
+          setProfileEdit(true);
         }
       } catch (err) {
         toast.error("An error occurred: " + err.response.data.message);
@@ -363,10 +359,7 @@ export const TutorProvider = ({ children }) => {
         );
         if (response.status === 200) {
           toast.success("Certificate details have been updated successfully!");
-          localStorage.setItem(
-            "certificate",
-            JSON.stringify(response.data.updatedTutor.certifications)
-          );
+          setProfileEdit(true);
         }
       } catch (err) {
         toast.error("An error occurred: " + err.message);
@@ -393,13 +386,14 @@ export const TutorProvider = ({ children }) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response)
       if (response.status === 200) {
         toast.success(response.data.message);
-        localStorage.setItem(
-          "userImg",
-          JSON.stringify(response.data.data.avatar)
-        );
+        setTutorName({
+          avatar: response.data.data.avatar,
+        });
+        setStudentName({
+          avatar: response.data.data.avatar,
+        });
       }
     } catch (err) {
       toast.error(err.response?.data?.message);
@@ -416,12 +410,65 @@ export const TutorProvider = ({ children }) => {
 
   const getTutorDetails = async () => {
     try {
-      const response = await axiosInstance.get("admin/getTutorDetails");
+      const response = await axiosInstance.get("tutor/getourdetails");
+      if (response.status === 200) {
+        setTutorName(response?.data?.data?.userId);
+        setTutorProfile({
+          type: "address",
+          gender: response.data.data.address.gender,
+          dateOfBirth: response.data.data.address.dateOfBirth,
+          state: response.data.data.address.state,
+          city: response.data.data.address.city,
+          pinCode: response.data.data.address.pinCode,
+          country: response.data.data.address.country,
+          language: response.data.data.address.language,
+          about: response.data.data.address.about,
+        });
+        setEducationDetails({
+          type: "qualifications",
+          degree: response?.data?.data?.qualifications[0]?.degree,
+          institution: response?.data?.data?.qualifications[0]?.institution,
+          country: response?.data?.data?.qualifications[0]?.country,
+          city: response?.data?.data?.qualifications[0]?.city,
+          startDate: response?.data?.data?.qualifications[0]?.startDate,
+          yearOfCompletion:
+            response?.data?.data?.qualifications[0]?.yearOfCompletion,
+        });
+        setExperienceDetails({
+          type: "experience",
+          role: response?.data?.data?.experience[0]?.role,
+          employmentType: response?.data?.data?.experience[0]?.employmentType,
+          institutionName: response?.data?.data?.experience[0]?.institutionName,
+          location_Type: response?.data?.data?.experience[0]?.location_Type,
+          city: response?.data?.data?.experience[0]?.city,
+          country: response?.data?.data?.experience[0]?.country,
+          startDate: response?.data?.data?.experience[0]?.startDate,
+          endDate: response?.data?.data?.experience[0]?.endDate,
+        });
+        setCertificatesDetails({
+          type: "certifications",
+          certificationPic:
+            response?.data?.data?.certifications[0]?.certificationPic,
+          name: response?.data?.data?.certifications[0]?.name,
+          issuingOrganization:
+            response?.data?.data?.certifications[0]?.issuingOrganization,
+          issuedDate: response?.data?.data?.certifications[0]?.issuedDate,
+          expireDate: response?.data?.data?.certifications[0]?.expireDate,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const [allTutorDetails, setAllTutorDetails] = useState([]);
+  const getTutorToDisplay = async () => {
+    try {
+      const response = await axiosInstance.get("/admin/getTutorDetails");
       if (response.status === 200) {
         setAllTutorDetails(response.data.data);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -485,6 +532,7 @@ export const TutorProvider = ({ children }) => {
         tutorDetails,
         setTutorDetails,
         getTutorDetails,
+        getStudentProfileDetails,
         tutorProfile,
         setTutorProfile,
         tutorProfileHandleChange,
@@ -511,8 +559,9 @@ export const TutorProvider = ({ children }) => {
         handleSubmit,
         loading,
         error,
-        allTutorDetails,
         tutor,
+        tutorName,
+        studentName,
         setTutor,
         studentProfile,
         setStudentProfile,
@@ -525,6 +574,8 @@ export const TutorProvider = ({ children }) => {
         allSessionBook,
         setAllSessionBook,
         getAllSessionBook,
+        allTutorDetails,
+        getTutorToDisplay,
       }}
     >
       {children}
